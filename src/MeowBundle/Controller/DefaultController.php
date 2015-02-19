@@ -9,7 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/")
+     * @Route("/", name="home")
      * @Template()
      */
     public function indexAction()
@@ -57,8 +57,17 @@ class DefaultController extends Controller
      * @Route("/profile/{pseudo}")
      * @Template()
      */
-    public function articleAction($pseudo)
+    public function profileAction($pseudo)
     {
         return array('pseudo' => $pseudo);
+    }
+
+    /**
+     * @Route("/new/")
+     * @Template()
+     */
+    public function newArticleAction()
+    {
+        return array();
     }
 }
