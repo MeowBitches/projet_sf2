@@ -16,4 +16,40 @@ class DefaultController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/all-spoils/")
+     * @Template()
+     */
+    public function listAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/spoil/{name}")
+     * @Template()
+     */
+    public function articleAction($name)
+    {
+        return array('name' => $name);
+    }
+
+    /**
+     * @Route("/connexion/")
+     * @Template()
+     */
+    public function connexionAction()
+    {
+        return array();
+    }
+
+    /**
+     * @Route("/inscription/")
+     * @Template()
+     */
+    public function inscriptionAction()
+    {
+        return array();
+    }
 }
