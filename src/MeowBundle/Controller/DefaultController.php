@@ -52,4 +52,13 @@ class DefaultController extends Controller
     {
         return array();
     }
+
+    /**
+     * @Route("/profile/{pseudo}")
+     * @Template()
+     */
+    public function articleAction($pseudo)
+    {
+        return array('pseudo' => $pseudo);
+    }
 }
