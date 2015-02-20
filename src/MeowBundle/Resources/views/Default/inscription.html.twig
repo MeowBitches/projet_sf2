@@ -1,1 +1,32 @@
 {% extends 'MeowBundle::layout.html.twig' %}
+
+{% block content %}
+
+	<p>Nouveau membre :</p>
+	<form>
+		
+		<p>
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" name="pseudo" id="pseudo" size="30" maxlength="10" />
+    	</p>
+
+    	<p>
+        <label for="pseudo">Mot de passe :</label>
+        <input type="password" name="pass" id="pass"/>
+    	</p>
+
+    	<p>
+        <label for="pseudo">Confirmation mot de passe :</label>
+        <input type="password" name="pass" id="pass"/>
+    	</p>
+
+		<p>
+        <label for="pseudo">Pseudo :</label>
+        <input type="email" />
+    	</p>
+
+    	<label for="captcha">Captcha : "<?php echo captcha(5); ?>"</label>
+
+	</form>
+
+{% endblock %}
