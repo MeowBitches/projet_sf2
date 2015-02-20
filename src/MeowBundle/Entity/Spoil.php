@@ -29,6 +29,14 @@ class Spoil
     private $title;
 
     /**
+     * @var string $slug
+     *
+     * @Gedmo\Slug(fields={"title"}, updatable=false, separator="-")
+     * @ORM\Column(name="slug", type="string", length=100)
+     */
+    private $slug;
+
+    /**
      * @ORM\ManyToOne(targetEntity="Manga", inversedBy="posts", cascade={"persist"})
      * @ORM\JoinColumn(name="manga", referencedColumnName="id")
      */
@@ -123,6 +131,28 @@ class Spoil
         return $this->title;
     }
 
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     * @return Spoil
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string 
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
 
     /**
      * Set manga
