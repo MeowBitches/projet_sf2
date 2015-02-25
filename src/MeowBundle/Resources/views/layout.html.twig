@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
 	{% set urlBase = path("home") %}
+	{% set currentUrl = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{% include 'MeowBundle::Includes/head.html.twig' %}
 </head>
 <body>

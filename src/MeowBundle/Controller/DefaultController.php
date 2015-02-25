@@ -23,7 +23,10 @@ class DefaultController extends Controller
      */
     public function listAction()
     {
-        return array();
+        $repoSpoils = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoils = $repoSpoils->findAll();
+
+        return array('spoils' => $spoils);
     }
 
     /**

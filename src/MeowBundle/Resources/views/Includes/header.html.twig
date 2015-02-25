@@ -4,11 +4,21 @@
 			<a class="navbar-brand" href="{{ urlBase }}">Nyan spoil</a>
 		</div>
 		<ul class="nav nav-pills">
-			<li role="presentation" class="active"><a href="{{ urlBase }}">Accueil</a></li>
-			<li role="presentation"><a href="{{ urlBase }}all-spoils/">Liste des spoils</a></li>
-			<li role="presentation"><a href="{{ urlBase }}new/">Créer un spoil</a></li>
-			<li role="presentation"><a href="{{ urlBase }}inscription/">Inscription</a></li>
-			<li role="presentation"><a href="{{ urlBase }}connexion/">Connexion</a></li>
+			<li role="presentation"
+				{% if currentUrl == urlBase %} class="active"{% endif %}
+			><a href="{{ urlBase }}">Accueil</a></li>
+			<li role="presentation"
+				{% if currentUrl == urlBase ~ "all-spoils/" %} class="active"{% endif %}
+			><a href="{{ urlBase }}all-spoils/">Liste des spoils</a></li>
+			<li role="presentation"
+				{% if currentUrl == urlBase ~ "new/" %} class="active"{% endif %}
+			><a href="{{ urlBase }}new/">Créer un spoil</a></li>
+			<li role="presentation"
+				{% if currentUrl == urlBase ~ "inscription/" %} class="active"{% endif %}
+			><a href="{{ urlBase }}inscription/">Inscription</a></li>
+			<li role="presentation"
+				{% if currentUrl == urlBase ~ "connexion/" %} class="active"{% endif %}
+			><a href="{{ urlBase }}connexion/">Connexion</a></li>
 		</ul>
 	</div>
 </nav>
