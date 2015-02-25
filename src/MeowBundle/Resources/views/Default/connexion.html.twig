@@ -1,1 +1,24 @@
 {% extends 'MeowBundle::layout.html.twig' %}
+
+{% block content %}
+
+	<p>Connectez-vous</p>
+	<form>
+		
+		<p>
+        <label for="pseudo">Pseudo :</label>
+        <input type="text" name="pseudo" id="pseudo" size="30" maxlength="10" />
+    	</p>
+
+    	<p>
+        <label for="pseudo">Mot de passe :</label>
+        <input type="password" name="pass" id="pass"/>
+    	</p>
+		
+		<p>
+        <input type="submit" value="Se connecter" />
+    	</p>
+
+	</form>
+
+{% endblock %}
