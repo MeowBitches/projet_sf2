@@ -49,6 +49,12 @@ class User
      */
     private $cover;
 
+    /**
+     * @var boolean
+     *
+     * @ORM\Column(name="is_admin", type="boolean")
+     */
+    private $isAdmin;
 
     /**
      * Get id
@@ -150,5 +156,28 @@ class User
     public function getCover()
     {
         return $this->cover;
+    }
+
+    /**
+     * Set isAdmin
+     *
+     * @param boolean $isAdmin
+     * @return User
+     */
+    public function setIsAdmin($isAdmin)
+    {
+        $this->isAdmin = $isAdmin;
+
+        return $this;
+    }
+
+    /**
+     * Get isAdmin
+     *
+     * @return boolean 
+     */
+    public function getIsAdmin()
+    {
+        return $this->isAdmin;
     }
 }
