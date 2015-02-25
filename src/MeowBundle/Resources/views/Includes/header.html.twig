@@ -1,23 +1,14 @@
-<header>
-	<h1>Nyan spoil</h1>
-	<nav>
-		<ul>
-			<a href="{{ urlBase }}"><li>Accueil</li></a>
-			<a href="{{ urlBase }}all-spoils/"><li>Liste des spoils</li></a>
-			<a href="{{ urlBase }}new/"><li>Créer un spoil</li></a>
-			<a href="{{ urlBase }}inscription/"><li>Inscription</li></a>
-			<a href="{{ urlBase }}connexion/"><li>Connexion</li></a>
-		</ul>
-	</nav>
-	<div class="user">
-		<figure>
-			<img src="" alt="">
-		</figure>
-		<ul>
-			<li></li>
-			<li></li>
-			<li></li>
-			<li></li>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="{{ urlBase }}">Nyan spoil</a>
+		</div>
+		<ul class="nav nav-pills">
+			<li role="presentation" class="active"><a href="{{ urlBase }}">Accueil</a></li>
+			<li role="presentation"><a href="{{ urlBase }}all-spoils/">Liste des spoils</a></li>
+			<li role="presentation"><a href="{{ urlBase }}new/">Créer un spoil</a></li>
+			<li role="presentation"><a href="{{ urlBase }}inscription/">Inscription</a></li>
+			<li role="presentation"><a href="{{ urlBase }}connexion/">Connexion</a></li>
 		</ul>
 	</div>
-</header>
+</nav>
