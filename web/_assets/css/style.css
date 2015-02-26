@@ -1,12 +1,41 @@
-body{
+*, *:after, *:before{
+	outline: none;
+	box-sizing: border-box;
+	list-style-type: none;
+}
+
+.home{
 	background-color: #212830;
 }
 
-h1, p, table{
+body{
+	background-color: #f0f0ed;
+}
+
+.home h1, p, table{
 	color: #fff;
 }
 
-.navbar{
+h1, p, table{
+	color: #000;
+}
+
+
+/*************** TEST *****************/
+
+.nav-meow a:focus, .nav-meow a:hover {
+color: #e65354;
+text-decoration: none;
+}
+
+.nav-meow a:focus, .nav-meow a:hover {
+color: #fff;
+text-decoration: none;
+}
+
+/*************** Fin du TEST **********/
+
+.home .navbar{
 	background: #52575d;
 	border-radius: 0;
 	border: none;
@@ -14,49 +43,78 @@ h1, p, table{
 	height: 75px;
 }
 
-.navbar-brand{
-	float: left;
+.navbar{
+	background: #212830;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #fff;
+	height: 75px;
+}
+
+.navbar-brand {
+float: left;
+padding: 8px 15px;
 }
 
 .nav{
 	float: right;
+	display: table;
 }
 
 .nav li{
 	margin-right: 10px;
+	display: table-cell;
 }
 
-/*.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover {
-color: #fff;
-background-color: #e65354;
-}*/
+.nav>li>a {
+position: relative;
+display: block;
+}
 
-.nav-meow{
+
+.nav-meow a{
 	font-size: 16px;
 	color: #fff;
+	text-decoration: none;
 }
 
-.nav-meow.hover{
+.nav-meow a:hover{
 	color: #e65354;
 }
 
-.btn-meow1{
+.btn-meow1 a{
+	color: #fff;
+	text-decoration: none;
 	font-size: 16px;
-	background: #e65354;
+	background: #e65354 url("../imgs/connecter.png") no-repeat 5% 50%;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	padding-left: 35px; 
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
-.btn-meow2{
+.btn-meow1 a:hover{
+	background: #d73f40 url("../imgs/connecter.png") no-repeat 5% 50%;
+	
+}
+
+.btn-meow2 a{
+	text-decoration: none;
+	color: #fff;
 	font-size: 16px;
-	background: #304257;
+	background: #304257 url("../imgs/inscrire.png") no-repeat 8% 50%;;
 	-webkit-border-radius: 4px;
 	-moz-border-radius: 4px;
 	border-radius: 4px;
+	padding-left: 35px; 
+	padding-right: 10px;
+	padding-top: 15px;
+	padding-bottom: 15px;
 }
 
-a {
-color: #fff;
-text-decoration: none;
+.btn-meow2 a:hover{
+	background: #253445 url("../imgs/inscrire.png") no-repeat 8% 50%;;
 }
