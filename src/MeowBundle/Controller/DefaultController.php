@@ -14,7 +14,12 @@ class DefaultController extends Controller
      */
     public function indexAction()
     {
-        return array();
+        $repoSpoils = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoils = $repoSpoils->findBy(array('isPublished' => true));
+        $randSpoil = rand(0, sizeof($spoils) - 1);
+        $spoil = $spoils[$randSpoil];
+
+        return array('spoil' => $spoil);
     }
 
     /**
@@ -24,18 +29,18 @@ class DefaultController extends Controller
     public function listAction()
     {
         $repoSpoils = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
-        $spoils = $repoSpoils->findAll();
+        $spoils = $repoSpoils->findBy(array('isPublished' => true));
 
         return array('spoils' => $spoils);
     }
 
     /**
-     * @Route("/spoil/{name}")
+     * @Route("/spoil/{slug}")
      * @Template()
      */
-    public function articleAction($name)
+    public function articleAction($slug)
     {
-        return array('name' => $name);
+        return array('slug' => $slug);
     }
 
     /**
