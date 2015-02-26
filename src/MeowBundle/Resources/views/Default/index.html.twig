@@ -7,6 +7,7 @@
 	<table>
 		<tr>
 			<th>Id</th>
+			<th>Lien</th>
 			<th>Id / nom / catégorie manga</th>
 			<th>Id / pseudo auteur</th>
 			<th>Titre</th>
@@ -21,6 +22,7 @@
 		</tr>
 		<tr>
 			<td>{{ spoil.id }}</td>
+			<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
 			<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
 			<td>{{ spoil.author.id }} / {{ spoil.author.pseudo }}</td>
 			<td>{{ spoil.title }}</td>

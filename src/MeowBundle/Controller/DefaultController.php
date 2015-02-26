@@ -5,6 +5,7 @@ namespace MeowBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 class DefaultController extends Controller
 {
@@ -43,6 +44,10 @@ class DefaultController extends Controller
         $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
         $spoil = $repoSpoil->findOneBy(array('isPublished' => true, 'slug' => $slug));
 
+        if(!$spoil){
+            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas.');
+        }
+
         $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
         $comments = $repoComment->findBy(array('idSpoil' => $spoil));
 
@@ -73,15 +78,28 @@ class DefaultController extends Controller
      */
     public function profileAction($pseudo)
     {
-        return array('pseudo' => $pseudo);
+        $repoUser = $this->container->get('doctrine')->getRepository('MeowBundle:User');
+        $user = $repoUser->findOneBy(array('pseudo' => $pseudo));
+
+        if(!$user){
+            throw $this->createNotFoundException('La page que vous recherchez n\'existe pas.');
+        }
+
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoils = $repoSpoil->findBy(array('isPublished' => true, 'author' => $user));
+
+        return array('user' => $user, 'spoils' => $spoils);
     }
 
     /**
-     * @Route("/new/")
+     * @Route("/moderation/")
      * @Template()
      */
-    public function newArticleAction()
+    public function moderationAction()
     {
-        return array();
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoils = $repoSpoil->findBy(array(), array('isPublished' => 'ASC','date' => 'DESC'));
+
+        return array('spoils' => $spoils);
     }
 }

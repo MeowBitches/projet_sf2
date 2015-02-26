@@ -2,6 +2,90 @@
 
 {% block content %}
 
-	
+	<h1>Utilisateur</h1>
+
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Pseudo</th>
+			<th>Email</th>
+			<th>Image de profil</th>
+			<th>Administrateur</th>
+			<th>Score</th>
+		</tr>
+		<tr>
+			<td>{{ user.id }}</td>
+			<td>{{ user.pseudo }}</td>
+			<td>{{ user.email }}</td>
+			<td>{{ user.cover }}</td>
+			<td>
+				{% if user.isAdmin == true %}
+					Oui
+				{% else %}
+					Non
+				{% endif %}
+			</td>
+			<td>
+				{% set score = 0 %}
+				{% for spoil in spoils %}
+					{% set score = score + spoil.nbSpoil %}
+				{% endfor %}
+				{{ score }}
+			</td>
+		</tr>
+	</table>
+
+	<h1>Spoils postés</h1>
+
+	{% if spoils is not empty %}
+		<table>
+			<tr>
+				<th>Id</th>
+				<th>Lien</th>
+				<th>Id / nom / catégorie manga</th>
+				<th>Id / pseudo auteur</th>
+				<th>Titre</th>
+				<th>Slug</th>
+				<th>Url image</th>
+				<th>Date et heure</th>
+				<th>Nombre de commentaires</th>
+				<th>Nombre de spoils</th>
+				<th>Nombre de fails</th>
+				<th>Nombre de fakes</th>
+				<th>Publié</th>
+			</tr>
+			{% for spoil in spoils %}
+				<tr>
+					<td>{{ spoil.id }}</td>
+					<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
+					<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
+					<td>{{ spoil.author.id }} / {{ spoil.author.pseudo }}</td>
+					<td>{{ spoil.title }}</td>
+					<td>{{ spoil.slug }}</td>
+					<td>
+						{% if spoil.cover is not empty %}
+							{{ spoil.cover }}
+						{% else %}
+							placeholder.jpg
+						{% endif %}
+					</td>
+					<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
+					<td>{{ spoil.nbComments }}</td>
+					<td>{{ spoil.nbSpoil }}</td>
+					<td>{{ spoil.nbFail }}</td>
+					<td>{{ spoil.nbFake }}</td>
+					<td>
+						{% if spoil.isPublished == true %}
+							Oui
+						{% else %}
+							Non
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		<p>Aucun spoil posté.</p>
+	{% endif %}
 
 {% endblock %}

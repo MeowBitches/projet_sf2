@@ -7,7 +7,9 @@
 </head>
 <body>
 	{% include 'MeowBundle::Includes/header.html.twig' %}
-	{% block content %}{% endblock %}
+	<div {% if currentUrl == urlBase %} class="home" {% endif %}>
+		{% block content %}{% endblock %}
+	</div>
 	{% include 'MeowBundle::Includes/footer.html.twig' %}
 </body>
 </html>
