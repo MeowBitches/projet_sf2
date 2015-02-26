@@ -1,1 +1,92 @@
 {% extends 'MeowBundle::layout.html.twig' %}
+
+{% block content %}
+
+	<h1>Spoil</h1>
+
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Id / nom / catégorie manga</th>
+			<th>Id / pseudo auteur</th>
+			<th>Titre</th>
+			<th>Slug</th>
+			<th>Url image</th>
+			<th>Date et heure</th>
+			<th>Nombre de commentaires</th>
+			<th>Nombre de spoils</th>
+			<th>Nombre de fails</th>
+			<th>Nombre de fakes</th>
+			<th>Publié</th>
+		</tr>
+		<tr>
+			<td>{{ spoil.id }}</td>
+			<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
+			<td>{{ spoil.author.id }} / {{ spoil.author.pseudo }}</td>
+			<td>{{ spoil.title }}</td>
+			<td>{{ spoil.slug }}</td>
+			<td>
+				{% if spoil.cover is not empty %}
+					{{ spoil.cover }}
+				{% else %}
+					placeholder.jpg
+				{% endif %}
+			</td>
+			<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
+			<td>{{ spoil.nbComments }}</td>
+			<td>{{ spoil.nbSpoil }}</td>
+			<td>{{ spoil.nbFail }}</td>
+			<td>{{ spoil.nbFake }}</td>
+			<td>
+				{% if spoil.isPublished == true %}
+					Oui
+				{% else %}
+					Non
+				{% endif %}
+			</td>
+		</tr>
+	</table>
+
+	<h1>Commentaires</h1>
+
+	<table>
+		<tr>
+			<th>Id</th>
+			<th>Id / pseudo auteur</th>
+			<th>Date et heure</th>
+			<th>Commentaire</th>
+			<th>Nombre de likes</th>
+		</tr>
+		{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
+			<tr>
+				<td>{{ comment_lvl1.id }}</td>
+				<td>{{ comment_lvl1.author.id }} / {{ comment_lvl1.author.pseudo }}</td>
+				<td>{{ comment_lvl1.date|date("Y/m/d H:i:s") }}</td>
+				<td>
+					{% if comment_lvl1.nbLike > -10 %}
+						{{ comment_lvl1.text }}
+					{% else %}
+						Commentaire modéré
+					{% endif %}
+				</td>
+				<td>{{ comment_lvl1.nbLike }}</td>
+			</tr>
+			{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
+				<tr>
+					<td>{{ comment_lvl2.id }}</td>
+					<td>{{ comment_lvl2.author.id }} / {{ comment_lvl2.author.pseudo }}</td>
+					<td>{{ comment_lvl2.date|date("Y/m/d H:i:s") }}</td>
+					<td>
+						{% if comment_lvl2.nbLike > -10 %}
+							{{ comment_lvl2.text }}
+						{% else %}
+							Commentaire modéré
+						{% endif %}
+					</td>
+					<td>{{ comment_lvl2.nbLike }}</td>
+				</tr>
+			{% endfor %}
+		{% endfor %}
+	</table>
+
+{% endblock %}

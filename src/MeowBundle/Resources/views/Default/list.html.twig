@@ -7,7 +7,7 @@
 	<table>
 		<tr>
 			<th>Id</th>
-			<th>Id / nom / catégorie Manga</th>
+			<th>Id / nom / catégorie manga</th>
 			<th>Id / pseudo auteur</th>
 			<th>Titre</th>
 			<th>Slug</th>
@@ -27,7 +27,7 @@
 				<td>{{ spoil.title }}</td>
 				<td>{{ spoil.slug }}</td>
 				<td>
-					{% if spoil.cover is defined %}
+					{% if spoil.cover is not empty %}
 						{{ spoil.cover }}
 					{% else %}
 						placeholder.jpg

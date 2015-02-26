@@ -40,7 +40,13 @@ class DefaultController extends Controller
      */
     public function articleAction($slug)
     {
-        return array('slug' => $slug);
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoil = $repoSpoil->findOneBy(array('isPublished' => true, 'slug' => $slug));
+
+        $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
+        $comments = $repoComment->findBy(array('idSpoil' => $spoil));
+
+        return array('spoil' => $spoil, 'comments' => $comments);
     }
 
     /**
