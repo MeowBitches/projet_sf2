@@ -2,6 +2,10 @@ body{
 	background-color: #212830;
 }
 
+h1, p, table{
+	color: #fff;
+}
+
 .navbar{
 	background: #52575d;
 	border-radius: 0;
