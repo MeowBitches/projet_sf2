@@ -5,7 +5,7 @@ namespace MeowBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
-use Doctrine\ORM\Tools\Pagination\Paginator;
+use Symfony\Component\HttpFoundation\Request;
 
 class DefaultController extends Controller
 {
@@ -76,7 +76,7 @@ class DefaultController extends Controller
      * @Route("/profile/{pseudo}")
      * @Template()
      */
-    public function profileAction($pseudo)
+    public function profileAction($pseudo, Request $request)
     {
         $repoUser = $this->container->get('doctrine')->getRepository('MeowBundle:User');
         $user = $repoUser->findOneBy(array('pseudo' => $pseudo));
@@ -85,21 +85,37 @@ class DefaultController extends Controller
             throw $this->createNotFoundException('La page que vous recherchez n\'existe pas.');
         }
 
-        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
-        $spoils = $repoSpoil->findBy(array('isPublished' => true, 'author' => $user));
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT s FROM MeowBundle:Spoil s WHERE s.isPublished = true AND s.author = " . $user->getId();
+        $query = $em->createQuery($dql);
 
-        return array('user' => $user, 'spoils' => $spoils);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->get('page', 1),
+            10
+        );
+
+        return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination));
     }
 
     /**
      * @Route("/moderation/")
      * @Template()
      */
-    public function moderationAction()
+    public function moderationAction(Request $request)
     {
-        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
-        $spoils = $repoSpoil->findBy(array(), array('isPublished' => 'ASC','date' => 'DESC'));
+        $em    = $this->get('doctrine.orm.entity_manager');
+        $dql   = "SELECT s FROM MeowBundle:Spoil s ORDER BY s.date DESC";
+        $query = $em->createQuery($dql);
 
-        return array('spoils' => $spoils);
+        $paginator  = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+            $query,
+            $request->query->get('page', 1),
+            10
+        );
+
+        return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination));
     }
 }

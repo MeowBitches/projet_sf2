@@ -20,7 +20,7 @@
 			<th>Nombre de fakes</th>
 			<th>Publié</th>
 		</tr>
-		{% for spoil in spoils %}
+		{% for spoil in pagination %}
 			<tr>
 				<td>{{ spoil.id }}</td>
 				<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
@@ -50,5 +50,7 @@
 			</tr>
 		{% endfor %}
 	</table>
+
+	{{ knp_pagination_render(pagination) }}
 
 {% endblock %}
