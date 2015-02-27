@@ -2,7 +2,76 @@
 
 {% block content %}
 
-	<h1>Spoils</h1>
+
+	<main class="cd-main-content" id="all-spoils">
+		
+	 	<div class="cd-tab-filter-wrapper">
+			<h2>Tous les spoils</h2>
+		</div> <!-- cd-tab-filter-wrapper -->
+		<section class="cd-gallery">
+			
+			<ul>
+				<li class="mix shojo"><img src="{{ asset('_assets/imgs/spoils/asuna.jpg') }}" alt="Image 1"></li>
+				<li class="mix shojo"><img src="{{ asset('_assets/imgs/spoils/asuna.jpg') }}" alt="Image 2"></li>
+				<li class="gap"></li>
+			</ul>
+			<div class="cd-fail-message">No results found</div>
+		</section> <!-- cd-gallery -->
+	 
+		<div class="cd-filter">
+			<form>
+				<div class="cd-filter-block">
+					<h4>Rechercher</h4>
+					<div class="cd-filter-content">
+						<input type="search" placeholder="Tapez votre manga">
+					</div> <!-- cd-filter-content -->
+				</div> <!-- cd-filter-block -->
+
+				<div class="cd-filter-block">
+					<h4>Type de manga</h4>
+					<ul class="cd-filter-content cd-filters list">
+						<li>
+							<input class="filter" data-filter=".shonen" type="checkbox" id="shonen">
+							<label class="checkbox-label" for="shonen">
+								Shonen
+							</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter="shojo" type="checkbox" id="shojo">
+							<label class="checkbox-label" for="shojo">
+								Shojo
+							</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".seinen" type="checkbox" id="seinen">
+							<label class="checkbox-label" for="seinen">
+								Seinen
+							</label>
+						</li>
+
+						<li>
+							<input class="filter" data-filter=".yaoi" type="checkbox" id="yaoi">
+							<label class="checkbox-label" for="yaoi">
+								Yaoi
+							</label>
+						</li>
+					</ul>
+				</div> <!-- cd-filter-block -->
+
+			</form>
+	 
+			<a href="#0" class="cd-close">Fermer</a>
+		</div> <!-- cd-filter -->
+	 
+		<a href="#0" class="cd-filter-trigger">Filtrer</a>
+	</main> <!-- cd-main-content -->
+
+
+
+
+
 
 	<table>
 		<tr>
@@ -50,5 +119,10 @@
 			</tr>
 		{% endfor %}
 	</table>
+
+	<script src="{{ asset('_assets/js/content-filter/jquery.mixitup.min.js') }}"></script>
+	<script src="{{ asset('_assets/js/content-filter/jquery-2.1.1.js') }}"></script>
+	<script src="{{ asset('_assets/js/content-filter/main.js') }}"></script>
+	<script src="{{ asset('_assets/js/content-filter/modernizr.js') }}"></script>
 
 {% endblock %}
