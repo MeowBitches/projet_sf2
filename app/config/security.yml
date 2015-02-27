@@ -4,6 +4,7 @@ security:
     # http://symfony.com/doc/current/book/security.html#encoding-the-user-s-password
     encoders:
         Symfony\Component\Security\Core\User\User: plaintext
+        MeowBundle\Entity\User: sha512
 
     # http://symfony.com/doc/current/book/security.html#hierarchical-roles
     role_hierarchy:
@@ -12,6 +13,8 @@ security:
 
     # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
     providers:
+        main:
+            id:    fos_user.user_provider.username
         in_memory:
             memory:
                 users:
@@ -21,6 +24,18 @@ security:
     # the main part of the security, where you can set up firewalls
     # for specific sections of your app
     firewalls:
+        main:
+            pattern:            ^/
+            anonymous:          true
+            provider:           main
+            form_login:
+                login_path:     login
+                check_path:     login_check
+            logout:
+                path:           logout
+                target:         /
+            remember_me:
+                key:            %secret%
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:
             pattern:  ^/(_(profiler|wdt)|css|images|js)/

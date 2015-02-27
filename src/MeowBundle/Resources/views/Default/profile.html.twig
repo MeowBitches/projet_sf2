@@ -15,11 +15,11 @@
 		</tr>
 		<tr>
 			<td>{{ user.id }}</td>
-			<td>{{ user.pseudo }}</td>
+			<td>{{ user.username }}</td>
 			<td>{{ user.email }}</td>
 			<td>{{ user.cover }}</td>
 			<td>
-				{% if user.isAdmin == true %}
+				{% if user.roles == true %}
 					Oui
 				{% else %}
 					Non

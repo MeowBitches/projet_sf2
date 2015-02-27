@@ -32,7 +32,10 @@ class DefaultController extends Controller
         $repoSpoils = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
         $spoils = $repoSpoils->findBy(array('isPublished' => true));
 
-        return array('spoils' => $spoils);
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        return array('spoils' => $spoils, 'categories' => $categories);
     }
 
     /**
@@ -73,13 +76,13 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/profile/{pseudo}")
+     * @Route("/profile/{username}")
      * @Template()
      */
-    public function profileAction($pseudo, Request $request)
+    public function profileAction($username, Request $request)
     {
         $repoUser = $this->container->get('doctrine')->getRepository('MeowBundle:User');
-        $user = $repoUser->findOneBy(array('pseudo' => $pseudo));
+        $user = $repoUser->findOneBy(array('username' => $username));
 
         if(!$user){
             throw $this->createNotFoundException('La page que vous recherchez n\'existe pas.');
