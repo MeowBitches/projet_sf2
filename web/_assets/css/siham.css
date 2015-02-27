@@ -1,5 +1,6 @@
 .home section{text-align: center;}
-.home figcaption {position: absolute;bottom:117px;left: 25.6%; background: #fff; display: table;padding: 2%;}
+.home figure {position: relative;}
+.home figcaption {position: absolute;bottom: 5px;left: 25.6%; background: #fff; display: table;padding: 2%;}
 .home figcaption h2, .home figcaption h4 {display: table-cell;}
 .home button {background: #e65354; font-family: 'Antonio-Regular';border: none; border-radius: 4px; 
 color: #fff;font-size: 20px; padding: 0.5% 11% 0.5%; }
