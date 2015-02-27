@@ -1,3 +1,29 @@
+/* FONT FACE */ 
+@font-face {
+	font-family: 'Antonio-Bold';
+	src: url("fonts/Antonio-Bold.ttf");
+}
+
+@font-face {
+	font-family: 'Antonio-Regular';
+	src: url("fonts/Antonio-Regular.ttf");
+}
+@font-face {
+	font-family: 'OpenSans-Bold';
+	src: url("fonts/OpenSans-Bold.ttf");
+}
+@font-face {
+	font-family: 'OpenSans-Regular';
+	src: url("fonts/OpenSans-Regular.ttf");
+}
+@font-face {
+	font-family: 'OpenSans-Semibold';
+	src: url("fonts/OpenSans-Semibold.ttf");
+}
+
+
+/************* GENERAL **************/
+
 *, *:after, *:before{
 	outline: none;
 	box-sizing: border-box;
@@ -12,6 +38,8 @@ body{
 	background-color: #f0f0ed;
 }
 
+/*********** Test pour Audrey ************/
+
 .home h1, .home p, .home table{
 	color: #fff;
 }
@@ -20,8 +48,7 @@ h1, p, table{
 	color: #000;
 }
 
-
-/*************** TEST *****************/
+/***********************/
 
 .nav-meow a:focus, .nav-meow a:hover {
 color: #e65354;
@@ -32,8 +59,6 @@ text-decoration: none;
 color: #fff;
 text-decoration: none;
 }
-
-/*************** Fin du TEST **********/
 
 .home .navbar{
 	background: #52575d;
@@ -52,8 +77,8 @@ text-decoration: none;
 }
 
 .navbar-brand {
-float: left;
-padding: 8px 15px;
+	float: left;
+	padding: 8px 15px;
 }
 
 .nav{
@@ -71,10 +96,6 @@ position: relative;
 display: block;
 }
 
-.nav-meow{
-
-}
-
 .nav-meow a{
 	padding-right: 10px;
 	font-size: 16px;
@@ -87,6 +108,7 @@ display: block;
 }
 
 .btn-meow1 a{
+	font-family: Antonio-Bold;
 	color: #fff;
 	text-decoration: none;
 	font-size: 16px;
