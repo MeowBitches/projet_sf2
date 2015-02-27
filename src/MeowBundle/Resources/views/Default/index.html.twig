@@ -2,54 +2,38 @@
 
 {% block content %}
 
-	<h1>Spoil</h1>
+	<!-- <h1>Spoil</h1> -->
 
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Lien</th>
-			<th>Id / nom / catégorie manga</th>
-			<th>Id / pseudo auteur</th>
-			<th>Titre</th>
-			<th>Slug</th>
-			<th>Url image</th>
-			<th>Date et heure</th>
-			<th>Nombre de commentaires</th>
-			<th>Nombre de spoils</th>
-			<th>Nombre de fails</th>
-			<th>Nombre de fakes</th>
-			<th>Publié</th>
-		</tr>
-		<tr>
-			<td>{{ spoil.id }}</td>
-			<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
-			<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-			<td>{{ spoil.author.id }} / {{ spoil.author.username }}</td>
-			<td>{{ spoil.title }}</td>
-			<td>{{ spoil.slug }}</td>
-			<td>
-				{% if spoil.cover is not empty %}
-					{{ spoil.cover }}
-				{% else %}
-					placeholder.jpg
-				{% endif %}
-			</td>
-			<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
-			<td>{{ spoil.nbComments }}</td>
-			<td>{{ spoil.nbSpoil }}</td>
-			<td>{{ spoil.nbFail }}</td>
-			<td>{{ spoil.nbFake }}</td>
-			<td>
-				{% if spoil.isPublished == true %}
-					Oui
-				{% else %}
-					Non
-				{% endif %}
-			</td>
-		</tr>
-	</table>
 
-	<button id="refresh">RAFRAICHIR</button>
+
+
+
+     
+   <section classe="home">
+
+   	 <p>Connectez-vous ou inscrivez-vous pour poster un spoil !</p>
+     <figure>
+     	<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
+        <figcaption><h2>{{ spoil.title }}</h2><h4>{{ spoil.manga.name }}</h4></figcaption>
+     </figure>
+     <div class="infos-spoiler">
+        <ul>
+        	<li>{{ spoil.author.username }} {{ spoil.date|date("Y/m/d H:i:s") }}</li>
+        	<li>{{ spoil.nbComments }}</li>
+        </ul>
+     </div>
+     <div>
+     	<ul class="boutons-avis">
+     		<li>Spoil <span>{{ spoil.nbSpoil }}</span></li>
+            <li>Fail <span>{{ spoil.nbFail }}</span></li>
+            <li>Fake <span>{{ spoil.nbFake }}</span></li>
+        </ul>    
+     </div>	
+     <button id="refresh">Me spoiler un manga</button>
+    
+   </section>
+
+    
 	<script type="text/javascript">
 		$(function(){
 			$('#refresh').click(function(){
