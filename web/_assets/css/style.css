@@ -38,35 +38,8 @@ body{
 	background-color: #f0f0ed;
 }
 
-/*********** Test pour Audrey ************/
 
-.home h1, .home p, .home table{
-	color: #fff;
-}
-
-h1, p, table{
-	color: #000;
-}
-
-/***********************/
-
-.nav-meow a:focus, .nav-meow a:hover {
-color: #e65354;
-text-decoration: none;
-}
-
-.nav-meow a:focus, .nav-meow a:hover {
-color: #fff;
-text-decoration: none;
-}
-
-.home .navbar{
-	background: #52575d;
-	border-radius: 0;
-	border: none;
-	border-bottom: 1px solid #fff;
-	height: 75px;
-}
+/************* NAV **************/
 
 .navbar{
 	background: #212830;
@@ -96,7 +69,21 @@ position: relative;
 display: block;
 }
 
+.nav-meow a:focus, .nav-meow a:hover {
+color: #e65354;
+text-decoration: none;
+}
+
+.home .navbar{
+	background: #52575d;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #fff;
+	height: 75px;
+}
+
 .nav-meow a{
+	font-family: Antonio-Bold;
 	padding-right: 10px;
 	font-size: 16px;
 	color: #fff;
@@ -128,6 +115,7 @@ display: block;
 }
 
 .btn-meow2 a{
+	font-family: Antonio-Bold;
 	text-decoration: none;
 	color: #fff;
 	font-size: 16px;
@@ -144,3 +132,65 @@ display: block;
 .btn-meow2 a:hover{
 	background: #253445 url("../imgs/inscrire.png") no-repeat 8% 50%;;
 }
+
+/************* FIN NAV **************/
+
+
+/*********** Test pour Audrey ************/
+
+.home h1, .home p, .home table{
+	color: #fff;
+}
+
+h1, p, table{
+	color: #000;
+}
+
+/***********************/
+
+
+/*********** Se connecter ************/
+
+.connexion{
+	width: 550px;
+	height: 320px;
+	margin: 0 auto;
+	background-color: #fff;
+	padding: 80px 150px 0px 150px;
+}
+
+.connexion h1{
+	font-family: Antonio-Bold;
+	font-size: 25px;
+
+}
+
+.connexion input:after{
+	width: 39px;
+	height: 36px;
+	background: url("../imgs/inscrire.png") no-repeat;
+}
+
+.connexion ul{
+	padding-left: 0px;
+}
+
+.connexion ul li{
+	padding-bottom: 10px;
+}
+
+input[type="submit"]{
+	background-color: #e65354;
+	color: #fff;
+	font-family: Antonio-Bold;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 4px;
+}
+
+.connexion input[type="submit"]{
+	float: right;
+}
+
+/*********** FIN Se connecter ************/
+
