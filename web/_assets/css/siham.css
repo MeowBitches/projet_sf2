@@ -1,12 +1,79 @@
-.home section{text-align: center;}
-.home figure {position: relative;}
-.home figcaption {position: absolute;bottom: 5px;left: 25.6%; background: #fff; display: table;padding: 2%;}
-.home figcaption h2, .home figcaption h4 {display: table-cell;}
-.home button {background: #e65354; font-family: 'Antonio-Regular';border: none; border-radius: 4px; 
-color: #fff;font-size: 20px; padding: 0.5% 11% 0.5%; }
-.home .boutons-avis { display: table; margin: 0 auto; border-spacing: 32px 0;}
-.home .boutons-avis li { background: #304257; display: table-cell;font-family: 'Antonio-Regular'; 
-border-radius: 4px;width: 13%;color: #fff;padding: 2% 0%;}
-.home .boutons-avis li span {background:#e65354;border-radius: 0px 4px 4px 0; color: #fff;padding: 7% 7%;}
-.home .infos-spoiler ul {display: table; margin: 0 auto;}
-.home .infos-spoiler li {display: table-cell;}
+.home section{
+	text-align: center;
+}
+.home figure {
+	position: relative;
+}
+.home figcaption {position: absolute;
+	bottom: 5px;
+	left: 25.6%; 
+	background: #fff; 
+	display: table;
+	padding: 2%;
+}
+.home figcaption h2, .home figcaption h4 {
+	display: table-cell;
+}
+.home button {
+	background: #e65354; 
+	font-family: 'Antonio-Regular';
+	border: none; 
+	border-radius: 4px; 
+    color: #fff;
+    font-size: 20px;
+    padding: 0.5% 11% 0.5%; 
+}
+.home button:hover {
+	background: #d73f40;
+}
+.home .boutons-avis { 
+	display: table; 
+	margin: 0 auto; 
+	border-spacing: 32px 0;
+	padding-left: 0;
+}
+.home .boutons-avis li { 
+	background: #304257;
+	display: table-cell;
+	font-family: 'Antonio-Regular'; 
+    border-radius: 4px;
+    width: 13%;
+    color: #fff;
+    padding: 2% 0%;
+    position: relative;
+}
+.home .boutons-avis li span {
+	background:#e65354;
+	border-radius: 0px 4px 4px 0; 
+	color: #fff;
+	padding: 7% 7%;
+	position: absolute;
+    right: 0;
+    top: 0;
+}
+.home .infos-spoiler ul {
+	display: table; 
+	margin: 0 auto;
+}
+.home .infos-spoiler li {
+	display: table-cell;
+}
+.home p { 
+	font-family: 'Antonio-Regular';
+	font-size: 1.3em;
+}
+.home p span { 
+	border-bottom: 1px solid #fff;
+}
+.home .infos-spoiler li { 
+	color: #fff;
+	font-family: 'Antonio-Regular';
+ }
+
+
+
+
+
+
+
+
