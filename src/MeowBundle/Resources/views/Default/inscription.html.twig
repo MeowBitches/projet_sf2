@@ -2,37 +2,43 @@
 
 {% block content %}
 
-	<p>Nouveau membre :</p>
+
+    <section class="connexion inscription" >
+	<h1>Créer son compte :</h1>
 	<form>
 		
-		<p>
-        <label for="pseudo">Pseudo :</label>
-        <input type="text" name="pseudo" id="pseudo" size="30" maxlength="10" />
-    	</p>
+		<ul>
+        <li>    
+          <i data-icon="7"></i> 
+          <input type="text" name="pseudo" id="pseudo"   placeholder="Pseudo"/>
+    	</li>
 
-    	<p>
-        <label for="pseudo">Mot de passe :</label>
-        <input type="password" name="pass" id="pass"/>
-    	</p>
+    	<li>
+         <i data-icon="r"></i>
+         <input type="password" name="pass" id="pass" placeholder="Mot de passe :"/>
+    	</li>
 
-    	<p>
-        <label for="pseudo">Confirmation mot de passe :</label>
-        <input type="password" name="pass" id="pass"/>
-    	</p>
+    	<li>
+         <i data-icon="r"></i>
+         <input type="password" name="pass" id="pass" placeholder="Confirmation mot de passe :"/>
+    	</li>
 
-		<p>
-        <label for="pseudo">Pseudo :</label>
-        <input type="email" />
-    	</p>
+		<li>
+         <i data-icon="s"></i>
+         <input type="email"  placeholder="Pseudo"/>
+    	</li>
 
-        <p>
+        <li>
     	<label for="captcha">Captcha : "<?php echo captcha(5); ?>"</label>
-        </p>
+        </li>
 
-        <p>
-        <input type="submit" value="S'inscrire" />
-        </p>
+        <li>
+        <input type="submit" value="Inscription" />
+        </li>
 
+    <ul>
 	</form>
+
+</section>
 
 {% endblock %}

@@ -9,4 +9,4 @@ color: #fff;font-size: 20px; padding: 0.5% 11% 0.5%; }
 border-radius: 4px;width: 13%;color: #fff;padding: 2% 0%;}
 .home .boutons-avis li span {background:#e65354;border-radius: 0px 4px 4px 0; color: #fff;padding: 7% 7%;}
 .home .infos-spoiler ul {display: table; margin: 0 auto;}
-.home .infos-spoiler li { display: table-cell; }
+.home .infos-spoiler li {display: table-cell;}
