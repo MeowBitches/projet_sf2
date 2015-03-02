@@ -2,6 +2,8 @@
 
 {% block content %}
 
+	<script src="{{ asset('_assets/js/content-filter/modernizr.js') }}"></script>
+
 	<main class="cd-main-content" id="all-spoils">
 		
 	 	<div class="cd-tab-filter-wrapper">
@@ -11,7 +13,7 @@
 			
 			<ul>
 				{% for spoil in spoils %}
-					<li class="mix {{ spoil.manga.category.name }}">
+					<li class="mix {{ spoil.manga.category.name|lower }}">
 						<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
 						<p class="titre-manga">{{ spoil.manga.name }}</p>
 						<div class="infos-spoils">
@@ -20,15 +22,16 @@
 						</div>
 						<div style="clear:both;"></div>
 						<p class="spoil">{{ spoil.title }}</p>
-						<p class="auteur">Par 
-						 	<a href='#0'></a>
-						 </p>
+						<p class="auteur">Par <a href='#0'>{{ spoil.author.username }}</a></p>
 					</li>
+
 				{% endfor %}
+				<li class="gap"></li>
+				<li class="gap"></li>
 				<li class="gap"></li>
 			</ul>
 
-			<div class="cd-fail-message">No results found</div>
+			<div class="cd-fail-message">Aucun résultat</div>
 		</section>
 	 
 		<div class="cd-filter">
@@ -83,7 +86,7 @@
 				<td>{{ spoil.id }}</td>
 				<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
 				<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-				<td>{{ spoil.author.id }} / {{ spoil.author.pseudo }}</td>
+				<td>{{ spoil.author.id }} / {{ spoil.author.username }}</td>
 				<td>{{ spoil.title }}</td>
 				<td>{{ spoil.slug }}</td>
 				<td>
@@ -110,8 +113,7 @@
 	</table> #}
 
 	<script src="{{ asset('_assets/js/content-filter/jquery.mixitup.min.js') }}"></script>
-	<script src="{{ asset('_assets/js/content-filter/jquery-2.1.1.js') }}"></script>
 	<script src="{{ asset('_assets/js/content-filter/main.js') }}"></script>
-	<script src="{{ asset('_assets/js/content-filter/modernizr.js') }}"></script>
+	
 
 {% endblock %}

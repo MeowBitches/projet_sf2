@@ -129,17 +129,58 @@ body{
 .navbar-brand {
 	float: left;
 	padding: 0px 15px;
-	width: 40%;
+	width: auto;
 }
 
 .navbar-brand img {
 	max-width: 100px;
 }
 
-.nav{
-	float: right;
-	display: table;
+.btn-burger {
+	display: block;
+	position: absolute;
+    padding: 25px 15px;
+    width: 55px;
+    height: 55px;
+    right: 0;
+    top: 0;
+    cursor: pointer;
 }
+
+.btn-burger .inner:after,
+.btn-burger .inner:before,
+.btn-burger .inner {
+    background: #fff;
+    height: 3px;
+}
+
+.btn-burger .inner:after,
+.btn-burger .inner:before {
+    position: relative;
+    content: '';
+    display: block;
+}
+
+.btn-burger .inner:after { top: 4px; }
+.btn-burger .inner:before { top: -7px; }
+
+.nav {
+	float: right;
+	display: none;
+}
+
+@media only screen and (min-width: 768px) {
+
+	.btn-burger {
+	    display: none; 
+	}
+
+	.nav {
+		display: block;
+	}
+}
+
+
 
 
 .nav li {

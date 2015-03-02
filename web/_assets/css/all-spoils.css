@@ -269,7 +269,7 @@ xgallery
   margin-bottom: 1.6em;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
   background: #fff;
-  display: inline-block;
+  display: none;
   padding: 1%;
 }
 
@@ -464,7 +464,7 @@ xfilter
   left: 0;
   height: 40px;
   line-height: 40px;
-  width: 60px;
+  width: 40px;
   /* image replacement */
   overflow: hidden;
   text-indent: 100%;
