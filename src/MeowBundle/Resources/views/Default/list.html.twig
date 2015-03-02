@@ -13,6 +13,16 @@
 				{% for spoil in spoils %}
 					<li class="mix {{ spoil.manga.category.name }}">
 						<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
+						<p class="titre-manga">{{ spoil.manga.name }}</p>
+						<div class="infos-spoils">
+							<p class="nb-spoil" style="background:url('{{ asset('_assets/imgs/spoils/spoil.png') }}') no-repeat left center">{{ spoil.nbSpoil }}</p>
+							<p class="nb-commentaire" style="background:url('{{ asset('_assets/imgs/spoils/bulle.png') }}') no-repeat left center">{{ spoil.nbComments }}</p>
+						</div>
+						<div style="clear:both;"></div>
+						<p class="spoil">{{ spoil.title }}</p>
+						<p class="auteur">Par 
+						 	<a href='#0'></a>
+						 </p>
 					</li>
 				{% endfor %}
 				<li class="gap"></li>
@@ -24,14 +34,14 @@
 		<div class="cd-filter">
 			<form>
 				<div class="cd-filter-block">
-					<h4>Rechercher</h4>
+					<h4 style="background:url('{{ asset('_assets/imgs/cd-icon-arrow.svg') }}') no-repeat left center">Rechercher</h4>
 					<div class="cd-filter-content">
 						<input type="search" placeholder="Tapez votre manga">
 					</div>
 				</div>
 
 				<div class="cd-filter-block">
-					<h4>Type de manga</h4>
+					<h4 style="background:url('{{ asset('_assets/imgs/cd-icon-arrow.svg') }}') no-repeat left center">Type de manga</h4>
 					<ul class="cd-filter-content cd-filters list">
 						{% for category in categories %}
 							<li>
@@ -49,7 +59,7 @@
 			<a href="#0" class="cd-close">Fermer</a>
 		</div>
 	 
-		<a href="#0" class="cd-filter-trigger">Filtrer</a>
+		<a href="#0" class="cd-filter-trigger" style="background:url('{{ asset('_assets/imgs/cd-icon-filter.png') }}') no-repeat 10px center #e65354">Filtrer</a>
 	</main>
 
 	{# <table>

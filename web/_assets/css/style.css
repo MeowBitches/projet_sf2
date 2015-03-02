@@ -122,7 +122,7 @@ body{
 	background: #212830;
 	border-radius: 0;
 	border: none;
-	border-bottom: 1px solid #fff;
+	border-bottom: 1px solid #212830;
 	height: 75px;
 }
 
@@ -145,6 +145,11 @@ body{
 .nav li {
 	padding-right: 10px;
 	display: table-cell;
+	padding-top: 3px;
+}
+
+.nav li.active {
+	text-decoration: underline;
 }
 
 .nav>li>a {
