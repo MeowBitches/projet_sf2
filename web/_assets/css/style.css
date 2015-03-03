@@ -405,7 +405,7 @@ h1, p, table{
 .connexion input:after{
 	width: 39px;
 	height: 36px;
-	background: url("../imgs/inscrire.png") no-repeat;
+	
 }
 
 .connexion i { 

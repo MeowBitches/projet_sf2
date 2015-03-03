@@ -2,14 +2,17 @@
 	text-align: center;
 }
 .home figure {
-	position: relative;
+	 margin: 0 auto;
+    position: relative;
+    width: 49%;
 }
-.home figcaption {position: absolute;
-	bottom: 5px;
-	left: 25.6%; 
+.home figcaption {
+	position: absolute;
+	bottom: -53px;
 	background: #fff; 
 	display: table;
 	padding: 2%;
+	width: 100%;
 }
 .home figcaption h2, .home figcaption h4 {
 	display: table-cell;
@@ -26,43 +29,59 @@
 .home button:hover {
 	background: #d73f40;
 }
-.home .boutons-avis { 
+.home .boutons-avis{
+	 margin: 9% 0 1%;
+}
+.home .boutons-avis ul { 
 	display: table; 
 	margin: 0 auto; 
 	border-spacing: 32px 0;
 	padding-left: 0;
+	width: 49%;
 }
 .home .boutons-avis li { 
 	background: #304257;
-	display: table-cell;
+	display: inline-table;
 	font-family: 'Antonio-Regular'; 
     border-radius: 4px;
-    width: 13%;
+    width: 20%;
     color: #fff;
-    padding: 2% 0%;
+    padding: 1% 0%;
     position: relative;
+    margin: 0 4%;
 }
 .home .boutons-avis li span {
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
 	color: #fff;
-	padding: 7% 7%;
+	padding: 5%;
 	position: absolute;
     right: 0;
     top: 0;
 }
+
+.home .infos-spoiler {
+	  margin: 5% 0;
+}
 .home .infos-spoiler ul {
-	display: table; 
 	margin: 0 auto;
 	padding-left: 0;
 	width: 49%;
+	position: relative;
 }
-.home .infos-spoiler li {
-	display: table-cell;
-}
+
+.home .infos-spoiler li { 
+	color: #fff;
+	font-family: 'Antonio-Regular';
+	position: absolute;
+ }
 .home .infos-spoiler li:first-child{
-	background: red;
+    left: 0;
 }
+.home .infos-spoiler li:last-child{
+    right: 0;
+}
+
 
 .home p { 
 	font-family: 'Antonio-Regular';
@@ -71,10 +90,7 @@
 .home p span { 
 	border-bottom: 1px solid #fff;
 }
-.home .infos-spoiler li { 
-	color: #fff;
-	font-family: 'Antonio-Regular';
- }
+
 
 
 
