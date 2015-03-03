@@ -20,15 +20,10 @@ html * {
 
 body {
   font-size: 1.6rem;
-  font-family: "Open Sans", sans-serif;
   color: #331d35;
   background-color: #e7e7e7;
 }
 
-a {
-  color: #e65354;
-  text-decoration: none;
-}
 
 .cd-main-content h2 {
   font-family: "Antonio", sans-serif;
@@ -39,7 +34,7 @@ a {
 
 @media only screen and (min-width: 1170px) {
   .cd-main-content h2 {
-    margin-left: 350px;
+    margin-left: 22%;
   }
 }
 /* -------------------------------- 

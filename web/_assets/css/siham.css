@@ -70,9 +70,12 @@
 .home p { 
 	font-family: 'Antonio-Regular';
 	font-size: 1.3em;
+	line-height: 5rem;
 }
-.home p span { 
+.home p a { 
 	border-bottom: 1px solid #fff;
+	color: #fff;
+	cursor: pointer;
 }
 .home .infos-spoiler li { 
 	color: #fff;
