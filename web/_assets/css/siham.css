@@ -4,24 +4,16 @@
 .home figure {
 	position: relative;
 }
-.home figcaption {
-	font-family: "Open sans";
+.home figcaption {position: absolute;
+	bottom: 5px;
+	left: 25.6%; 
 	background: #fff; 
 	display: table;
-	padding: 20px;
-	width: auto;
-	margin: 0 auto;
+	padding: 2%;
 }
 .home figcaption h2, .home figcaption h4 {
 	display: table-cell;
-	padding-left: 10px;
-	vertical-align: bottom;
 }
-
-.home figcaption h4 {
-	line-height: 28px;
-}
-
 .home button {
 	background: #e65354; 
 	font-family: 'Antonio-Regular';
@@ -62,20 +54,22 @@
 .home .infos-spoiler ul {
 	display: table; 
 	margin: 0 auto;
-	padding: 0;
+	padding-left: 0;
+	width: 49%;
 }
 .home .infos-spoiler li {
 	display: table-cell;
 }
+.home .infos-spoiler li:first-child{
+	background: red;
+}
+
 .home p { 
 	font-family: 'Antonio-Regular';
 	font-size: 1.3em;
-	line-height: 5rem;
 }
-.home p a { 
+.home p span { 
 	border-bottom: 1px solid #fff;
-	color: #fff;
-	cursor: pointer;
 }
 .home .infos-spoiler li { 
 	color: #fff;

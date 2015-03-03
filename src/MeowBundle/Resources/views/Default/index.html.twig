@@ -3,17 +3,17 @@
 {% block content %}
 
 	
-	<section class="home">
+	<section classe="home">
 
-   	 <p><a href="#">Connectez-vous</a> ou <a href="#">inscrivez-vous</a> pour poster un spoil !</p>
+   	 <p><span>Connectez-vous</span> ou <span>inscrivez-vous</span> pour poster un spoil !</p>
      <figure>
      	<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
-        <figcaption><h2>{{ spoil.title }}</h2><h4>{{ spoil.manga.name }}</h4></figcaption>
+        <figcaption><h2>{{ spoil.title }}</h2><h4 style="padding-left: 10px">{{ spoil.manga.name }}</h4></figcaption>
      </figure>
      <div class="infos-spoiler">
         <ul>
-        	<li data-icon="m">{{ spoil.author.username }} {{ spoil.date|date("Y/m/d H:i:s") }}</li>
-        	<li>{{ spoil.nbComments }}</li>
+        	<li data-icon="8">{{ spoil.author.username }} {{ spoil.date|date("Y/m/d H:i:s") }}</li>
+        	<li data-icon="x">{{ spoil.nbComments }}</li>
         </ul>
      </div>
      <div>
