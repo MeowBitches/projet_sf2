@@ -4,16 +4,24 @@
 .home figure {
 	position: relative;
 }
-.home figcaption {position: absolute;
-	bottom: 5px;
-	left: 25.6%; 
+.home figcaption {
+	font-family: "Open sans";
 	background: #fff; 
 	display: table;
-	padding: 2%;
+	padding: 20px;
+	width: auto;
+	margin: 0 auto;
 }
 .home figcaption h2, .home figcaption h4 {
 	display: table-cell;
+	padding-left: 10px;
+	vertical-align: bottom;
 }
+
+.home figcaption h4 {
+	line-height: 28px;
+}
+
 .home button {
 	background: #e65354; 
 	font-family: 'Antonio-Regular';
@@ -54,6 +62,7 @@
 .home .infos-spoiler ul {
 	display: table; 
 	margin: 0 auto;
+	padding: 0;
 }
 .home .infos-spoiler li {
 	display: table-cell;

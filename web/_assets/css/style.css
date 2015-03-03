@@ -118,13 +118,32 @@ body{
 
 /************* NAV **************/
 
+
+
 .navbar{
 	background: #212830;
 	border-radius: 0;
 	border: none;
 	border-bottom: 1px solid #212830;
-	height: 75px;
+	height: 50px;
 }
+
+.home .navbar{
+	background: #52575d;
+	border-radius: 0;
+	border: none;
+	border-bottom: 1px solid #fff;
+	height: 50px;
+}
+
+@media only screen and (min-width: 768px) {
+	
+	.navbar, .home .navbar {
+		height: 75px
+	}
+}
+
+
 
 .navbar-brand {
 	float: left;
@@ -136,38 +155,46 @@ body{
 	max-width: 100px;
 }
 
+.nav {
+	float: right;
+	display: none;
+	width: 100%;
+	padding: 0;
+}
+
 .btn-burger {
 	display: block;
 	position: absolute;
     padding: 25px 15px;
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
     right: 0;
     top: 0;
     cursor: pointer;
 }
 
-.btn-burger .inner:after,
-.btn-burger .inner:before,
-.btn-burger .inner {
-    background: #fff;
-    height: 3px;
+.btn-burger #burger {
+	display: block;
+	position: absolute;
+	top: 17px;
 }
 
-.btn-burger .inner:after,
-.btn-burger .inner:before {
-    position: relative;
-    content: '';
-    display: block;
-}
 
-.btn-burger .inner:after { top: 4px; }
-.btn-burger .inner:before { top: -7px; }
 
-.nav {
-	float: right;
+.btn-burger #croix {
 	display: none;
+	position: absolute;
+	top: 11px;
+	left: 16px;
+	color: #fff;
 }
+
+.btn-burger #croix[data-icon]:before {
+	font-size: 20px;
+	left: 0;
+}
+
+
 
 @media only screen and (min-width: 768px) {
 
@@ -176,98 +203,99 @@ body{
 	}
 
 	.nav {
-		display: block;
+		display: block!important;
+		width: auto;
 	}
-}
 
-
-
-
-.nav li {
+	.nav li {
 	padding-right: 10px;
 	display: table-cell;
 	padding-top: 3px;
-}
+	}
 
-.nav li.active {
-	text-decoration: underline;
-}
+	.nav li.active {
+		text-decoration: underline;
+	}
 
-.nav>li>a {
-position: relative;
-/*display: block;*/
-}
+	.nav>li>a {
+	position: relative;
+	/*display: block;*/
+	}
 
-.nav-meow a:focus, .nav-meow a:hover {
-color: #e65354;
-text-decoration: none;
-}
+	.nav-meow a:focus, .nav-meow a:hover {
+	color: #e65354;
+	text-decoration: none;
+	}
 
-.home .navbar{
-	background: #52575d;
-	border-radius: 0;
-	border: none;
-	border-bottom: 1px solid #fff;
-	height: 75px;
-}
-
-.navbar a[data-icon]:before{
+	.navbar a[data-icon]:before{
 	font-size: 26px;
     left: -5px;
     position: relative;
     vertical-align: middle;
+	}
+
+	.nav-meow a{
+		font-family: 'Antonio-Bold';
+		padding-right: 10px;
+		font-size: 16px;
+		color: #fff;
+		text-decoration: none;
+	}
+
+	.nav-meow a:hover{
+		color: #e65354;
+	}
+
+	.btn-meow1 a{
+		font-family: 'Antonio-Bold';
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		background: #e65354;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		padding-left: 16px; 
+		padding-right: 10px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.btn-meow1 a:hover{
+		background: #d73f40;
+		
+	}
+
+	.btn-meow2 a{
+		font-family: 'Antonio-Bold';
+		text-decoration: none;
+		color: #fff;
+		font-size: 16px;
+		background: #304257;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		padding-left: 20px; 
+		padding-right: 10px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	.btn-meow2 a:hover{
+		background: #253445;
+	}
+
 }
 
-.nav-meow a{
-	font-family: 'Antonio-Bold';
-	padding-right: 10px;
-	font-size: 16px;
-	color: #fff;
-	text-decoration: none;
-}
 
-.nav-meow a:hover{
-	color: #e65354;
-}
 
-.btn-meow1 a{
-	font-family: 'Antonio-Bold';
-	color: #fff;
-	text-decoration: none;
-	font-size: 16px;
-	background: #e65354;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	padding-left: 16px; 
-	padding-right: 10px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
 
-.btn-meow1 a:hover{
-	background: #d73f40;
-	
-}
 
-.btn-meow2 a{
-	font-family: 'Antonio-Bold';
-	text-decoration: none;
-	color: #fff;
-	font-size: 16px;
-	background: #304257;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	padding-left: 20px; 
-	padding-right: 10px;
-	padding-top: 15px;
-	padding-bottom: 15px;
-}
 
-.btn-meow2 a:hover{
-	background: #253445;
-}
+
+
+
+
 
 /************* FIN NAV **************/
 
