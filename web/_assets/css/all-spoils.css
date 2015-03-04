@@ -19,7 +19,6 @@ html * {
 }
 
 body {
-  font-size: 1.6rem;
   color: #331d35;
   background-color: #e7e7e7;
 }
@@ -37,6 +36,7 @@ body {
     margin-left: 22%;
   }
 }
+
 /* -------------------------------- 
 
 Main Components 
@@ -101,7 +101,7 @@ Main Components
 }
 @media only screen and (min-width: 1170px) {
   .cd-main-content.is-fixed .cd-gallery {
-    padding-top: 100px;
+    padding-top: 0px;
   }
 }
 
@@ -290,12 +290,13 @@ xgallery
   font-family: "Antonio", sans-serif;
   color: #212830;
   font-weight: bold;
-  margin-top: 17px;
+  margin-top: 13px;
+  font-size: 1.7rem;
 }
 
 .cd-gallery ul li .infos-spoils {
   font-size: 1.33rem;
-  margin-top: 17px;
+  margin-top: 13px;
   font-family: "Antonio", sans-serif;
 
 }

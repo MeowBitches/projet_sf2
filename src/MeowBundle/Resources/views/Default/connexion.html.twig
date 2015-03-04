@@ -7,20 +7,21 @@
     	<form>
     		<ul>
         		<li>
-                <i data-icon="7"></i>   
+                <label for="pseudo"><i data-icon="7"></i></label> 
                 <input type="text" name="pseudo" id="pseudo" size="30" placeholder="Pseudo" />
                 </li>
 
             	<li>
-                <i data-icon="r"></i>    
+                <label for="pass"><i data-icon="r"></i></label>    
                 <input type="password" name="pass" id="pass" size="30" placeholder="Mot de passe"/>
             	</li>
         		
         		<li>
-                <input type="submit" value="Connexion" />
+                <input type="submit" value="Connexion"/>
             	</li>
             </ul>
     	</form>
+        <p>Le pseudo ou le mot de passe est incorrect</p>
     </section>
 
 {% endblock %}
