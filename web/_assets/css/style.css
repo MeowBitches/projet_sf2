@@ -461,7 +461,6 @@ h1, p, table{
 }
 
 .connexion p {
-	display: none;
 	position: absolute;
 	color: #e10000;
 	font-size: 1.3rem;

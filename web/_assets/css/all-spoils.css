@@ -25,7 +25,6 @@ body {
 
 
 .cd-main-content h2 {
-  font-family: "Antonio", sans-serif;
   margin-left: 80px;
   padding-top: 15px;
   margin-top: 0;
@@ -345,19 +344,18 @@ xgallery
 
 .cd-gallery .bloc-image {
   width: auto;
-  height: 250px;
   background: #000;
   overflow: hidden;
 }
 
 @media only screen and (min-width: 768px) {
   .cd-gallery .bloc-image {
+    position: relative;
     height: 200px;
   }
 }
 
 .cd-gallery img {
-  display: block;
   width: 100%;
   vertical-align: middle;
 }
@@ -382,6 +380,15 @@ xgallery
     width: 48%;
     margin-bottom: 2em;
     padding: 7px;
+  }
+
+  .cd-gallery img {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 100%;
+    vertical-align: middle;
   }
 }
 @media only screen and (min-width: 1170px) {

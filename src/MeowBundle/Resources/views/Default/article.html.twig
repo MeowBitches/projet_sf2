@@ -10,13 +10,10 @@
 	 	<div class="bloc-image">
 	     	<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
 	     </div>
-        <figcaption><h3>{{ spoil.title }}</h3><h4 style="padding-left: 10px">{{ spoil.manga.name }}</h4></figcaption>
+        <figcaption><h3>{{ spoil.title }}</h3></figcaption>
      </figure>
      <div class="infos-spoiler">
-        <ul>
-        	<li data-icon="8">{{ spoil.author.username }} {{ spoil.date|date("Y/m/d H:i:s") }}</li>
-        	<li data-icon="x">{{ spoil.nbComments }}</li>
-        </ul>
+    	<p data-icon="8">Par <a href="#">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|date("Y/m/d") }}</span></p>
      </div>
      <div class="boutons-avis">
      	<ul>
