@@ -270,14 +270,14 @@ a {
 		display: block!important;
 		width: auto;
 		margin: 0;
-		padding: 11px 0;
+		padding: 14px 0 10px 0;
 		border-bottom: 0;
 	}
 
 	.home .nav {
 		background: #52575d;
 		border-top: 0;
-		padding: 11px 0;
+		padding: 11px 0 0 0;
 	}
 
 	.home .nav a {
@@ -394,16 +394,19 @@ h1, p, table{
 .connexion{
 	position: relative;
 	margin: 0 auto;
-	width: 350px;
+	margin-top: 5%;
+	width: 340px;
 	height: auto;
 	background-color: #fff;
-	padding: 60px 75px;
+	padding: 50px 45px;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
 }
 
 .connexion h1{
 	font-family: 'Antonio-Bold';
 	font-size: 25px;
-	margin-bottom: 30px;
+	margin-bottom: 20px;
+	line-height: 50px;
 }
 
 .connexion input[type=text], .connexion input[type=password], .connexion input[type=email] {
@@ -425,7 +428,7 @@ h1, p, table{
 	height: 36px;
 }*/
 
-.connexion i { 
+.connexion label i { 
     display: block;
     position: absolute;
     text-align: center;
@@ -437,7 +440,7 @@ h1, p, table{
     color: #fff;
 }
 
-.connexion i:before {
+.connexion label i:before {
 	position: absolute;
 	top: 18px;
 	left: 8px;
@@ -448,7 +451,7 @@ h1, p, table{
 }
 
 .connexion ul li{
-	padding-bottom: 20px;
+	padding-bottom: 30px;
 }
 
 
@@ -460,13 +463,25 @@ h1, p, table{
 .connexion p {
 	display: none;
 	position: absolute;
-	color: red;
-	font-size: 1.35rem;
+	color: #e10000;
+	font-size: 1.3rem;
+	margin: 3px 0 0 0;
+}
+
+.connexion p.connexion-error {
+	bottom: 17px;
+}
+
+.connexion p:before {
+	color: #e10000;
+	font-size: 1.2rem;
+	font-weight: bold;
+	margin-right: 6px;
 }
 
 @media only screen and (min-width: 768px) {
 	.connexion{
-		width: 450px;
+		width: 400px;
 }
 
 /*********** FIN Se connecter ************/

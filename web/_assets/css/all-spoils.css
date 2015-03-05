@@ -79,7 +79,7 @@ Main Components
   width: 100%;
 }
 .cd-main-content.is-fixed .cd-gallery {
-  padding-top: 76px;
+  padding-top: 1px;
 }
 .cd-main-content.is-fixed .cd-filter {
   position: fixed;
@@ -96,7 +96,7 @@ Main Components
 }
 @media only screen and (min-width: 768px) {
   .cd-main-content.is-fixed .cd-gallery {
-    padding-top: 90px;
+    padding-top: 0px;
   }
 }
 @media only screen and (min-width: 1170px) {
