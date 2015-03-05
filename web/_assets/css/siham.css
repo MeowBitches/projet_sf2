@@ -12,11 +12,13 @@
 	background: #fff; 
 	display: table;
 	width: 626px;
+	padding: 21px 0 15px;
 }
 .home figcaption h2, .home figcaption h4 {
 	display: inline-table;
 	font-family: 'Antonio-Regular';
 	color: #304257;
+	margin: 0;
 
 }
 .home button {
@@ -26,7 +28,7 @@
 	border-radius: 4px; 
     color: #fff;
     font-size: 20px;
-    padding: 0.5% 11% 0.5%; 
+    padding: 14px 140px 7px;
 }
 .home button:hover {
 	background: #d73f40;
@@ -48,7 +50,7 @@
     border-radius: 4px;
     width: 20%;
     color: #fff;
-    padding: 1% 0%;
+    padding: 11px 7px 6px 0;
     position: relative;
     margin: 0 4%;
 }
@@ -56,7 +58,7 @@
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
 	color: #fff;
-	padding: 5%;
+	padding: 12px 9px 5px;
 	position: absolute;
     right: 0;
     top: 0;
@@ -87,16 +89,12 @@
 	color:#aaaaaa;
 	font-size: 0.8em; 
 }
-
- 
 .home .infos-spoiler li:first-child{
     left: 0;
 }
 .home .infos-spoiler li:last-child{
     right: 0;
 }
-
-
 .home p { 
 	font-family: 'Antonio-Regular';
 	font-size: 1.3em;
