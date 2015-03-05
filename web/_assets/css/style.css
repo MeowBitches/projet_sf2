@@ -112,7 +112,7 @@ button.btn2 {
 
 
 
-.home{
+.home {
 	background-color: #212830;
 }
 
@@ -126,6 +126,11 @@ a {
   color: #e65354;
   text-decoration: none;
   transition: all .15s ease-in-out;
+}
+
+h2 {
+	 font-family: "Antonio-Regular";
+	 font-size: 2.3rem;
 }
 
 
@@ -483,10 +488,14 @@ h1, p, table{
 		width: 400px;
 }
 
+}
 /*********** FIN Se connecter ************/
 
+
+
+
 /*********** FOOTER ************/
-#footer {
+#footer p {
 	text-align: center;
 	font-size: 1em;
 	margin: 42px 0px 24px;
