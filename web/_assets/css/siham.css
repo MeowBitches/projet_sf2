@@ -8,14 +8,16 @@
 }
 .home figcaption {
 	position: absolute;
-	bottom: -53px;
+	bottom: -46px;
 	background: #fff; 
 	display: table;
-	padding: 2%;
-	width: 100%;
+	width: 626px;
 }
 .home figcaption h2, .home figcaption h4 {
-	display: table-cell;
+	display: inline-table;
+	font-family: 'Antonio-Regular';
+	color: #304257;
+
 }
 .home button {
 	background: #e65354; 
@@ -75,6 +77,18 @@
 	font-family: 'Antonio-Regular';
 	position: absolute;
  }
+
+ .home .infos-spoiler li[data-icon]:before{
+     padding: 0 7px 0 0;
+     vertical-align: middle;
+ }
+
+.home .infos-spoiler li span {
+	color:#aaaaaa;
+	font-size: 0.8em; 
+}
+
+ 
 .home .infos-spoiler li:first-child{
     left: 0;
 }
@@ -90,7 +104,9 @@
 .home p span { 
 	border-bottom: 1px solid #fff;
 }
-
+.home p span a {
+	color: #fff;
+}
 
 
 
