@@ -1,0 +1,91 @@
+.modalt{
+  color: #000;
+}
+
+.modal .imp{
+  color: #e65354;
+  font-family: 'OpenSans-Regular';
+  text-align: center;
+  font-size: 13px;
+}
+
+.modal p{
+  color: #000;
+  text-align: center;
+  font-family: 'OpenSans-Regular';
+  font-size: 13px;
+}
+
+.connexion2{
+position: relative;
+margin: 0 auto;
+margin-top: 5%;
+width: 340px;
+height: auto;
+background-color: #fff;
+padding: 0px 35px 1px 35px;
+box-shadow: none;
+}
+
+.btn-close {
+  color: #ffffff;
+  font-size: 30px;
+  text-decoration: none;
+  position: absolute;
+  right: 5px;
+  top: 0;
+}
+
+.modal:before {
+  content: "";
+  display: none;
+  background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 10;
+}
+.modal:target:before {
+  display: block;
+}
+.modal:target .modal-dialog {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  top: 20%;
+}
+.modal-dialog {
+  background: #fefefe;
+  border: #333333 solid 1px;
+  border-radius: 4px;
+  margin-left: -200px;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 460px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+.modal-body {
+  padding: 20px;
+}
+.modal-header{
+  padding: 1px 20px;
+  background-color: #212830;
+}
+.modal-header h2 {
+  font-size: 20px;
+  color: #fefefe;
+}
+/*ADDED TO STOP SCROLLING TO TOP*/
+#close {
+  display: none;
+}
