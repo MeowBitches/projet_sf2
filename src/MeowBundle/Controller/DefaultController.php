@@ -58,24 +58,6 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/connexion/")
-     * @Template()
-     */
-    public function connexionAction()
-    {
-        return array();
-    }
-
-    /**
-     * @Route("/inscription/")
-     * @Template()
-     */
-    public function inscriptionAction()
-    {
-        return array();
-    }
-
-    /**
      * @Route("/profile/{username}")
      * @Template()
      */

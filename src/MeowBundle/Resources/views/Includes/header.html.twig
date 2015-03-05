@@ -20,13 +20,39 @@
 				<a href="#" onclick="javascript:popup()">Ajouter un spoil</a>
 			</li>
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				test
+				<div>
+					<h2>{{ app.user.username }}</h2>
+					<figure>
+						{% if app.user.cover is not empty %}
+							{% set coverUser = app.user.cover %}
+						{% else %}
+							{% set coverUser = 'placeholder.svg' %}
+						{% endif %}
+						<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
+						<figcaption>
+							<img src="{% if app.user.roles == true %}{{ asset('_assets/imgs/admin.svg') }}{% else %}{{ asset('_assets/imgs/user.svg') }}{% endif %}">
+							<ul>
+								<li role="presentation">
+									<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
+								</li>
+								{% if app.user.roles == true %}
+									<li role="presentation">
+										<a href="{{ urlBase }}moderation/">Modérer</a>
+									</li>
+								{% endif %}
+								<li role="presentation">
+									<a href="{{ urlBase }}logout">Se déconnecter</a>
+								</li>
+							</ul>
+						</figcaption>
+					</figure>
+				</div>
 			{% else %}
 				<li role="presentation" class="btn-meow1 {% if currentUrl == urlBase ~ "connexion/" %}active{% endif %}">
-					<a href="{{ urlBase }}connexion/" data-icon="y">Se connecter</a>
+					<a href="{{ urlBase }}login" data-icon="y">Se connecter</a>
 				</li>
 				<li role="presentation" class="btn-meow2 {% if currentUrl == urlBase ~ "inscription/" %}active{% endif %}">
-					<a href="{{ urlBase }}inscription/" data-icon="0">S'inscrire</a>
+					<a href="{{ urlBase }}register" data-icon="0">S'inscrire</a>
 				</li>
 			{% endif %}
 		</ul>

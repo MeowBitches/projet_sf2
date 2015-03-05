@@ -1,0 +1,35 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<section class="connexion inscription">
+	<h1>Inscription</h1>
+	<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register">
+		<ul>
+			<li>
+				<label for="username"><i data-icon="7"></i></label>
+			    {{ form_widget(form.username, { 'attr': {'placeholder': 'Pseudo', 'size': '30'} }) }}
+		    </li>
+			<li>
+				<label for="email"><i data-icon="s"></i></label>
+			    {{ form_widget(form.email, { 'attr': {'placeholder': 'Email', 'size': '30'} }) }}
+		    </li>
+			<li>
+				<label for="password"><i data-icon="r"></i></label>
+			    {{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Mot de passe', 'size': '30'} }) }}
+		    </li>
+			<li>
+				<label for="password_confirmation"><i data-icon="r"></i></label>
+			    {{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmation mot de passe', 'size': '30'} }) }}
+		    </li>
+		    <li>
+		        <input type="submit" id="_submit" name="_submit" value="{{ 'registration.submit'|trans }}" />
+		    </li>
+		    {{ form_rest(form) }}
+			{% if form_errors(form.username) %}
+			    <p class="connexion-error">{{ form_errors(form.username) }}</p>
+			{% endif %}
+			{% if form_errors(form.plainPassword.first) %}
+			    <p class="connexion-error 1">{{ form_errors(form.plainPassword.first) }}</p>
+			{% endif %}
+		</ul>
+	</form>
+</section>
