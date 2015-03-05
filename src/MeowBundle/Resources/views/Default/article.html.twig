@@ -2,9 +2,36 @@
 
 {% block content %}
 
-	<h1>Tous les spoils</h1>
+<section class="articles">
 
-	<table>
+	<h2>{{ spoil.manga.name }}</h2>
+
+	 <figure>
+	 	<div class="bloc-image">
+	     	<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
+	     </div>
+        <figcaption><h3>{{ spoil.title }}</h3><h4 style="padding-left: 10px">{{ spoil.manga.name }}</h4></figcaption>
+     </figure>
+     <div class="infos-spoiler">
+        <ul>
+        	<li data-icon="8">{{ spoil.author.username }} {{ spoil.date|date("Y/m/d H:i:s") }}</li>
+        	<li data-icon="x">{{ spoil.nbComments }}</li>
+        </ul>
+     </div>
+     <div class="boutons-avis">
+     	<ul>
+     		<li>Spoil <span>{{ spoil.nbSpoil }}</span></li>
+            <li>Fail <span>{{ spoil.nbFail }}</span></li>
+            <li>Fake <span>{{ spoil.nbFake }}</span></li>
+        </ul>    
+     </div>	
+
+
+</section>
+
+
+
+	{#<table>
 		<tr>
 			<th>Id</th>
 			<th>Id / nom / catégorie manga</th>
@@ -87,6 +114,6 @@
 				</tr>
 			{% endfor %}
 		{% endfor %}
-	</table>
+	</table> #}
 
 {% endblock %}

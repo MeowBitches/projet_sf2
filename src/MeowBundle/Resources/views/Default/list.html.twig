@@ -2,7 +2,6 @@
 
 {% block content %}
 
-	
 
 	<main class="cd-main-content" id="all-spoils">
 		
@@ -13,15 +12,23 @@
 			<ul>
 				{% for spoil in spoils %}
 					<li class="mix {{ spoil.manga.category.name|lower }}">
-						<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
-						<p class="titre-manga">{{ spoil.manga.name }}</p>
-						<div class="infos-spoils">
-							<p class="nb-spoil" style="background:url('{{ asset('_assets/imgs/spoils/spoil.png') }}') no-repeat left center">{{ spoil.nbSpoil }}</p>
-							<p class="nb-commentaire" style="background:url('{{ asset('_assets/imgs/spoils/bulle.png') }}') no-repeat left center">{{ spoil.nbComments }}</p>
-						</div>
-						<div style="clear:both;"></div>
-						<p class="spoil">{{ spoil.title }}</p>
-						<p class="auteur">Par <a href='#0'>{{ spoil.author.username }}</a></p>
+						<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
+							<figure>
+								<div class="bloc-image">
+									<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
+								</div>
+								<figcaption>
+									<p class="titre-manga">{{ spoil.manga.name }}</p>
+									<div class="infos-spoils">
+										<p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
+										<p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
+									</div>
+									<div style="clear:both;"></div>
+									<p class="spoil">{{ spoil.title }}</p>
+									<p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
+								</figcaption>
+							</figure>
+						</a>
 					</li>
 
 				{% endfor %}

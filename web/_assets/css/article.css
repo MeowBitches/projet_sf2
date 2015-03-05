@@ -1,0 +1,30 @@
+.articles {
+	max-width: 1000px;
+	margin: 0 auto;
+	background-color: #fff;
+	border-left: 1px solid #d0d0d0;
+	border-right: 1px solid #d0d0d0;
+	padding: 0 50px 0 50px;
+}
+
+.articles h2 {
+	font-family: "Antonio", "open sans", sans-serif;
+	margin: 0;
+	padding: 40px 0 0 0;
+}
+
+
+.articles figure {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+.articles img {
+	width: 100%;
+}
+
+.articles h3 {
+	height: 65px;
+	width: 100%;
+	background: #212830;
+}

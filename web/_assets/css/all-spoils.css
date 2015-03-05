@@ -19,7 +19,7 @@ html * {
 }
 
 body {
-  color: #331d35;
+  color: #212830;
   background-color: #e7e7e7;
 }
 
@@ -304,15 +304,18 @@ xgallery
 .cd-gallery ul li .infos-spoils .nb-spoil {
   margin: 0;
   color: #e65354;
-  padding-left: 20px;
-  margin-right: 15px;
 }
 
 .cd-gallery ul li .infos-spoils .nb-commentaire {
   margin: 0;
   color: #e65354;
-  padding-left: 20px;
+  padding-left: 15px;
 }
+
+.cd-gallery ul li .infos-spoils .nb-spoil:before, .cd-gallery ul li .infos-spoils .nb-commentaire:before {
+  margin-right: 5px;
+  vertical-align: middle;
+} 
 
 .cd-gallery ul li .spoil {
   margin-top: 5px;
@@ -325,7 +328,7 @@ xgallery
   color: #acacac;
 }
 
-.cd-gallery ul li .auteur a {
+.cd-gallery ul li .auteur .auteur-important {
   color: #000;
 }
 
@@ -335,9 +338,28 @@ xgallery
   height: 0;
   display: inline-block;
 }
+
+.cd-gallery figure {
+  margin: 0;
+}
+
+.cd-gallery .bloc-image {
+  width: auto;
+  height: 250px;
+  background: #000;
+  overflow: hidden;
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-gallery .bloc-image {
+    height: 200px;
+  }
+}
+
 .cd-gallery img {
   display: block;
   width: 100%;
+  vertical-align: middle;
 }
 .cd-gallery .cd-fail-message {
   display: none;
