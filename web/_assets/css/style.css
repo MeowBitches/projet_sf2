@@ -227,6 +227,7 @@ h2 {
 	border-bottom: 1px solid #19212b;
 	margin-top: 1px;
 	z-index: 4;
+	margin: 0px 0 24px; /*test*/
 }
 
 
@@ -277,6 +278,7 @@ h2 {
 		margin: 0;
 		padding: 11px 0 0 0;
 		border-bottom: 0;
+
 	}
 
 	.home .nav {
