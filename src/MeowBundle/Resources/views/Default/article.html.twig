@@ -24,6 +24,37 @@
      </div>	
 
 
+	<p data-icon="x" class="nb-commentaire">{{ spoil.nbComments }} commentaires</p>
+
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+		
+
+	{% else %}
+
+		<p>Connectez-vous pour pouvoir poster un commentaire.</p>
+
+		<form class="connexion-comm">
+			<ul>
+				<li>
+				    <label for="username"><i data-icon="7"></i></label>
+				    <input type="text" id="username" name="_username" required="required"  placeholder="Pseudo" size="30" />
+			    </li>
+				<li>
+				    <label for="password"><i data-icon="r"></i></label>
+				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
+			    </li>
+				<li>
+			    	<input type="submit" id="_submit" name="_submit"/>
+			    </li>
+				
+				<p class="connexion-error">Erreur connexion</p>
+				
+		    </ul>
+		</form>
+
+	{% endif %}
+
 </section>
 
 
