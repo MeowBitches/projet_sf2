@@ -35,7 +35,10 @@ class DefaultController extends Controller
         $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
         $categories = $repoCategories->findAll();
 
-        return array('spoils' => $spoils, 'categories' => $categories);
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();
+
+        return array('spoils' => $spoils, 'categories' => $categories, 'mangas' => $mangas);
     }
 
     /**
