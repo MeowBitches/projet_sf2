@@ -24,7 +24,7 @@
 										<p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
 									</div>
 									<div style="clear:both;"></div>
-									<p class="spoil">{{ spoil.title }}</p>
+									<p class="spoil">{{ spoil.title|truncate(30, true, '...') }}</p>
 									<p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
 								</figcaption>
 							</figure>
