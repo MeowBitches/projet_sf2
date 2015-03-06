@@ -31,7 +31,7 @@
 		<div class="ajout-commentaire">
 			<a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="avatar">
 				<img src="	{% if spoil.cover is not empty %}
-								{{ asset('_assets/imgs/profil-default.jpg') }}
+								{{ asset('_assets/imgs/users/profil-default.jpg') }}
 							{% else %}
 								{{ spoil.cover }}
 							{% endif %}" alt="Profil de {{ spoil.author.username }}"/>
@@ -75,10 +75,10 @@
 			<li>
 				<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
 					<img src="	{#{% if comment_lvl1.author.cover is not empty %}
-									{{ asset('_assets/imgs/profil-default.jpg') }}
+									{{ asset('_assets/imgs/users/profil-default.jpg') }}
 								{% else %}
 									{{ comment_lvl1.author.cover }}
-								{% endif %}#}{{ asset('_assets/imgs/profil-default.jpg') }}" alt="Profil de {{ comment_lvl1.author.username }} "/>
+								{% endif %}#}{{ asset('_assets/imgs/users/profil-default.jpg') }}" alt="Profil de {{ comment_lvl1.author.username }} "/>
 				</a>
 				
 				<div class="comm-right">

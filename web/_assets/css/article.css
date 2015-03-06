@@ -121,7 +121,7 @@
 }
 
 .articles .connexion-comm ul li {
-	display: block;
+	display: inline-block;
 	margin-right: 15px;
 }
 
