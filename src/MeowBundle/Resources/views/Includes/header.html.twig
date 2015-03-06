@@ -69,28 +69,36 @@
       <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
     </div>
-    <div class="modal-body">
+    <div class="modal-body2">
 
-    	<p class="imp">Connectez-vous pour poster un spoil</p>
+    	<ul class="rules">
+    		<li>Rappel du concept : Choisissez d'envoyer un vrai spoil ou un faux spoil.</li>
+    		<li>Le spoil doit contenir une phrase et une image.</li>
+    		<li>Si le manga choisi n'existe pas, vous pouvez l'ajouter en cliquant sur le +.</li>
+    		<li>Tout envoi en langage SMS ou comportant trop de fautes d'orthographes sera refusé.</li>
+    	</ul>
 
-		<section class="connexion connexion2" >
-		<form action="{{ path("fos_user_security_check") }}" method="post">
+		<section class="ajout">
+		<form action="" method="post">
 			<ul>
 				<li>
-				    <label for="username"><i data-icon="7"></i></label>
-				    <input type="text" id="username" name="_username" required="required"  placeholder="Pseudo" size="30" />
+				    <input type="text" name="manga" placeholder="Nom du manga" /><a id="moncercle" href="#">+</a>
 			    </li>
-				<li>
-				    <label for="password"><i data-icon="r"></i></label>
-				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
-			    </li>
+				<!-- <li>
+				    <select name="type" id="type">
+			           <option value="shonen">Shonen</option>
+			           <option value="shojo">Shojo</option>
+			           <option value="seinen">Seinen</option>
+			           <option value="Yaoi">Yaoi</option>
+       				</select>
+
+			    </li> -->
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="Connexion" />
 			    </li>
 		    </ul>
 		</form>
 		</section>
-		<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}register" class="register">Inscrivez-vous !</a></p>
     </div>
     </div>
   </div>

@@ -31,6 +31,27 @@ padding: 0px 35px 1px 35px;
 box-shadow: none;
 }
 
+.ajout{
+
+}
+
+.plus{
+  border-radius: 100px;
+}
+
+#moncercle {
+background: #304257;
+border-radius: 50%;
+width: 160px;
+height: 160px;
+margin: 20px;
+padding: 2px 10px;
+/* border: 2px solid #679403; */
+font-size: 20px;
+font-weight: bold;
+color: #fff;
+}
+
 .btn-close {
   color: #ffffff;
   font-size: 30px;
@@ -78,9 +99,40 @@ box-shadow: none;
   -o-transition: -o-transform 0.3s ease-out;
   transition: transform 0.3s ease-out;
 }
+
+.modal-dialog2 {
+  background: #fefefe;
+  border: #333333 solid 1px;
+  border-radius: 4px;
+  margin-left: -200px;
+  position: fixed;
+  left: 50%;
+  top: -100%;
+  z-index: 11;
+  width: 500px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+
 .modal-body {
   padding: 20px;
 }
+
+.rules{
+  background-color: #f0f0ed;
+  margin-top: 0px;
+  padding: 20px 15px;
+}
+
+.modal-body2 {
+  padding: 0px;
+}
+
 .modal-header{
   padding: 1px 20px;
   background-color: #212830;
