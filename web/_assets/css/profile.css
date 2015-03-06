@@ -3,12 +3,20 @@
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
     margin: 0 auto;
     width: 80%;
+    padding: 30px;
 }
-
 .profile li:first-child {
 	color: #304257;
 	font-family: 'OpenSans-Semibold';
 	font-size: 1.8em;
+	padding: 11px 0;
+}
+.profile li:not(:first-child){
+     border-top: 1px dashed #d0d0d0;
+     padding: 6px 0;
+}
+.profile li:last-child{
+	border-bottom: 1px dashed #d0d0d0;
 }
 .profile ul li:first-child[data-icon]:before{
     color: #e65354;
@@ -17,8 +25,15 @@
 .profile div{
 	display: table;
 }
-
 .profile div figure, .profile div ul{
 	display: table-cell;
 	vertical-align: middle;
+}
+.profile div figure img {
+	border: 3px solid  #304257;
+
+}
+
+input[type="submit"]{
+	padding: 3px 15px 1px;
 }

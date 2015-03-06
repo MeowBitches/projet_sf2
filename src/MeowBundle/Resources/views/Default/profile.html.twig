@@ -11,6 +11,7 @@
 
            <figure>
            	  <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
+           	 <!--  <input type="file" name="img" value="Modifier"> -->
            </figure>
            
            <ul>
@@ -25,10 +26,10 @@
 			  <li>Changer de mot de passe     
 				
 				<label for="username">
-				  <input type="text" size="30" placeholder="Nouveau mot de passe" required="required" name="" id="">
+				  <input type="password" size="15" placeholder="Nouveau passe" required="required" name="" id="">
 				</label>
 			    <label for="password">
-				   <input type="password" size="30" placeholder="Confirmation" required="required" name="" id="">
+				   <input type="password" size="15" placeholder="Confirmation" required="required" name="" id="">
 				</label>
 			    <input type="submit" name="_submit" id="_submit" value="Valider">
 			  </li>
