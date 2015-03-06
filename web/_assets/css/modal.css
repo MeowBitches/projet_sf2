@@ -31,15 +31,15 @@ padding: 0px 35px 1px 35px;
 box-shadow: none;
 }
 
+.ajout li{
+  padding-bottom: 20px;
+}
+
 .ajout{
 
 }
 
-.plus{
-  border-radius: 100px;
-}
-
-#moncercle {
+#plus {
 background: #304257;
 border-radius: 50%;
 width: 160px;
@@ -144,4 +144,25 @@ color: #fff;
 /*ADDED TO STOP SCROLLING TO TOP*/
 #close {
   display: none;
+}
+
+#toogle{
+  display:none;
+}
+
+#file{
+  opacity: 0.1;
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  padding: 10px 10px;
+}
+
+.file label{
+  background-color: #e65354;
+  color: #fff;
+  border-radius: 4px;
+  padding: 10px 10px;
+  cursor: pointer;
+  
 }
