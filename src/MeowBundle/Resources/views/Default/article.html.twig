@@ -28,13 +28,15 @@
 
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
+		{#        AJOUTER UN COMMENTAIRE        #}
+
 		<div class="ajout-commentaire">
-			<a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="avatar">
-				<img src="	{% if spoil.cover is not empty %}
+			<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
+				<img src="	{% if app.user.cover is not empty %}
+								{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+							{% else %}								
 								{{ asset('_assets/imgs/users/profil-default.jpg') }}
-							{% else %}
-								{{ spoil.cover }}
-							{% endif %}" alt="Profil de {{ spoil.author.username }}"/>
+							{% endif %}" alt="Profil de {{ app.user.username }}"/>
 			</a>
 
 			<textarea placeholder="Ecrire un commentaire"></textarea>
@@ -44,7 +46,7 @@
 
 		<div style="clear: both;"></div>
 
-	{% else %}
+	{% else %} {#        CONNEXION        #}
 
 		<p>Connectez-vous pour pouvoir poster un commentaire.</p>
 
@@ -70,32 +72,114 @@
 	{% endif %}
 
 	<div class="commentaires">
-		<ul>
+
+		<ul> {#        COMMENTAIRE 1        #}
+
 			{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
-			<li>
-				<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
-					<img src="	{#{% if comment_lvl1.author.cover is not empty %}
-									{{ asset('_assets/imgs/users/profil-default.jpg') }}
-								{% else %}
-									{{ comment_lvl1.author.cover }}
-								{% endif %}#}{{ asset('_assets/imgs/users/profil-default.jpg') }}" alt="Profil de {{ comment_lvl1.author.username }} "/>
-				</a>
-				
-				<div class="comm-right">
-					<div class="infos-comm">
-						<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
-						<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+				<li class="comment1"> 
+					<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
+						<img src="	{% if comment_lvl1.author.cover is not empty %}
+										{{ asset('_assets/imgs/users/' ~ comment_lvl1.author.cover) }}
+									{% else %}
+										{{ asset('_assets/imgs/users/profil-default.jpg') }}
+									{% endif %}" alt="Profil de {{ comment_lvl1.author.username }} "/>
+					</a>
+					
+					<div class="comm-right">
+						<div class="infos-comm">
+							<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
+							<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+						</div>
+
+						<p class="text-comm">
+							{% if comment_lvl1.nbLike > -10 %}
+								{{ comment_lvl1.text }}
+							{% else %}
+								Commentaire modéré
+							{% endif %}</p>
+
+						<div class="react-users">
+							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+							<a href="#" class="respond-btn">Répondre</a>
+							{% else %}
+							<a href="#modal-one" class="respond-btn">Répondre</a>
+							{% endif %}
+							<div class="users-like">
+								<a href="" class="like" data-icon="z"></a>
+								<a href="" class="dislike" data-icon="u"></a>
+							</div>
+							<p class="nb-like">{{ comment_lvl1.nbLike }} likes</p>
+						</div>
 					</div>
 
-					<p class="text-comm"></p>
-				</div>
+					<div style="clear: both;"></div>
 
-				<div style="clear: both;"></div>
+					
 
-			</li>
-				{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
+				</li>
 
-				{% endfor %}
+				<ul> {#        COMMENTAIRE 2        #}
+
+					{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
+						<li class="comment2">
+							<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}" class="avatar avatar2">
+								<img src="	{% if comment_lvl2.author.cover is not empty %}
+												{{ asset('_assets/imgs/users/' ~ comment_lvl2.author.cover) }}
+											{% else %}
+												{{ asset('_assets/imgs/users/profil-default.jpg') }}
+											{% endif %}" alt="Profil de {{ comment_lvl2.author.username }} "/>
+							</a>
+
+							<div class="comm-right">
+								<div class="infos-comm">
+									<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}">{{ comment_lvl2.author.username }}</a>
+									<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+								</div>
+
+								<p class="text-comm">
+									{% if comment_lvl2.nbLike > -10 %}
+										{{ comment_lvl2.text }}
+									{% else %}
+										<span class="comm-modere">Commentaire modéré</span>
+									{% endif %}
+								</p>
+
+									<div class="react-users">
+										<div class="users-like">
+											<a href="#" class="like" data-icon="z"></a>
+											<a href="#" class="dislike" data-icon="u"></a>
+										</div>
+										<p class="nb-like">{{ comment_lvl2.nbLike }} likes</p>
+									</div>
+							</div> <!-- End comm-right -->
+
+							
+						</li>
+						<div style="clear: both;"></div>
+					{% endfor %}
+
+				</ul>
+				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+				<li>
+					<div class="ajout-commentaire respond-comm">
+						<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
+							<img src="	{% if app.user.cover is not empty %}
+											{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+										{% else %}								
+											{{ asset('_assets/imgs/users/profil-default.jpg') }}
+										{% endif %}" alt="Profil de {{ app.user.username }}"/>
+						</a>
+
+						<textarea placeholder="Ecrire un commentaire"></textarea>
+					
+						<input type="submit" value="Envoyer"></input>
+					</div>
+
+					<div style="clear: both;"></div>
+				</li>
+				{% else %}
+					
+				{% endif %}
 			{% endfor %}
 		</ul>
 	</div>
@@ -172,6 +256,7 @@
 				</td>
 				<td>{{ comment_lvl1.nbLike }}</td>
 			</tr>
+
 			{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
 				<tr>
 					<td>{{ comment_lvl2.id }}</td>

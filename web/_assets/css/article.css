@@ -5,6 +5,7 @@
 	border-left: 1px solid #d0d0d0;
 	border-right: 1px solid #d0d0d0;
 	padding: 0 5%;
+	padding-bottom: 5%;
 }
 
 .articles h2 {
@@ -115,6 +116,10 @@
 	padding-bottom: 15px;
 }
 
+.articles .connexion-comm {
+	margin-bottom: 20px;
+}
+
 .articles .connexion-comm ul {
 	padding: 0;
 
@@ -210,11 +215,14 @@
 	margin: 0;
 }
 
+
 .articles .commentaires {
 	position: relative;
 }
 
-
+.articles .commentaires .comment1 {
+	margin-bottom: 20px;
+}
 
 .articles .commentaires a.avatar, .articles .commentaires .comm-right {
 	float: left;
@@ -226,6 +234,10 @@
 	width: 53px;
 }
 
+.articles .commentaires .comm-right {
+	padding-left: 10px;
+}
+
 .articles .commentaires .infos-comm a {
 	display: block;
 	font-family: "Open sans";
@@ -234,13 +246,7 @@
 	font-weight: bold;
 }
 
-.articles .commentaires a img {
-	width: 100%;
-}
 
-.articles .commentaires .infos-comm {
-	padding-left: 10px;
-}
 
 .infos-comm a, .infos-comm p {
 	float: left;
@@ -250,4 +256,91 @@
 	margin: 0 0 0 10px;
 	font-size: 1.3rem;
 	color: #acacac;
+}
+
+.comm-right .text-comm {
+	color: #303030;
+	font-size: 1.3rem;
+	margin: 23px 0 0 0;
+}
+
+.comm-right .respond-btn {
+	color: #acacac;
+	font-size: 1.3rem;
+	font-weight: bold;
+}
+
+.commentaires .comment2 {
+	margin-left: 53px;
+	margin-bottom: 0;
+}
+
+.commentaires .comment2 .comm-right {
+	margin-bottom: 15px;
+}
+
+.commentaires .comment2 a.avatar, .commentaires .respond-comm a.avatar {
+	width: 35px;
+}
+
+.commentaires .comment2 .comm-modere {
+	font-size: 1.3rem;
+	font-style: italic;
+	color: #acacac;
+}
+
+.react-users > a.respond-btn, .react-users > .users-like, .react-users > p.nb-like, .like, .dislike {
+	float: left;
+}
+.react-users {
+	margin-top: 5px;
+}
+
+.comment1 .users-like {
+	margin-left: 20px;
+}
+
+.like, .dislike {
+	margin-right: 5px;
+}
+
+.like:before, .dislike:before {
+	font-size: 1.5rem;
+}
+
+.like:before {
+	color: #0cad14;
+}
+
+.nb-like {
+	color: #5b5b5b;
+	font-size: 1.3rem;
+	margin: 0;
+}
+
+.respond-comm {
+	margin-left: 53px;
+}
+
+.articles .respond-comm textarea {
+	width: 86%;
+}
+
+
+@media only screen and (min-width: 600px) {
+	.articles .respond-comm textarea {
+		width: 91%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.articles .respond-comm textarea {
+		width: 93%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.articles .respond-comm textarea {
+		width: 94%;
+	}
 }
