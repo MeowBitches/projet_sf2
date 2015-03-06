@@ -59,11 +59,14 @@
 	</div>
 </nav>
 
+
+{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
 <!-- Modal -->
 <div class="modal" id="modal-one" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-header">
-      <h2 data-icon="m">Ajouter un spoil</h2>
+      <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
     </div>
     <div class="modal-body">
@@ -87,9 +90,45 @@
 		    </ul>
 		</form>
 		</section>
-		<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}inscription/">Inscrivez-vous!»</a></p>
+		<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}register" class="register">Inscrivez-vous !</a></p>
     </div>
     </div>
   </div>
 </div>
+
+{% else %}
+<!-- Modal -->
+<div class="modal" id="modal-one" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <h2>Ajouter un spoil</h2>
+      <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
+    </div>
+    <div class="modal-body">
+
+    	<p class="imp">Connectez-vous pour poster un spoil</p>
+
+		<section class="connexion connexion2" >
+		<form action="{{ path("fos_user_security_check") }}" method="post">
+			<ul>
+				<li>
+				    <label for="username"><i data-icon="7"></i></label>
+				    <input type="text" id="username" name="_username" required="required"  placeholder="Pseudo" size="30" />
+			    </li>
+				<li>
+				    <label for="password"><i data-icon="r"></i></label>
+				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
+			    </li>
+				<li>
+			    	<input type="submit" id="_submit" name="_submit" value="Connexion" />
+			    </li>
+		    </ul>
+		</form>
+		</section>
+		<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}register" class="register">Inscrivez-vous !</a></p>
+    </div>
+    </div>
+  </div>
+</div>
+{% endif %}
 <!-- /Modal -->

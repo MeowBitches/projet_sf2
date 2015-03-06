@@ -16,6 +16,10 @@
   font-size: 13px;
 }
 
+.register{
+  border-bottom: 1px solid #e65354;
+}
+
 .connexion2{
 position: relative;
 margin: 0 auto;
