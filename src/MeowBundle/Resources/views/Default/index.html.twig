@@ -5,7 +5,9 @@
 	
 	<section classe="home">
      
-   	 <p><span><a href="{{ urlBase }}login">Connectez-vous</a></span> ou <span><a href="{{ urlBase }}register">inscrivez-vous</a></span> pour poster un spoil !</p>
+     {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+   	    <p><span><a href="{{ urlBase }}login">Connectez-vous</a></span> ou <span><a href="{{ urlBase }}register">inscrivez-vous</a></span> pour poster un spoil !</p>
+    {% endif %}
      <figure>
      	<div><img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto"></div>
         <figcaption><h2>{{ spoil.title }}</h2><h4 style="padding-left: 10px"> -  {{ spoil.manga.name }}</h4></figcaption>

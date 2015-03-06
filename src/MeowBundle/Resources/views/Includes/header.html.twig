@@ -30,14 +30,14 @@
 						{% endif %}
 						<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
 						<figcaption>
-							<img src="{% if app.user.roles == true %}{{ asset('_assets/imgs/admin.svg') }}{% else %}{{ asset('_assets/imgs/user.svg') }}{% endif %}">
+							<img src="{% if is_granted("ROLE_ADMIN") %}{{ asset('_assets/imgs/admin.svg') }}{% else %}{{ asset('_assets/imgs/user.svg') }}{% endif %}">
 							<ul>
 								<li role="presentation">
 									<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
 								</li>
-								{% if app.user.roles == true %}
+								{% if is_granted("ROLE_ADMIN") %}
 									<li role="presentation">
-										<a href="{{ urlBase }}moderation/">Modérer</a>
+										<a href="{{ urlBase }}admin/moderation/">Modérer</a>
 									</li>
 								{% endif %}
 								<li role="presentation">

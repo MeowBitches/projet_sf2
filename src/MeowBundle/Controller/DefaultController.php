@@ -85,7 +85,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/moderation/")
+     * @Route("/admin/moderation/")
      * @Template()
      */
     public function moderationAction(Request $request)
