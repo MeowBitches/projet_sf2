@@ -37,3 +37,10 @@
 .profile input[type="submit"]{
 	padding: 3px 15px 1px;
 }
+
+.profile .cd-gallery li{
+	display: inline-table;
+}
+.profile .cd-gallery {
+	float: none;
+}

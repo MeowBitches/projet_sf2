@@ -42,74 +42,58 @@
 			
 			
 			
-			<!-- <td>
-				{% if user.roles == true %}
-					Oui
-				{% else %}
-					Non
-				{% endif %}
-			</td> -->
 		
 
 	<h2>Spoils postés</h2>
 
-	{% if pagination is not empty %}
-		<table>
-			<tr>
-				<th>Id</th>
-				<th>Lien</th>
-				<th>Id / nom / catégorie manga</th>
-				<th>Id / pseudo auteur</th>
-				<th>Titre</th>
-				<th>Slug</th>
-				<th>Url image</th>
-				<th>Date et heure</th>
-				<th>Nombre de commentaires</th>
-				<th>Nombre de spoils</th>
-				<th>Nombre de fails</th>
-				<th>Nombre de fakes</th>
-				<th>Publié</th>
-			</tr>
-			{% for spoil in pagination %}
-				<tr>
-					<td>{{ spoil.id }}</td>
-					<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
-					<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-					<td>{{ spoil.author.id }} / {{ spoil.author.username }}</td>
-					<td>{{ spoil.title }}</td>
-					<td>{{ spoil.slug }}</td>
-					<td>
-						{% if spoil.cover is not empty %}
-							{{ spoil.cover }}
-						{% else %}
-							placeholder.jpg
-						{% endif %}
-					</td>
-					<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
-					<td>{{ spoil.nbComments }}</td>
-					<td>{{ spoil.nbSpoil }}</td>
-					<td>{{ spoil.nbFail }}</td>
-					<td>{{ spoil.nbFake }}</td>
-					<td>
-						{% if spoil.isPublished == true %}
-							Oui
-						{% else %}
-							Non
-						{% endif %}
-					</td>
-				</tr>
-
-
-			{% endfor %}
-		</table>
-
+    <!-- <div class="cd-gallery">
+     <ul id="Container">	 -->
+    {% if pagination is not empty %}
+    <div class="cd-gallery">
+    <ul id="Container">
+ 
+    {% for spoil in pagination %}
     
+        
+         
+           <li class="">
+			  <a href="{{ urlBase }}spoil/{{ spoil.slug }}">
+			  <figure>
+				<div class="bloc-image">
+				   <img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
+				</div>
+				   <figcaption>
+				     <p class="titre-manga">{{ spoil.manga.name|title }}</p>
+						<div class="infos-spoils">
+						  <p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
+						  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
+						</div>
+						<div style="clear:both;"></div>
+						  <p class="spoil">{{ spoil.title }}</p>
+						  <p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
+					</figcaption>
+			   </figure>
+			   </a>
+			</li>
 
+		
+
+      
+     {% endfor %}
+
+</ul>
+</div>
+</section>
+
+{% else %}
+
+<p>Aucun spoil posté.</p>
     
-		{{ knp_pagination_render(pagination) }}
+{% endif %}
 
-	{% else %}
-		<p>Aucun spoil posté.</p>
-	{% endif %}
- </section>
+{{ knp_pagination_render(pagination) }}
+
 {% endblock %}
+
+
+
