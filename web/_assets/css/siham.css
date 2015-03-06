@@ -113,8 +113,41 @@ width: 100%;
 	color: #fff;
 }
 
+@media only screen and (max-width:650px) {
+	.home figure{
+		padding: 2%;
+		/*background: red;*/
+	}
+	.home .infos-spoiler {
+		padding: 0 13px;
+	}
 
+	
+	
+}
 
+@media only screen and (max-width:490px) {
+	.home figure{
+		/*background: green;*/
+	}
+
+	.home .boutons-avis li{
+		display: block;
+		margin: 13px auto;
+		width: 200px;
+	}
+	.home p {
+		font-size: 1em;
+		margin-top: 28px;
+	}
+	.home button {
+		padding: 14px 70px 7px;
+	}
+	
+
+	
+	
+}
 
 
 

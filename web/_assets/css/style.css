@@ -227,6 +227,7 @@ h2 {
 	border-bottom: 1px solid #19212b;
 	margin-top: 1px;
 	z-index: 4;
+	margin: 0px 0 24px; /*test*/
 }
 
 
@@ -277,6 +278,7 @@ h2 {
 		margin: 0;
 		padding: 11px 0 0 0;
 		border-bottom: 0;
+
 	}
 
 	.home .nav {
@@ -465,15 +467,12 @@ h1, p, table{
 
 }
 
-.connexion p {
+p.connexion-error {
+	bottom: 17px;
 	position: absolute;
 	color: #e10000;
 	font-size: 1.3rem;
 	margin: 3px 0 0 0;
-}
-
-.connexion p.connexion-error {
-	bottom: 17px;
 }
 
 .connexion p:before {
@@ -505,19 +504,11 @@ h1, p, table{
 
 
 
-@media only screen and (max-width:650px) {
-	.home figure{
-		padding: 2%;
-		background: red;
-	}
-	.home .infos-spoiler {
-		padding: 0 13px;
-	}
-	.home .boutons-avis li { 
-	    display:block;
-	
-}	
-}
+
+
+
+
+
 
    
 

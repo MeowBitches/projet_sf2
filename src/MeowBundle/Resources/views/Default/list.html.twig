@@ -9,9 +9,9 @@
 
 		<section class="cd-gallery">
 			
-			<ul>
+			<ul id="Container">
 				{% for spoil in spoils %}
-					<li class="mix {{ spoil.manga.category.name|lower }}">
+					<li class="mix {{ spoil.manga.category.name|lower|replace(' ', '-') }} {{ spoil.manga.name|lower|replace(' ', '-') }}" data-popular="{{ spoil.nbComments }}" data-efficient="{{ spoil.nbSpoil }}">
 						<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
 							<figure>
 								<div class="bloc-image">
@@ -30,7 +30,6 @@
 							</figure>
 						</a>
 					</li>
-
 				{% endfor %}
 				<li class="gap"></li>
 				<li class="gap"></li>
@@ -45,7 +44,7 @@
 				<div class="cd-filter-block">
 					<h4 style="background:url('{{ asset('_assets/imgs/cd-icon-arrow.svg') }}') no-repeat left center">Rechercher</h4>
 					<div class="cd-filter-content">
-						<input type="search" placeholder="Tapez votre manga">
+						<input id="search" type="search" placeholder="Tapez votre manga">
 					</div>
 				</div>
 
@@ -54,13 +53,23 @@
 					<ul class="cd-filter-content cd-filters list">
 						{% for category in categories %}
 							<li>
-								<input class="filter" data-filter=".{{ category.name|lower }}" type="checkbox" id="{{ category.name|lower }}">
-								<label class="checkbox-label" for="{{ category.name|lower }}">
+								<input class="filter" data-filter=".{{ category.name|lower|replace(' ', '-') }}" type="checkbox" id="{{ category.name|lower|replace(' ', '-') }}">
+								<label class="checkbox-label" for="{{ category.name|lower|replace(' ', '-') }}">
 									{{ category.name|capitalize }}
 								</label>
 							</li>
 						{% endfor %}
 					</ul>
+				</div>
+
+				<div class="cd-filter-block">
+					<div class="cd-filter-content">
+						<select name="sort" id="sort">
+							<option value="Choisissez une option">Choisissez une option</option>
+							<option value="Les plus populaires" class="sort" data-sort="popular:desc">Les plus populaires</option>
+							<option value="Les plus efficaces" class="sort" data-sort="efficient:desc">Les plus efficaces</option>
+						</select>
+					</div>
 				</div>
 
 			</form>
@@ -121,6 +130,5 @@
 	<script src="{{ asset('_assets/js/content-filter/jquery.mixitup.min.js') }}"></script>
 	<script src="{{ asset('_assets/js/content-filter/main.js') }}"></script>
 	<script src="{{ asset('_assets/js/content-filter/modernizr.js') }}"></script>
-	
 
 {% endblock %}
