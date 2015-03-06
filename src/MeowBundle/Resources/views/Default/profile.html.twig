@@ -2,40 +2,55 @@
 
 {% block content %}
 
-	<h1>Utilisateur</h1>
 
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Pseudo</th>
-			<th>Email</th>
-			<th>Image de profil</th>
-			<th>Administrateur</th>
-			<th>Score</th>
-		</tr>
-		<tr>
-			<td>{{ user.id }}</td>
-			<td>{{ user.username }}</td>
-			<td>{{ user.email }}</td>
-			<td>{{ user.cover }}</td>
-			<td>
+
+	<section class="profile">
+
+	
+         <div>
+
+           <figure>
+           	  <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
+           </figure>
+           
+           <ul>
+           	  <li data-icon="1">{{ user.username }}</li>
+         	  <li>{{ user.email }}</li>
+         	  <li>Score : {% set score = 0 %}
+				{% for spoil in pagination %}
+					{% set score = score + spoil.nbSpoil %}
+				{% endfor %}
+				{{ score }}
+			  </li>
+			  <li>Changer de mot de passe     
+				
+				<label for="username">
+				  <input type="text" size="30" placeholder="Nouveau mot de passe" required="required" name="" id="">
+				</label>
+			    <label for="password">
+				   <input type="password" size="30" placeholder="Confirmation" required="required" name="" id="">
+				</label>
+			    <input type="submit" name="_submit" id="_submit" value="Valider">
+			  </li>
+		    </ul>
+
+         </div>	
+
+		
+			
+			
+			
+			
+			<!-- <td>
 				{% if user.roles == true %}
 					Oui
 				{% else %}
 					Non
 				{% endif %}
-			</td>
-			<td>
-				{% set score = 0 %}
-				{% for spoil in pagination %}
-					{% set score = score + spoil.nbSpoil %}
-				{% endfor %}
-				{{ score }}
-			</td>
-		</tr>
-	</table>
+			</td> -->
+		
 
-	<h1>Spoils postés</h1>
+	<h2>Spoils postés</h2>
 
 	{% if pagination is not empty %}
 		<table>
@@ -82,13 +97,18 @@
 						{% endif %}
 					</td>
 				</tr>
+
+
 			{% endfor %}
 		</table>
 
+    
+
+    
 		{{ knp_pagination_render(pagination) }}
 
 	{% else %}
 		<p>Aucun spoil posté.</p>
 	{% endif %}
-
+ </section>
 {% endblock %}

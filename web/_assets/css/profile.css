@@ -1,0 +1,24 @@
+.profile { 
+    background: none repeat scroll 0 0 #fff;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    margin: 0 auto;
+    width: 80%;
+}
+
+.profile li:first-child {
+	color: #304257;
+	font-family: 'OpenSans-Semibold';
+	font-size: 1.8em;
+}
+.profile ul li:first-child[data-icon]:before{
+    color: #e65354;
+    padding-right: 10px;
+}
+.profile div{
+	display: table;
+}
+
+.profile div figure, .profile div ul{
+	display: table-cell;
+	vertical-align: middle;
+}
