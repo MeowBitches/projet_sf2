@@ -11,7 +11,7 @@
 			
 			<ul id="Container">
 				{% for spoil in spoils %}
-					<li class="mix {{ spoil.manga.category.name|lower }} {{ spoil.manga.name|lower }}" data-popular="{{ spoil.nbComments }}" data-efficient="{{ spoil.nbSpoil }}">
+					<li class="mix {{ spoil.manga.category.name|lower }} {{ spoil.manga.name|lower }}">
 						<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
 							<figure>
 								<div class="bloc-image">
@@ -60,16 +60,6 @@
 							</li>
 						{% endfor %}
 					</ul>
-				</div>
-
-				<div class="cd-filter-block">
-					<div class="cd-filter-content">
-						<select name="sort" id="sort">
-							<option value="Choisissez une option">Choisissez une option</option>
-							<option value="Les plus populaires" class="sort" data-sort="popular:desc">Les plus populaires</option>
-							<option value="Les plus efficaces" class="sort" data-sort="efficient:desc">Les plus efficaces</option>
-						</select>
-					</div>
 				</div>
 
 			</form>

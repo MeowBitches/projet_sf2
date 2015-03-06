@@ -20,9 +20,9 @@
      </div>
      <div class="boutons-avis">
      	<ul>
-     		<li>Spoil <span>{{ spoil.nbSpoil }}</span></li>
-            <li>Fail <span>{{ spoil.nbFail }}</span></li>
-            <li>Fake <span>{{ spoil.nbFake }}</span></li>
+     		<li class="spoilAction" data-spoil-id="{{ spoil.id }}">Spoil <span>{{ spoil.nbSpoil }}</span></li>
+            <li class="failAction" data-spoil-id="{{ spoil.id }}">Fail <span>{{ spoil.nbFail }}</span></li>
+            <li class="fakeAction" data-spoil-id="{{ spoil.id }}">Fake <span>{{ spoil.nbFake }}</span></li>
         </ul>    
      </div>	
      <button id="refresh">Me spoiler un manga</button>
@@ -35,6 +35,39 @@
 			$('#refresh').click(function(){
 				location.reload();
 			});
+
+            $('.spoilAction').click(function(){
+                var that = $(this);
+                $.post('{{ path("add-one-spoiled") }}',{
+                        id: that.attr('data-spoil-id')
+                    },
+                    function(data){
+                        that.children('span').text(data);
+                    }
+                );
+            });
+
+            $('.failAction').click(function(){
+                var that = $(this);
+                $.post('{{ path("add-one-fail") }}',{
+                        id: that.attr('data-spoil-id')
+                    },
+                    function(data){
+                        that.children('span').text(data);
+                    }
+                );
+            });
+
+            $('.fakeAction').click(function(){
+                var that = $(this);
+                $.post('{{ path("add-one-fake") }}',{
+                        id: that.attr('data-spoil-id')
+                    },
+                    function(data){
+                        that.children('span').text(data);
+                    }
+                );
+            });
 		});
 	</script>
 

@@ -30,7 +30,7 @@ class DefaultController extends Controller
     public function listAction()
     {
         $repoSpoils = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
-        $spoils = $repoSpoils->findBy(array('isPublished' => true));
+        $spoils = $repoSpoils->findBy(array('isPublished' => true), array('nbComments' => 'DESC'));
 
         $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
         $categories = $repoCategories->findAll();
