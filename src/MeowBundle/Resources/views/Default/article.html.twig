@@ -13,7 +13,7 @@
         <figcaption><h3>{{ spoil.title }}</h3></figcaption>
      </figure>
      <div class="infos-spoiler">
-    	<p data-icon="8">Par <a href="#">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|date("Y/m/d") }}</span></p>
+    	<p data-icon="8">Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|date("d/m/Y") }}</span></p>
      </div>
      <div class="boutons-avis">
      	<ul>
@@ -28,7 +28,21 @@
 
 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
+		<div class="ajout-commentaire">
+			<a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="avatar">
+				<img src="	{% if spoil.cover is not empty %}
+								{{ asset('_assets/imgs/profil-default.jpg') }}
+							{% else %}
+								{{ spoil.cover }}
+							{% endif %}" alt="Profil de {{ spoil.author.username }}"/>
+			</a>
+
+			<textarea placeholder="Ecrire un commentaire"></textarea>
 		
+			<input type="submit" value="Envoyer"></input>
+		</div>
+
+		<div style="clear: both;"></div>
 
 	{% else %}
 
@@ -54,6 +68,38 @@
 		</form>
 
 	{% endif %}
+
+	<div class="commentaires">
+		<ul>
+			{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
+			<li>
+				<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
+					<img src="	{#{% if comment_lvl1.author.cover is not empty %}
+									{{ asset('_assets/imgs/profil-default.jpg') }}
+								{% else %}
+									{{ comment_lvl1.author.cover }}
+								{% endif %}#}{{ asset('_assets/imgs/profil-default.jpg') }}" alt="Profil de {{ comment_lvl1.author.username }} "/>
+				</a>
+				
+				<div class="comm-right">
+					<div class="infos-comm">
+						<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
+						<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+					</div>
+
+					<p class="text-comm"></p>
+				</div>
+
+				<div style="clear: both;"></div>
+
+			</li>
+				{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
+
+				{% endfor %}
+			{% endfor %}
+		</ul>
+	</div>
+
 
 </section>
 
@@ -82,9 +128,9 @@
 			<td>{{ spoil.slug }}</td>
 			<td>
 				{% if spoil.cover is not empty %}
-					{{ spoil.cover }}
-				{% else %}
 					placeholder.jpg
+				{% else %}
+					{{ spoil.cover }}
 				{% endif %}
 			</td>
 			<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>

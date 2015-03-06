@@ -76,16 +76,27 @@
 
 .articles .boutons-avis li { 
 	background: #304257;
-	display: inline-block;
+	display: block;
 	font-family: 'Antonio-Regular'; 
     border-radius: 4px;
     width: 115px;
     color: #fff;
     padding: 13px 7px 8px 0;
     position: relative;
-    margin: 0 4%;
+    margin: 13px auto;
+	width: 200px;
     text-align: center;
 }
+
+
+@media only screen and (min-width: 490px) {
+	.articles .boutons-avis ul li {
+		display: inline-block;
+		margin: 0 4%;
+		width: 115px;
+	}
+}
+
 .articles .boutons-avis li span {
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
@@ -110,12 +121,12 @@
 }
 
 .articles .connexion-comm ul li {
-	display: inline-block;
+	display: block;
 	margin-right: 15px;
 }
 
 .articles .connexion-comm label i { 
-    display: block;
+    display: inline-block;
     position: absolute;
     text-align: center;
     vertical-align: middle;
@@ -143,4 +154,100 @@
 .connexion-comm .connexion-error {
 	position: relative;
 	bottom: 0;
+}
+
+.articles .ajout-commentaire {
+	position: relative;
+}
+
+
+.articles .ajout-commentaire a {
+	float: left;
+	position: absolute;
+	display: block;
+	width: 65px;
+	height: 65px;
+}
+
+.articles .ajout-commentaire textarea {
+	float: right;
+	height: 65px;
+	width: 80%;
+	margin-left: 80px;
+	padding: 7px;
+	resize: none;
+}
+
+
+.articles .ajout-commentaire input[type=submit] {
+	float: right;
+	margin-top: 20px;
+}
+
+
+
+@media only screen and (min-width: 600px) {
+	.articles .ajout-commentaire textarea {
+		width: 85%;
+	}
+}
+
+@media only screen and (min-width: 768px) {
+	.articles .ajout-commentaire textarea {
+		width: 90%;
+	}
+}
+
+@media only screen and (min-width: 1000px) {
+	.articles .ajout-commentaire textarea {
+		width: 91%;
+	}
+}
+
+
+.articles ul {
+	padding: 0;
+	margin: 0;
+}
+
+.articles .commentaires {
+	position: relative;
+}
+
+
+
+.articles .commentaires a.avatar, .articles .commentaires .comm-right {
+	float: left;
+}
+
+.articles .commentaires a.avatar {
+	display: block;
+	height: 53px;
+	width: 53px;
+}
+
+.articles .commentaires .infos-comm a {
+	display: block;
+	font-family: "Open sans";
+	font-size: 1.35rem;
+	color: #212830;
+	font-weight: bold;
+}
+
+.articles .commentaires a img {
+	width: 100%;
+}
+
+.articles .commentaires .infos-comm {
+	padding-left: 10px;
+}
+
+.infos-comm a, .infos-comm p {
+	float: left;
+}
+
+.infos-comm p {
+	margin: 0 0 0 10px;
+	font-size: 1.3rem;
+	color: #acacac;
 }
