@@ -100,7 +100,7 @@
 
 						<div class="react-users">
 							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-							<a href="#" class="respond-btn">Répondre</a>
+							<a class="respond-btn show-respond">Répondre</a>
 							{% else %}
 							<a href="#modal-one" class="respond-btn">Répondre</a>
 							{% endif %}
@@ -186,6 +186,8 @@
 
 
 </section>
+
+<script src="{{ asset('_assets/js/respond-com.js') }}"></script>
 
 
 

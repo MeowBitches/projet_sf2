@@ -500,10 +500,14 @@ p.connexion-error {
 #footer p {
 	text-align: center;
 	font-size: 1em;
-	margin: 42px 0px 24px;
+	padding: 42px 0px 10px;
+	margin: 0;
+	font-family: "Antonio";
 }
 
-
+.articles footer {
+	backgound-color: #212830;
+}
 
 
 

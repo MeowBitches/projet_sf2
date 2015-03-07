@@ -318,8 +318,14 @@
 	margin: 0;
 }
 
+.show-respond {
+	cursor: pointer;
+}
+
 .respond-comm {
+	display: none;
 	margin-left: 53px;
+
 }
 
 .articles .respond-comm textarea {
