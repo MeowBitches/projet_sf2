@@ -13,7 +13,7 @@
 }
 .profile .detail-profil li:not(:first-child){
      border-top: 1px dashed #d0d0d0;
-     padding: 6px 0;
+     padding: 10px 0;
 }
 .profile .detail-profil li:last-child{
 	border-bottom: 1px dashed #d0d0d0;
@@ -33,17 +33,30 @@
 	vertical-align: middle;
 }
 .profile .detail-profil figure {
-	width: 22%;
+	width: 200px;
 }
 
 .profile .detail-profil figure img {
 	border: 3px solid  #304257;
-	width: 100%;
+	width: 200px;
 
 }
 
+.profile .detail-profil label{
+	 margin: 0 15px;
+}
+
+.profile .detail-profil ul { 
+width: 800px;
+}
+.profile .detail-profil input{
+	   width: 186px;
+}
+
 .profile input[type="submit"]{
-	padding: 3px 15px 1px;
+	 line-height: 0.6;
+	 width: 120px;
+	  margin-left: 12px;
 }
 .profile  .cd-gallery h2{ 
     margin: 42px 0 0 13px;
@@ -68,6 +81,21 @@ margin: 1%;
 
 
 
+@media only screen and (max-width:1200px){
+    .profile .detail-profil ul {
+    width: 99%;
+}
+    .profile .detail-profil label {
+    display: block;
+    margin: 11px 0;
+}
+    .profile input[type="submit"] {
+    margin-left: 68px;
+    
+}
+}
+
+
 @media only screen and (max-width:1000px){
      .profile .cd-gallery li{
      width: 46%
@@ -76,14 +104,32 @@ margin: 1%;
 
 
 @media only screen and (max-width:650px) {
+
 	.profile .cd-gallery li{
-
-	width: 98%;	
-
-	}
-
-	
-	
+     width: 98%;	
+    }
+    .profile .detail-profil figure, .profile div .detail-profil ul{
+    	display: inherit;
+    	vertical-align: inherit;
+    }
+    .profile .detail-profil figure{
+    	margin: 0 auto;
+    }
+    .profile .detail-profil figure img {
+    	width: 240px;
+    }
+    .profile .detail-profil ul {
+    padding-left: 0;
+    }
+    .profile .detail-profil input {
+    width: 100%;
+    }
+    .profile input[type="submit"]{
+    	margin-left: 0px;
+    }
 }
+
+
+
 
 
