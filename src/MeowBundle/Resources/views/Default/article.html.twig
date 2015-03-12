@@ -30,7 +30,7 @@
 
 		{#        AJOUTER UN COMMENTAIRE        #}
 
-		<div class="ajout-commentaire">
+		<form action="{{ path("add-comment-lvl1", { id: spoil.id }) }}" method="post" class="ajout-commentaire">
 			<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
 				<img src="	{% if app.user.cover is not empty %}
 								{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
@@ -39,10 +39,12 @@
 							{% endif %}" alt="Profil de {{ app.user.username }}"/>
 			</a>
 
-			<textarea placeholder="Ecrire un commentaire"></textarea>
-		
-			<input type="submit" value="Envoyer"></input>
-		</div>
+			{{ form_widget(form.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
+
+			{{ form_rest(form) }}
+
+			<input type="submit" value="Envoyer">
+		</form>
 
 		<div style="clear: both;"></div>
 
@@ -74,6 +76,7 @@
 		<ul> {#        COMMENTAIRE 1        #}
 
 			{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
+				{% set form2 = forms[loop.index0] %}
 				<li class="comment1"> 
 					<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
 						<img src="	{% if comment_lvl1.author.cover is not empty %}
@@ -91,7 +94,7 @@
 
 						<p class="text-comm">
 							{% if comment_lvl1.nbLike > -10 %}
-								{{ comment_lvl1.text }}
+								{{ comment_lvl1.text|nl2br }}
 							{% else %}
 								Commentaire modéré
 							{% endif %}</p>
@@ -106,13 +109,11 @@
 								<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
 								<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
 							</div>
-							<p class="nb-like">{{ comment_lvl1.nbLike }} likes</p>
+							<p class="nb-like">{{ comment_lvl1.nbLike }} like{% if comment_lvl1.nbLike > 1 %}s{% endif %}</p>
 						</div>
 					</div>
 
 					<div style="clear: both;"></div>
-
-					
 
 				</li>
 
@@ -131,12 +132,12 @@
 							<div class="comm-right">
 								<div class="infos-comm">
 									<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}">{{ comment_lvl2.author.username }}</a>
-									<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+									<p class="date-comm">{{ comment_lvl2.date|date("d/m/Y H:i:s") }}</p>
 								</div>
 
 								<p class="text-comm">
 									{% if comment_lvl2.nbLike > -10 %}
-										{{ comment_lvl2.text }}
+										{{ comment_lvl2.text|nl2br }}
 									{% else %}
 										<span class="comm-modere">Commentaire modéré</span>
 									{% endif %}
@@ -147,7 +148,7 @@
 											<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl2.id }}"></a>
 											<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl2.id }}"></a>
 										</div>
-										<p class="nb-like">{{ comment_lvl2.nbLike }} likes</p>
+										<p class="nb-like">{{ comment_lvl2.nbLike }} like{% if comment_lvl2.nbLike > 1 %}s{% endif %}</p>
 									</div>
 							</div> <!-- End comm-right -->
 
@@ -157,26 +158,27 @@
 					{% endfor %}
 
 				</ul>
+
 				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<li>
-					<div class="ajout-commentaire respond-comm">
-						<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
-							<img src="	{% if app.user.cover is not empty %}
-											{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
-										{% else %}								
-											{{ asset('_assets/imgs/users/profil-default.jpg') }}
-										{% endif %}" alt="Profil de {{ app.user.username }}"/>
-						</a>
+					<li class="respond-comm">
+						<form action="{{ path("add-comment-lvl2", { id: spoil.id, id_parent: comment_lvl1.id }) }}" method="post" class="ajout-commentaire">
+							<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
+								<img src="	{% if app.user.cover is not empty %}
+												{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+											{% else %}								
+												{{ asset('_assets/imgs/users/profil-default.jpg') }}
+											{% endif %}" alt="Profil de {{ app.user.username }}"/>
+							</a>
 
-						<textarea placeholder="Ecrire un commentaire"></textarea>
-					
-						<input type="submit" value="Envoyer"></input>
-					</div>
+							{{ form_widget(form2.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
 
-					<div style="clear: both;"></div>
-				</li>
-				{% else %}
-					
+							{{ form_rest(form2) }}
+
+							<input type="submit" value="Envoyer">
+						</form>
+
+						<div style="clear: both;"></div>
+					</li>
 				{% endif %}
 			{% endfor %}
 		</ul>
@@ -195,7 +197,13 @@
 	                id: that.attr('data-comment-id')
 	            },
 	            function(data){
-	                that.parent().siblings('.nb-like').text(data + ' likes');
+	            	var plural;
+	            	if(data > 1){
+	            		plural = 's';
+	            	}else{
+	            		plural = '';
+	            	}
+	                that.parent().siblings('.nb-like').text(data + ' like' + plural);
 	                that.parent().html('');
 	            }
 	        );
@@ -207,7 +215,13 @@
 	                id: that.attr('data-comment-id')
 	            },
 	            function(data){
-	                that.parent().siblings('.nb-like').text(data + ' likes');
+	            	var plural;
+	            	if(data > 1){
+	            		plural = 's';
+	            	}else{
+	            		plural = '';
+	            	}
+	                that.parent().siblings('.nb-like').text(data + ' like' + plural);
 	                that.parent().html('');
 	            }
 	        );
