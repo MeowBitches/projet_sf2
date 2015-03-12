@@ -233,7 +233,7 @@ h2 {
 
 
 .nav a {
-	font-family: 'Open sans';
+	font-family: 'Antonio-Bold';
 	display: block;
 	text-align: center;
 	color: #fff;
@@ -395,7 +395,7 @@ h2 {
 	border: #fff solid 1px;
 	overflow: hidden;
 	margin: 0;
-
+	padding: 0;
 }
 
 .nav .image-profil figure img {
@@ -457,6 +457,22 @@ h2 {
 	border-bottom: 10px solid #fff;
 	border-right: 10px solid transparent;
 	border-left: 10px solid transparent;
+}
+
+@media only screen and (max-width: 768px) {
+	.nav .user {
+		display: none;
+	}
+
+	.nav .image-profil figure {
+		position: absolute;
+		top: 10px;
+  		right: 2%;
+	}
+
+	.nav .boite-menu {
+		top: 65px;
+	}
 }
 
 
