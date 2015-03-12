@@ -6,6 +6,7 @@
 	<section class="home-section">
      
      {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+     
    	    <p><span><a href="{{ urlBase }}login">Connectez-vous</a></span> ou <span><a href="{{ urlBase }}register">inscrivez-vous</a></span> pour poster un spoil !</p>
     {% endif %}
      <a href="{{ urlBase }}spoil/{{ spoil.slug }}">

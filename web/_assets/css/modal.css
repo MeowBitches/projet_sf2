@@ -36,12 +36,30 @@ box-shadow: none;
 }
 
 .ajout input[type="text"]{
-  height: 40px;
+  display: inline-block;
+  height: 35px;
+  width: 200px;
+  padding: 5px;
+  font-size: 1.3rem;
+  border: solid 1px #c0c0c0;
 }
 
 .ajout select{
-  height: 40px;
-  width: 169px;
+  height: 35px;
+  width: 200px;
+  border-radius: 0;
+  border: 1px solid #c0c0c0;
+  background: #fff;
+  font-size: 1.3rem;
+}
+
+.ajout select option {
+  border-radius: 0;
+}
+
+.modal .ajout ul {
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .modal .ajout{
@@ -69,25 +87,27 @@ box-shadow: none;
 }
 
 #plus {
-background: #304257;
-border-radius: 50%;
-width: 160px;
-height: 160px;
-margin: 20px;
-padding: 2px 10px;
-/* border: 2px solid #679403; */
-font-size: 20px;
-font-weight: bold;
-color: #fff;
+  background: #304257;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  margin-left: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #fff;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 20px;
 }
 
-.btn-close {
+.modal .btn-close {
   color: #ffffff;
   font-size: 30px;
   text-decoration: none;
   position: absolute;
   right: 15px;
-  top: 4px;
+  top: 0;
 }
 
 .modal:before {
@@ -115,10 +135,10 @@ color: #fff;
   border-radius: 4px;
   margin-left: -200px;
   position: fixed;
-  left: 50%;
+  left: 46%;
   top: -100%;
   z-index: 11;
-  width: 460px;
+  width: 490px;
   -webkit-transform: translate(0, -500%);
   -ms-transform: translate(0, -500%);
   transform: translate(0, -500%);
@@ -155,6 +175,7 @@ color: #fff;
   background-color: #f0f0ed;
   margin-top: 0px;
   padding: 20px 15px;
+  font-size: 1.3rem;
 }
 
 .modal-body2 {
@@ -162,12 +183,13 @@ color: #fff;
 }
 
 .modal-header{
-  padding: 1px 20px;
+  padding: 10px 20px;
   background-color: #212830;
 }
 .modal-header h2 {
   font-size: 20px;
   color: #fefefe;
+  margin: 0;
 }
 /*ADDED TO STOP SCROLLING TO TOP*/
 #close {
@@ -188,15 +210,19 @@ color: #fff;
 
 .file label{
   background-color: #e65354;
+  font-family: "Antonio-Regular", sans-serif;
   color: #fff;
   border-radius: 4px;
-  padding: 10px 10px;
+  padding: 8px 42px;
   cursor: pointer;
   
 }
 
-textarea {
+.modal textarea {
   resize: none;
-  width: 380px;
+  width: 100%;
   height: 70px;
+  border: 1px solid #c0c0c0;
+  font-size: 1.3rem;
+  padding: 5px;
 }
