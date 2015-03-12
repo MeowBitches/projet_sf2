@@ -33,8 +33,12 @@ width: 100%;
 	font-family: 'Antonio-Regular';
 	color: #304257;
 	margin: 0;
-
 }
+
+.home figcaption h4 {
+	font-weight: normal;
+}
+
 .home button {
 	background: #e65354; 
 	font-family: 'Antonio-Regular';
