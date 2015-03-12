@@ -81,7 +81,7 @@
 
 <!-- Modal -->
 <div class="modal" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="top:10%;">
     <div class="modal-header">
       <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
@@ -103,13 +103,14 @@
 			    </li>
 			    <div id="toggle">
 				<li>
-				    <select name="type" id="type">
+				    <select name="type" id="type" placeholder="Type de manga">
+				       <option value="" disabled selected>Type de manga</option>
 			           <option value="shonen">Shonen</option>
 			           <option value="shojo">Shojo</option>
 			           <option value="seinen">Seinen</option>
 			           <option value="Yaoi">Yaoi</option>
        				</select>
-       				<button>Ajouter le manga</button>
+       				<button class="amanga">Ajouter le manga</button>
 			    </li>
 			    <li></li>
 			    </div>
@@ -119,7 +120,7 @@
     				<label>Choisissez un fichier</label>
     			</li>
     			<li>
-			    	<textarea name="spoil" id="spoil"></textarea>
+			    	<textarea name="spoil" id="spoil" placeholder="Ecrivez votre spoil"></textarea>
 			    </li>
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="Ajouter" />
@@ -135,7 +136,7 @@
 {% else %}
 <!-- Modal -->
 <div class="modal" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="top:20%;">
     <div class="modal-header">
       <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
