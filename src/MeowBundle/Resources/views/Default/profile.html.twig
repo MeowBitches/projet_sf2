@@ -7,7 +7,7 @@
 	<section class="profile">
 
 	
-         <div>
+         <div class="detail-profil">
 
            <figure>
            	  <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
@@ -44,12 +44,13 @@
 			
 		
 
-	<h2>Spoils postés</h2>
+
 
     <!-- <div class="cd-gallery">
      <ul id="Container">	 -->
     {% if pagination is not empty %}
     <div class="cd-gallery">
+    	<h2>Spoils postés</h2>
     <ul id="Container">
  
     {% for spoil in pagination %}
