@@ -7,6 +7,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use MeowBundle\Form\CommentType;
+use MeowBundle\Entity\Comment;
 
 class ActionsController extends Controller
 {
@@ -93,5 +95,61 @@ class ActionsController extends Controller
         $this->container->get('doctrine.orm.default_entity_manager')->flush();
 
         return new Response($comment->getNbLike());
+    }
+
+    /**
+     * @Route("/add-comment-lvl1/{id}", name="add-comment-lvl1")
+     */
+    public function addCommentLvlOneAction(Request $request, $id)
+    {
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoil = $repoSpoil->findOneById($id);
+
+        $comment = new Comment();
+        $comment->setAuthor($this->getUser());
+        $comment->setIdSpoil($spoil);
+        $comment->setDate(new \DateTime());
+        $comment->setNbLike(0);
+
+        $form = $this->createForm(new CommentType(), $comment);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $comment = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('view_spoil', array('slug' => $spoil->getSlug())));
+    }
+
+    /**
+     * @Route("/add-comment-lvl2/{id}&{id_parent}", name="add-comment-lvl2")
+     */
+    public function addCommentLvlTwoAction(Request $request, $id, $id_parent)
+    {
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoil = $repoSpoil->findOneById($id);
+
+        $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
+        $parent = $repoComment->findOneById($id_parent);
+
+        $comment = new Comment();
+        $comment->setAuthor($this->getUser());
+        $comment->setIdSpoil($spoil);
+        $comment->setParent($parent);
+        $comment->setDate(new \DateTime());
+        $comment->setNbLike(0);
+
+        $form = $this->createForm(new CommentType(), $comment);
+        $form->handleRequest($request);
+        if ($form->isValid()) {
+            $comment = $form->getData();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+        }
+
+        return $this->redirect($this->generateUrl('view_spoil', array('slug' => $spoil->getSlug())));
     }
 }

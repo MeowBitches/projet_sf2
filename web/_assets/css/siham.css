@@ -1,6 +1,12 @@
 .home section{
 	text-align: center;
 }
+
+.home-section{
+	margin-top: 30px;
+}
+
+
 .home figure {
 	 margin: 0 auto;
      position: relative;
@@ -60,6 +66,7 @@ width: 100%;
     padding: 11px 7px 6px 0;
     position: relative;
     margin:0 21px;
+    cursor: pointer;
 }
 .home .boutons-avis li span {
 	background:#e65354;
@@ -111,6 +118,12 @@ width: 100%;
 }
 .home p span a {
 	color: #fff;
+}
+
+.acc-spoil{
+	display: block;
+	width: 626px;
+	margin: 0 auto;
 }
 
 @media only screen and (max-width:650px) {

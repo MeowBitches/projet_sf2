@@ -1,7 +1,7 @@
 
 $(function(){
 	$(".show-respond").click(function(){
-		$(".respond-comm").css("display","block")
+		$(this).parents('.comment1').next('ul').next('.respond-comm').css("display","block");
 	});
 
 });

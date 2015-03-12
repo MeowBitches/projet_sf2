@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use MeowBundle\Form\CommentType;
 
 class DefaultController extends Controller
 {
@@ -42,7 +43,7 @@ class DefaultController extends Controller
     }
 
     /**
-     * @Route("/spoil/{slug}")
+     * @Route("/spoil/{slug}", name="view_spoil")
      * @Template()
      */
     public function articleAction($slug)
@@ -57,7 +58,15 @@ class DefaultController extends Controller
         $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
         $comments = $repoComment->findBy(array('idSpoil' => $spoil));
 
-        return array('spoil' => $spoil, 'comments' => $comments);
+        $form = $this->createForm(new CommentType());
+
+        $tab = array();
+        foreach($comments as $key=>$comment){
+            $form2 = $this->createForm(new CommentType($key.'_commentform'));
+            $tab[] = $form2->createView();
+        }
+
+        return array('spoil' => $spoil, 'comments' => $comments, 'form' => $form->createView(), 'forms' => $tab);
     }
 
     /**
