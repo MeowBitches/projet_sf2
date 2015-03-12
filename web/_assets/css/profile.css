@@ -43,7 +43,7 @@
 }
 
 .profile .detail-profil label{
-	 margin: 0 15px;
+	 margin: 0px;
 }
 
 .profile .detail-profil ul { 
@@ -82,18 +82,39 @@ margin: 1%;
 
 
 @media only screen and (max-width:1200px){
+	
     .profile .detail-profil ul {
     width: 99%;
 }
+    .profile .detail-profil label {
+    /*display: block;*/
+    /*margin: 11px 0;*/
+}
+    .profile input[type="submit"] {
+    /*margin-left: 68px;*/
+    
+}   
+
+}
+
+
+@media only screen and (max-width:970px){
+	
+
     .profile .detail-profil label {
     display: block;
     margin: 11px 0;
 }
     .profile input[type="submit"] {
-    margin-left: 68px;
-    
+    margin-left: 0px;
+}   
+   .profile .detail-profil input {
+    width: 100%;
+ 
+}   
+
 }
-}
+
 
 
 @media only screen and (max-width:1000px){
