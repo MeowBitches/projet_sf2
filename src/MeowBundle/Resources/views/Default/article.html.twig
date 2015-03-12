@@ -89,7 +89,7 @@
 					<div class="comm-right">
 						<div class="infos-comm">
 							<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
-							<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i:s") }}</p>
+							<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i") }}</p>
 						</div>
 
 						<p class="text-comm">
@@ -100,11 +100,8 @@
 							{% endif %}</p>
 
 						<div class="react-users">
-							{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-							<a class="respond-btn show-respond">Répondre</a>
-							{% else %}
-							<a href="#modal-one" class="respond-btn">Répondre</a>
-							{% endif %}
+							<a class="respond-btn {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}show-respond{% endif %}" {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}href="#modal-one"{% endif %}>Répondre</a>
+							
 							<div class="users-like">
 								<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
 								<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
