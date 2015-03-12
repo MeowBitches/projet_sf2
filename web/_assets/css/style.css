@@ -384,6 +384,10 @@ h2 {
 	color: #fff;
 }
 
+.nav .image-profil {
+	cursor: pointer;
+}
+
 .nav .image-profil figure {
 	width: 42px;
 	height: 42px;

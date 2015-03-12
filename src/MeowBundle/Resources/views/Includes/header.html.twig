@@ -27,7 +27,7 @@
 					{% if app.user.cover is not empty %}
 						{% set coverUser = app.user.cover %}
 					{% else %}
-						{% set coverUser = 'placeholder.svg' %}
+						{% set coverUser = 'profil-default.jpg' %}
 					{% endif %}
 					<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
 				</figure>
