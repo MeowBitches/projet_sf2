@@ -35,16 +35,24 @@
 .pagination{
 	text-align: center;
 	padding-top: 20px;
+	font-size: 0;
+}
+
+.pagination span{
+	font-size: 14px;
+	padding: 4px 9px;
+}
+
+.pagination span + span{
+	margin-left: 3px;
 }
 
 .pagination .current{
-	padding: 4px 9px;
 	background-color: #e65354;
 	color: #fff;
 }
 
 .pagination .page{
-	padding: 4px 9px;
 	background-color: #304257;
 }
 

@@ -19,17 +19,15 @@
 					</td>
 
 					<td class="col-2">
-						<h2>{{ spoil.title }}</h2>
-						<p>{{ spoil.slug }}</p>
-						<p>Par {{ spoil.author.username }}, le {{ spoil.date|date("Y/m/d H:i:s") }}</p>
+						<h2>{{ spoil.manga.name }}</h2>
+						<p>{{ spoil.title }}</p>
+						<p>Par {{ spoil.author.username }}, le {{ spoil.date|date("d F Y")|trans }}</p>
 					</td>
 
 					<td class="col-3">
-						{% if spoil.isPublished == true %}
-							Activé
-						{% else %}
-							Désactivé
-						{% endif %}
+						<p class="btn-active {% if spoil.isPublished == true %} active {% endif %}">Activé</p>
+						<p class="btn-inactive {% if spoil.isPublished == false %} active {% endif %}">Desactivé</p>
+						
 					</td>
 
 				</tr>
@@ -37,31 +35,7 @@
 			</table>
 
 		</div>
-
-
-			<!-- <tr>
-				<td>{{ spoil.id }}</td>
-				<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
-				<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td>
-					
-				</td>
-				<td></td>
-				<td>{{ spoil.nbComments }}</td>
-				<td>{{ spoil.nbSpoil }}</td>
-				<td>{{ spoil.nbFail }}</td>
-				<td>{{ spoil.nbFake }}</td>
-				<td>
-					{% if spoil.isPublished == true %}
-						Activé
-					{% else %}
-						Désactivé
-					{% endif %}
-				</td>
-			</tr> -->
+		
 		{% endfor %}
 
 	{{ knp_pagination_render(pagination) }}
