@@ -9,5 +9,62 @@
 	{% include 'MeowBundle::Includes/header.html.twig' %}
 	{% block content %}{% block fos_user_content %}{% endblock %}{% endblock %}
 	{% include 'MeowBundle::Includes/footer.html.twig' %}
+	<script>
+		$(function(){
+
+			// VOTES
+			$('.vote.spoilAction').click(function(){
+		        var that = $(this);
+		        if(that.attr('data-spoil-id') != ''){
+			        $.post('{{ path("add-one-spoiled") }}',{
+			                id: that.attr('data-spoil-id')
+			            },
+			            function(data){
+			                that.children('span').text(data);
+			                that.attr('data-spoil-id', '');
+			                that.siblings().attr('data-spoil-id', '');
+			                if(that.hasClass('reload')){
+			                	location.reload();
+			                }
+			            }
+			        );
+			    }
+		    });
+		    $('.failAction').click(function(){
+		        var that = $(this);
+		        if(that.attr('data-spoil-id') != ''){
+			        $.post('{{ path("add-one-fail") }}',{
+			                id: that.attr('data-spoil-id')
+			            },
+			            function(data){
+			                that.children('span').text(data);
+			                that.attr('data-spoil-id', '');
+			                that.siblings().attr('data-spoil-id', '');
+			                if(that.hasClass('reload')){
+			                	location.reload();
+			                }
+			            }
+			        );
+			    }
+		    });
+		    $('.fakeAction').click(function(){
+		        var that = $(this);
+		        if(that.attr('data-spoil-id') != ''){
+			        $.post('{{ path("add-one-fake") }}',{
+			                id: that.attr('data-spoil-id')
+			            },
+			            function(data){
+			                that.children('span').text(data);
+			                that.attr('data-spoil-id', '');
+			                that.siblings().attr('data-spoil-id', '');
+			                if(that.hasClass('reload')){
+			                	location.reload();
+			                }
+			            }
+			        );
+			    }
+		    });
+		});
+	</script>
 </body>
 </html>

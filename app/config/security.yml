@@ -20,11 +20,12 @@ security:
     # for specific sections of your app
     firewalls:
         main:
-            pattern: ^/
+            pattern:            ^/
             form_login:
-                provider: main
-            logout:       true
-            anonymous:    true
+                provider:       main
+                use_referer:    true
+            logout:             true
+            anonymous:          true
 
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

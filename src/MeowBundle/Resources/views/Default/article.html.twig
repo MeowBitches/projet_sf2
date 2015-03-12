@@ -17,9 +17,9 @@
      </div>
      <div class="boutons-avis">
      	<ul>
-     		<li>Spoil <span>{{ spoil.nbSpoil }}</span></li>
-            <li>Fail <span>{{ spoil.nbFail }}</span></li>
-            <li>Fake <span>{{ spoil.nbFake }}</span></li>
+     		<li class="vote spoilAction" data-spoil-id="{{ spoil.id }}">Spoil <span>{{ spoil.nbSpoil }}</span></li>
+            <li class="vote failAction" data-spoil-id="{{ spoil.id }}">Fail <span>{{ spoil.nbFail }}</span></li>
+            <li class="vote fakeAction" data-spoil-id="{{ spoil.id }}">Fake <span>{{ spoil.nbFake }}</span></li>
         </ul>    
      </div>	
 
@@ -50,7 +50,7 @@
 
 		<p>Connectez-vous pour pouvoir poster un commentaire.</p>
 
-		<form class="connexion-comm">
+		<form action="{{ path("fos_user_security_check") }}" method="post" class="connexion-comm">
 			<ul>
 				<li>
 				    <label for="username"><i data-icon="7"></i></label>
@@ -61,10 +61,8 @@
 				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
 			    </li>
 				<li>
-			    	<input type="submit" id="_submit" name="_submit"/>
+			    	<input type="submit" id="_submit" name="_submit" value="Connexion" />
 			    </li>
-				
-				<p class="connexion-error">Erreur connexion</p>
 				
 		    </ul>
 		</form>
@@ -105,8 +103,8 @@
 							<a href="#modal-one" class="respond-btn">Répondre</a>
 							{% endif %}
 							<div class="users-like">
-								<a href="" class="like" data-icon="z"></a>
-								<a href="" class="dislike" data-icon="u"></a>
+								<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
+								<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
 							</div>
 							<p class="nb-like">{{ comment_lvl1.nbLike }} likes</p>
 						</div>
@@ -146,8 +144,8 @@
 
 									<div class="react-users">
 										<div class="users-like">
-											<a href="#" class="like" data-icon="z"></a>
-											<a href="#" class="dislike" data-icon="u"></a>
+											<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl2.id }}"></a>
+											<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl2.id }}"></a>
 										</div>
 										<p class="nb-like">{{ comment_lvl2.nbLike }} likes</p>
 									</div>
@@ -188,93 +186,33 @@
 </section>
 
 <script src="{{ asset('_assets/js/respond-com.js') }}"></script>
-
-
-
-	{#<table>
-		<tr>
-			<th>Id</th>
-			<th>Id / nom / catégorie manga</th>
-			<th>Id / pseudo auteur</th>
-			<th>Titre</th>
-			<th>Slug</th>
-			<th>Url image</th>
-			<th>Date et heure</th>
-			<th>Nombre de commentaires</th>
-			<th>Nombre de spoils</th>
-			<th>Nombre de fails</th>
-			<th>Nombre de fakes</th>
-			<th>Publié</th>
-		</tr>
-		<tr>
-			<td>{{ spoil.id }}</td>
-			<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-			<td>{{ spoil.author.id }} / {{ spoil.author.username }}</td>
-			<td>{{ spoil.title }}</td>
-			<td>{{ spoil.slug }}</td>
-			<td>
-				{% if spoil.cover is not empty %}
-					placeholder.jpg
-				{% else %}
-					{{ spoil.cover }}
-				{% endif %}
-			</td>
-			<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
-			<td>{{ spoil.nbComments }}</td>
-			<td>{{ spoil.nbSpoil }}</td>
-			<td>{{ spoil.nbFail }}</td>
-			<td>{{ spoil.nbFake }}</td>
-			<td>
-				{% if spoil.isPublished == true %}
-					Oui
-				{% else %}
-					Non
-				{% endif %}
-			</td>
-		</tr>
-	</table>
-
-	<h1>Commentaires</h1>
-
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Id / pseudo auteur</th>
-			<th>Date et heure</th>
-			<th>Commentaire</th>
-			<th>Nombre de likes</th>
-		</tr>
-		{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
-			<tr>
-				<td>{{ comment_lvl1.id }}</td>
-				<td>{{ comment_lvl1.author.id }} / {{ comment_lvl1.author.username }}</td>
-				<td>{{ comment_lvl1.date|date("Y/m/d H:i:s") }}</td>
-				<td>
-					{% if comment_lvl1.nbLike > -10 %}
-						{{ comment_lvl1.text }}
-					{% else %}
-						Commentaire modéré
-					{% endif %}
-				</td>
-				<td>{{ comment_lvl1.nbLike }}</td>
-			</tr>
-
-			{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
-				<tr>
-					<td>{{ comment_lvl2.id }}</td>
-					<td>{{ comment_lvl2.author.id }} / {{ comment_lvl2.author.username }}</td>
-					<td>{{ comment_lvl2.date|date("Y/m/d H:i:s") }}</td>
-					<td>
-						{% if comment_lvl2.nbLike > -10 %}
-							{{ comment_lvl2.text }}
-						{% else %}
-							Commentaire modéré
-						{% endif %}
-					</td>
-					<td>{{ comment_lvl2.nbLike }}</td>
-				</tr>
-			{% endfor %}
-		{% endfor %}
-	</table> #}
+<script>
+	$(function(){
+		$('.like').click(function(event){
+			event.preventDefault();
+	        var that = $(this);
+	        $.post('{{ path("like-comment") }}',{
+	                id: that.attr('data-comment-id')
+	            },
+	            function(data){
+	                that.parent().siblings('.nb-like').text(data + ' likes');
+	                that.parent().html('');
+	            }
+	        );
+	    });
+	    $('.dislike').click(function(event){
+			event.preventDefault();
+	        var that = $(this);
+	        $.post('{{ path("dislike-comment") }}',{
+	                id: that.attr('data-comment-id')
+	            },
+	            function(data){
+	                that.parent().siblings('.nb-like').text(data + ' likes');
+	                that.parent().html('');
+	            }
+	        );
+	    });
+	});
+</script>
 
 {% endblock %}
