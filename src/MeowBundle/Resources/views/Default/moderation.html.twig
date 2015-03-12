@@ -2,55 +2,70 @@
 
 {% block content %}
 
-	<h1>Spoils</h1>
+<section class="moderation">
 
-	<table>
-		<tr>
-			<th>Id</th>
-			<th>Lien</th>
-			<th>Id / nom / catégorie manga</th>
-			<th>Id / pseudo auteur</th>
-			<th>Titre</th>
-			<th>Slug</th>
-			<th>Url image</th>
-			<th>Date et heure</th>
-			<th>Nombre de commentaires</th>
-			<th>Nombre de spoils</th>
-			<th>Nombre de fails</th>
-			<th>Nombre de fakes</th>
-			<th>Publié</th>
-		</tr>
+	<h1>Modération</h1>
+
 		{% for spoil in pagination %}
-			<tr>
+
+		<div>
+
+			<table>
+				
+				<tr>
+					
+					<td class="col-1">
+						<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
+					</td>
+
+					<td class="col-2">
+						<h2>{{ spoil.title }}</h2>
+						<p>{{ spoil.slug }}</p>
+						<p>Par {{ spoil.author.username }}, le {{ spoil.date|date("Y/m/d H:i:s") }}</p>
+					</td>
+
+					<td class="col-3">
+						{% if spoil.isPublished == true %}
+							Activé
+						{% else %}
+							Désactivé
+						{% endif %}
+					</td>
+
+				</tr>
+
+			</table>
+
+		</div>
+
+
+			<!-- <tr>
 				<td>{{ spoil.id }}</td>
 				<td><a href="{{ urlBase ~ "spoil/" ~ spoil.slug }}">lien</a></td>
 				<td>{{ spoil.manga.id }} / {{ spoil.manga.name }} / {{ spoil.manga.category.name }}</td>
-				<td>{{ spoil.author.id }} / {{ spoil.author.username }}</td>
-				<td>{{ spoil.title }}</td>
-				<td>{{ spoil.slug }}</td>
+				<td></td>
+				<td></td>
+				<td></td>
 				<td>
-					{% if spoil.cover is not empty %}
-						{{ spoil.cover }}
-					{% else %}
-						placeholder.jpg
-					{% endif %}
+					
 				</td>
-				<td>{{ spoil.date|date("Y/m/d H:i:s") }}</td>
+				<td></td>
 				<td>{{ spoil.nbComments }}</td>
 				<td>{{ spoil.nbSpoil }}</td>
 				<td>{{ spoil.nbFail }}</td>
 				<td>{{ spoil.nbFake }}</td>
 				<td>
 					{% if spoil.isPublished == true %}
-						Oui
+						Activé
 					{% else %}
-						Non
+						Désactivé
 					{% endif %}
 				</td>
-			</tr>
+			</tr> -->
 		{% endfor %}
-	</table>
 
 	{{ knp_pagination_render(pagination) }}
+
+</section>
 
 {% endblock %}

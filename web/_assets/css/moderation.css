@@ -1,0 +1,62 @@
+.moderation{
+	width: 950px;
+	height: auto;
+	background-color: #fff;
+	margin: 0 auto;
+	padding: 30px 70px;
+}
+
+.moderation table, td, tr{
+	border: 1px solid #000;
+	margin-top: 20px;
+}
+
+.moderation img{
+	width: 310px;
+	height: 175px;
+}
+
+.col-1{
+	width: 310px;
+	height: 175px;
+}
+
+.col-2{
+	width: 360px;
+	height: 175px;
+	padding: 15px;
+}
+
+.col-3{
+	width: 130px;
+	height: 175px;
+}
+
+.pagination{
+	text-align: center;
+	padding-top: 20px;
+}
+
+.pagination .current{
+	padding: 4px 9px;
+	background-color: #e65354;
+	color: #fff;
+}
+
+.pagination .page{
+	padding: 4px 9px;
+	background-color: #304257;
+}
+
+.pagination .page a{
+	color: #fff;
+}
+
+.pagination .next, .previous{
+	display: none;
+}
+
+.pagination .last, .first{
+	display: none;
+}
+
