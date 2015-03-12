@@ -15,10 +15,10 @@ class CommentType extends AbstractType
     }
 
     public function __constructor($formname)
-  {
-      $this->name = $formname;
-      parent::__construct();
-  }
+    {
+        $this->name = $formname;
+        parent::__construct();
+    }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {

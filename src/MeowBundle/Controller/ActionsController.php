@@ -111,6 +111,9 @@ class ActionsController extends Controller
         $comment->setDate(new \DateTime());
         $comment->setNbLike(0);
 
+        $nbComments = $spoil->getNbComments();
+        $spoil->setNbComments($nbComments + 1);
+
         $form = $this->createForm(new CommentType(), $comment);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -140,6 +143,9 @@ class ActionsController extends Controller
         $comment->setParent($parent);
         $comment->setDate(new \DateTime());
         $comment->setNbLike(0);
+        
+        $nbComments = $spoil->getNbComments();
+        $spoil->setNbComments($nbComments + 1);
 
         $form = $this->createForm(new CommentType(), $comment);
         $form->handleRequest($request);
