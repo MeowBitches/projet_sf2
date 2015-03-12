@@ -20,33 +20,40 @@
 				<a href="#modal-one" class="btn btn-big">Ajouter un spoil</a>
 			</li>
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				<div>
-					<h2>{{ app.user.username }}</h2>
-					<figure>
-						{% if app.user.cover is not empty %}
-							{% set coverUser = app.user.cover %}
-						{% else %}
-							{% set coverUser = 'placeholder.svg' %}
-						{% endif %}
-						<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
-						<figcaption>
-							<img src="{% if is_granted("ROLE_ADMIN") %}{{ asset('_assets/imgs/admin.svg') }}{% else %}{{ asset('_assets/imgs/user.svg') }}{% endif %}">
-							<ul>
-								<li role="presentation">
-									<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
-								</li>
-								{% if is_granted("ROLE_ADMIN") %}
-									<li role="presentation">
-										<a href="{{ urlBase }}admin/moderation/">Modérer</a>
-									</li>
-								{% endif %}
-								<li role="presentation">
-									<a href="{{ urlBase }}logout">Se déconnecter</a>
-								</li>
-							</ul>
-						</figcaption>
-					</figure>
-				</div>
+				
+			<li class="user"><p>{{ app.user.username }}</p></li>
+			<li class="image-profil">
+				<figure>
+					{% if app.user.cover is not empty %}
+						{% set coverUser = app.user.cover %}
+					{% else %}
+						{% set coverUser = 'placeholder.svg' %}
+					{% endif %}
+					<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
+				</figure>
+			</li>
+				
+			<div class="boite-menu hidden">	
+				<img src="{% if is_granted("ROLE_ADMIN") %}{{ asset('_assets/imgs/chat-admin.svg') }}{% else %}{{ asset('_assets/imgs/chat-user.svg') }}{% endif %}">
+				<ul class="boite-sous-menu">
+					<li class="item-menu">
+						<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
+					{% if is_granted("ROLE_ADMIN") %}
+						<li class="item-menu" >
+							<a href="{{ urlBase }}admin/moderation/">Modérer</a>
+						</li>
+					{% endif %}
+					<li class="item-menu">
+						<a href="{{ urlBase }}logout">Se déconnecter</a>
+					</li>
+				</ul>
+				<div class="arrow-boite"></div>
+			</div>
+
+			
+				
+			
+				
 			{% else %}
 				<li role="presentation" class="btn-meow1 {% if currentUrl == urlBase ~ "connexion/" %}active{% endif %}">
 					<a href="{{ urlBase }}login" data-icon="y">Se connecter</a>
@@ -58,6 +65,8 @@
 		</ul>
 	</div>
 </nav>
+
+<script src="{{ asset('_assets/js/menu-profil.js') }}"></script>
 
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -79,9 +88,11 @@
 
 </script>
 
+
+
 <!-- Modal -->
 <div class="modal" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="top:10%;">
     <div class="modal-header">
       <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
@@ -103,13 +114,14 @@
 			    </li>
 			    <div id="toggle">
 				<li>
-				    <select name="type" id="type">
+				    <select name="type" id="type" placeholder="Type de manga">
+				       <option value="" disabled selected>Type de manga</option>
 			           <option value="shonen">Shonen</option>
 			           <option value="shojo">Shojo</option>
 			           <option value="seinen">Seinen</option>
 			           <option value="Yaoi">Yaoi</option>
        				</select>
-       				<button>Ajouter le manga</button>
+       				<button class="amanga">Ajouter le manga</button>
 			    </li>
 			    <li></li>
 			    </div>
@@ -119,7 +131,7 @@
     				<label>Choisissez un fichier</label>
     			</li>
     			<li>
-			    	<textarea name="spoil" id="spoil"></textarea>
+			    	<textarea name="spoil" id="spoil" placeholder="Ecrivez votre spoil"></textarea>
 			    </li>
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="Ajouter" />
@@ -135,7 +147,7 @@
 {% else %}
 <!-- Modal -->
 <div class="modal" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog" style="top:20%;">
     <div class="modal-header">
       <h2>Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->

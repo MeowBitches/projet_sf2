@@ -277,7 +277,7 @@ h2 {
 		display: block!important;
 		width: auto;
 		margin: 0;
-		padding: 11px 0 0 0;
+		padding: 8px 0 0 0;
 		border-bottom: 0;
 
 	}
@@ -296,6 +296,7 @@ h2 {
 		padding-right: 10px;
 		display: table-cell;
 		padding-top: 3px;
+		vertical-align: middle;
 	}
 
 	.nav li.active {
@@ -373,15 +374,93 @@ h2 {
 
 
 
-
-
-
-
-
-
-
-
 /************* FIN NAV **************/
+
+/************* Boite connexion menu **************/
+
+.nav .user p {
+	font-family: "Antonio-Bold", sans-serif;
+	font-size: 16px;
+	color: #fff;
+}
+
+.nav .image-profil figure {
+	width: 42px;
+	height: 42px;
+	border-radius: 30px;
+	border: #fff solid 1px;
+	overflow: hidden;
+	margin: 0;
+
+}
+
+.nav .image-profil figure img {
+	width: 100%;
+
+}
+
+.nav .boite-menu {
+	position: absolute;
+	background: #fff;
+	border: #cccccc 1px solid;
+	width: 210px;
+	padding: 15px;
+	top: 75px;
+	right: 13px;
+	color: #212830;
+}
+
+.nav .boite-menu.hidden {
+	display: none;
+}
+
+.nav .boite-menu.showed {
+	display: block;
+}
+
+.nav .boite-menu img {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	width: 40px;
+}
+
+.nav .boite-menu .boite-sous-menu {
+	padding: 0;
+	margin-left: 55px;
+	padding-left: 10px;
+	border-left: 1px solid #c0c0c0;
+}
+
+.nav .boite-menu .item-menu {
+	display: table;
+	padding: 0;
+}
+
+.nav .boite-menu .item-menu a {
+	color: #212830;
+	font-size: 1.3rem;
+  	padding: 5px;
+}
+
+.arrow-boite {
+	position: absolute;
+	top: -10px;
+  	right: 7px;
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #fff;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+}
+
+
+
+
+/************* End Boite connexion menu **************/
+
+
 
 
 /*********** Test pour Audrey ************/
