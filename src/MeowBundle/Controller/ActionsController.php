@@ -60,4 +60,38 @@ class ActionsController extends Controller
 
         return new Response($spoil->getNbFake());
     }
+
+    /**
+     * @Route("/like-comment", name="like-comment")
+     */
+    public function likeAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
+        $comment = $repoComment->findOneById($id);
+
+        $nbLike = $comment->getNbLike();
+        $comment->setNbLike($nbLike + 1);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        return new Response($comment->getNbLike());
+    }
+
+    /**
+     * @Route("/dislike-comment", name="dislike-comment")
+     */
+    public function dislikeAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $repoComment = $this->container->get('doctrine')->getRepository('MeowBundle:Comment');
+        $comment = $repoComment->findOneById($id);
+
+        $nbLike = $comment->getNbLike();
+        $comment->setNbLike($nbLike - 1);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        return new Response($comment->getNbLike());
+    }
 }
