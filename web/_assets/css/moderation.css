@@ -1,9 +1,11 @@
 .moderation{
-	width: 950px;
+	max-width: 1000px;
 	height: auto;
 	background-color: #fff;
 	margin: 0 auto;
 	padding: 30px 70px;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc; 
 }
 
 .moderation table, td, tr{
@@ -43,6 +45,10 @@
 
 .col-3 p{
 	font-family: 'OpenSans-Semibold'
+}
+
+.col-3 a{
+	display: block;
 }
 
 .pagination{
@@ -89,11 +95,8 @@
 	width: 15px;
 	height: 15px;
 	margin-left: 10px;
-	color: #000;
 	display: inline-block;
-	text-align: center;
-	vertical-align: bottom;
-	line-height: 20px;
+	vertical-align: middle;
 }
 
 .btn-active.active{
@@ -107,18 +110,79 @@
 	width: 15px;
 	height: 15px;
 	margin-left: 10px;
-	color: #000;
 	display: inline-block;
-	text-align: center;
-	vertical-align: bottom;
-	line-height: 20px;
+	vertical-align: middle;
 }
 
 .btn-inactive.active{
 	background: #e65354;
 }
 
-.moderation label {
-	display: block;
+.moderation span {
+	margin-right: 5px;
 }
 
+/*@media only screen and (max-width:650px) {
+
+	.moderation{
+		background-color: red;
+	}
+	
+}
+
+@media only screen and (max-width:490px) {
+
+	.moderation{
+		background-color: green;
+	}
+	
+}*/
+
+
+table, td, th { 
+   border-collapse: collapse;
+}
+ 
+ 
+th { border-bottom-width: 2px; }
+tr:nth-child(even){ background-color: #eee; }
+ 
+ 
+@media (max-width: 768px) {
+
+	table{
+		width: 80%;
+		margin: 0 auto;
+	}
+
+	.col-1{
+		height: 100%;
+	}
+
+	.col-2{
+		height: 100%;
+	}
+   
+	.col-3{
+		height: 100%;
+	}
+
+   tr {
+      display: table;
+      width: 100%;
+   }
+   th {
+      font-size: 0;
+      border: none;
+      visibility: hidden;
+   }
+   td, th { display: table-row; text-align: center; }
+   td:before {
+      content: attr(data-headers);
+      display: table-cell;     
+   }
+
+   .moderation {
+  	  width: 100%;
+	}
+}
