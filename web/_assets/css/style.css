@@ -607,7 +607,7 @@ p.connexion-error {
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	width:1000px;
+	max-width:1000px;
 	margin: 0 auto;
 }
 
@@ -625,7 +625,7 @@ p.connexion-error {
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	width:1000px;
+	max-width:1000px;
 	margin: 0 auto;
 }		
 
