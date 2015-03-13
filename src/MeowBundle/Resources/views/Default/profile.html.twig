@@ -1,5 +1,7 @@
 {% extends 'MeowBundle::layout.html.twig' %}
 
+{% block bodyClass %}id="profile"{% endblock %}
+
 {% block content %}
 
 
@@ -10,7 +12,15 @@
     <div class="detail-profil">
 
         <figure>
-       	  	<img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
+       	  	<!-- <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt=""> -->
+            <img src="	{% if app.user.cover is not empty %}
+												{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+											{% else %}								
+												{{ asset('_assets/imgs/users/profil-default.jpg') }}
+											{% endif %}" alt="Profil de {{ app.user.username }}"/>
+							
+
+
        	 	<!--  <input type="file" name="img" value="Modifier"> -->
         </figure>
        
