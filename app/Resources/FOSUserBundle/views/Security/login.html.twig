@@ -16,6 +16,7 @@
 				    <label for="password"><i data-icon="r"></i></label>
 				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
 			    </li>
+			    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 			    </li>

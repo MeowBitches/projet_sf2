@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use MeowBundle\Form\CommentType;
 use MeowBundle\Entity\Comment;
 use MeowBundle\Entity\Manga;
+use MeowBundle\Entity\Spoil;
 
 class ActionsController extends Controller
 {
@@ -191,5 +192,13 @@ class ActionsController extends Controller
         }
 
         return new JsonResponse(array('mangas' => $mangasResult));
+    }
+
+    /**
+     * @Route("/add-spoil/", name="add-spoil")
+     */
+    public function addSpoilAction(Request $request)
+    {
+        
     }
 }
