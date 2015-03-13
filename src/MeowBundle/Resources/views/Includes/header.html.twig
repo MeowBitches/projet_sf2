@@ -110,24 +110,24 @@
 		<form action="" method="post">
 			<ul>
 				<li>
-				    <input type="text" name="manga" placeholder="Nom du manga" /><a id="plus" href="#">+</a>
+				    <input type="text" id="search" name="manga" placeholder="Nom du manga" /><a id="plus" href="#">+</a>
 			    </li>
 			    <div id="toggle">
-				<li>
-				    <select name="type" id="type" placeholder="Type de manga">
-				       <option value="" disabled selected>Type de manga</option>
-			           <option value="shonen">Shonen</option>
-			           <option value="shojo">Shojo</option>
-			           <option value="seinen">Seinen</option>
-			           <option value="Yaoi">Yaoi</option>
-       				</select>
-       				<button class="amanga">Ajouter le manga</button>
-			    </li>
+					<li>
+					    <select name="type" id="type" placeholder="Type de manga">
+					       <option value="0" disabled selected>Type de manga</option>
+					       {% for category in categories %}
+					           <option value="{{ category.id }}">{{ category.name|title }}</option>
+				           {% endfor %}
+	       				</select>
+	       				<button class="amanga">Ajouter le manga</button>
+	       				<p id="error_addManga"></p>
+				    </li>
 			    </div>
 			    <li class="file">
 			    	<input type="hidden" name="MAX_FILE_SIZE" value="" />
     				<input id="file" type="file" name="mon_fichier" id="mon_fichier" />
-    				<label>Choisissez un fichier</label>
+    				<label>Ajoutez une photo</label>
     			</li>
     			<li>
 			    	<textarea name="spoil" id="spoil" placeholder="Ecrivez votre spoil"></textarea>
@@ -144,6 +144,62 @@
     </div>
   </div>
 </div>
+
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script>
+	$(function(){
+		var list = [
+			{% for manga in mangas %}
+				'{{ manga.name|title }}',
+			{% endfor %}
+		];
+		$('#search').autocomplete({
+			source: list
+		});
+		$('#search').keyup(function(){
+			if($.inArray($('#search').val(),list) !== -1){
+				$('#plus').hide();
+				$('#toggle').hide(400);
+	      		return false;
+			}else{
+				$('#plus').show();
+			}
+		});
+		$('.ui-autocomplete').click(function(){
+			$('#plus').hide();
+			$('#toggle').hide(400);
+      		return false;
+		});
+		$('.amanga').click(function(e){
+			e.preventDefault();
+	        if($('#search').val() != '' && $('#type option:selected').val() != 0){
+		        $.post('{{ path("add-manga") }}',{
+		                name: 	$('#search').val(),
+		                id: 	$('#type option:selected').val()
+		            },
+		            function(data){
+		            	list = [];
+		            	for (var i in data.mangas) {
+		            		list[i] = data.mangas[i].name;
+		            	}
+		            	$('#search').autocomplete({
+							source: list
+						});
+		                $('#search').attr('disabled', 'disabled');
+		                $('#plus').hide();
+						$('#toggle').hide(400);
+			      		return false;
+		            }
+		        );
+		    }else{
+		    	$('#error_addManga').text('Veuillez renseigner le nom et la catégorie de votre manga.');
+		    	return false;
+		    }
+	    });
+	});
+</script>
 
 {% else %}
 <!-- Modal -->

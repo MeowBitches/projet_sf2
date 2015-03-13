@@ -7,8 +7,10 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use MeowBundle\Form\CommentType;
 use MeowBundle\Entity\Comment;
+use MeowBundle\Entity\Manga;
 
 class ActionsController extends Controller
 {
@@ -157,5 +159,37 @@ class ActionsController extends Controller
         }
 
         return $this->redirect($this->generateUrl('view_spoil', array('slug' => $spoil->getSlug())));
+    }
+
+    /**
+     * @Route("/add-manga/", name="add-manga")
+     */
+    public function addMangaAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $name = $request->get('name', null);
+
+        $repoCategory = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $category = $repoCategory->findOneById($id);
+
+        $manga = new Manga();
+        $manga->setName($name);
+        $manga->setCategory($category);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->persist($manga);
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        $repoManga = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoManga->findAll();
+        $mangasResult = array();
+    
+        foreach ($mangas as $manga) {
+            $mangasResult[] = array(
+                'id' => $manga->getId(),
+                'name' => $manga->getName()
+            );
+        }
+
+        return new JsonResponse(array('mangas' => $mangasResult));
     }
 }
