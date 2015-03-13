@@ -33,8 +33,12 @@ width: 100%;
 	font-family: 'Antonio-Regular';
 	color: #304257;
 	margin: 0;
-
 }
+
+.home figcaption h4 {
+	font-weight: normal;
+}
+
 .home button {
 	background: #e65354; 
 	font-family: 'Antonio-Regular';
@@ -56,26 +60,32 @@ width: 100%;
     padding-left: 0;
     max-width: 632px;
 }
-.home .boutons-avis li { 
+
+.home .boutons-avis li {
+	display: inline-table;	
+	font-family: 'Antonio-Regular';
+	margin: 0 10px; 
+}
+
+.home .boutons-avis li p { 
 	background: #304257;
-	display: inline-table;
-	font-family: 'Antonio-Regular'; 
-    border-radius: 4px;
-    width: 115px;
+	display: inline-block;
+    border-radius: 4px 0 0 4px;
+    width: 103px;
     color: #fff;
+    margin: 0;
     padding: 11px 7px 6px 0;
-    position: relative;
-    margin:0 21px;
     cursor: pointer;
+    font-size: 16px;
+    
 }
 .home .boutons-avis li span {
+	display: inline-block;
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
 	color: #fff;
-	padding: 12px 9px 5px;
-	position: absolute;
-    right: 0;
-    top: 0;
+	padding: 11px 11px 6px 9px;
+	font-size: 16px;
 }
 
 .home .infos-spoiler {
@@ -149,6 +159,8 @@ width: 100%;
 		margin: 13px auto;
 		width: 200px;
 	}
+
+
 	.home p {
 		font-size: 1em;
 		margin-top: 28px;

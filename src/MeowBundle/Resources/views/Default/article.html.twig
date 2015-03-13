@@ -1,4 +1,5 @@
 {% extends 'MeowBundle::layout.html.twig' %}
+{% block bodyClass %}id="articles"{% endblock %}
 
 {% block content %}
 
@@ -17,9 +18,9 @@
      </div>
      <div class="boutons-avis">
      	<ul>
-     		<li class="vote spoilAction" data-spoil-id="{{ spoil.id }}">Spoil <span>{{ spoil.nbSpoil }}</span></li>
-            <li class="vote failAction" data-spoil-id="{{ spoil.id }}">Fail <span>{{ spoil.nbFail }}</span></li>
-            <li class="vote fakeAction" data-spoil-id="{{ spoil.id }}">Fake <span>{{ spoil.nbFake }}</span></li>
+     		<li class="vote spoilAction" data-spoil-id="{{ spoil.id }}"><p>Spoil</p><span>{{ spoil.nbSpoil }}</span></li>
+            <li class="vote failAction" data-spoil-id="{{ spoil.id }}"><p>Fail</p><span>{{ spoil.nbFail }}</span></li>
+            <li class="vote fakeAction" data-spoil-id="{{ spoil.id }}"><p>Fake</p><span>{{ spoil.nbFake }}</span></li>
         </ul>    
      </div>	
 

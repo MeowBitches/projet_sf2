@@ -135,6 +135,8 @@
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="Ajouter" />
 			    </li>
+
+			    <div style="clear:both;"></div>
 		    </ul>
 		</form>
 		</section>
@@ -148,12 +150,12 @@
 <div class="modal" id="modal-one" aria-hidden="true">
   <div class="modal-dialog" style="top:20%;">
     <div class="modal-header">
-      <h2>Ajouter un spoil</h2>
+      <h2>Se connecter</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
     </div>
     <div class="modal-body">
 
-    	<p class="imp">Connectez-vous pour poster un spoil</p>
+    	<p class="imp">Connectez-vous pour poster un spoil ou un commentaire</p>
 
 		<section class="connexion connexion2" >
 		<form action="{{ path("fos_user_security_check") }}" method="post">

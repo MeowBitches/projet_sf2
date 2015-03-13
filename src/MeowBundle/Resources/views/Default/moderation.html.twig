@@ -1,5 +1,5 @@
 {% extends 'MeowBundle::layout.html.twig' %}
-
+{% block bodyClass %} id="moderation" {% endblock %}
 {% block content %}
 
 <section class="moderation">
@@ -25,9 +25,12 @@
 					</td>
 
 					<td class="col-3">
-						<p class="btn-active {% if spoil.isPublished == true %} active {% endif %}">Activé</p>
-						<p class="btn-inactive {% if spoil.isPublished == false %} active {% endif %}">Desactivé</p>
-						
+						<p><a href="" class="btn-active {% if spoil.isPublished == true %} active {% endif %}">Activé</a></p>
+						<p><a href="" class="btn-inactive {% if spoil.isPublished == false %} active {% endif %}">Desactivé</a></p>
+						<!-- <form>
+						<label><input type="radio" name="activation" value="active"> Activé</label>
+						<label><input type="radio" name="activation" value="inactive"> Désactivé</label>
+						</form> -->
 					</td>
 
 				</tr>
@@ -35,7 +38,7 @@
 			</table>
 
 		</div>
-		
+
 		{% endfor %}
 
 	{{ knp_pagination_render(pagination) }}
