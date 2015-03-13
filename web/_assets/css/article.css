@@ -77,37 +77,42 @@
 }
 
 .articles .boutons-avis li { 
-	background: #304257;
-	display: block;
-	font-family: 'Antonio-Regular'; 
-    border-radius: 4px;
-    width: 115px;
-    color: #fff;
-    padding: 13px 7px 8px 0;
-    position: relative;
-    margin: 13px auto;
-	width: 200px;
-    text-align: center;
+	display: inline-table;	
+	font-family: 'Antonio-Regular';
+	margin: 0 10px; 
 }
 
-
-@media only screen and (min-width: 490px) {
-	.articles .boutons-avis ul li {
-		display: inline-block;
-		margin: 0 4%;
-		width: 115px;
-	}
+.articles .boutons-avis li p { 
+	background: #304257;
+	display: inline-block;
+    border-radius: 4px 0 0 4px;
+    width: 103px;
+    color: #fff;
+    margin: 0;
+    padding: 11px 7px 6px 0;
+    cursor: pointer;
+    font-size: 16px;
+    
 }
 
 .articles .boutons-avis li span {
+	display: inline-block;
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
 	color: #fff;
-	padding: 13px 9px 8px;
-	position: absolute;
-    right: 0;
-    top: 0;
+	padding: 11px 11px 6px 9px;
+	font-size: 16px;
 }
+
+
+@media only screen and (max-width: 490px) {
+	.articles .boutons-avis li{
+		display: block;
+		margin: 13px auto;
+		width: 200px;
+	}
+}
+
 
 .articles p.nb-commentaire {
 	font-family: "Open sans";
@@ -335,6 +340,8 @@
 .articles .respond-comm textarea {
 	width: 86%;
 }
+
+
 
 
 @media only screen and (min-width: 600px) {

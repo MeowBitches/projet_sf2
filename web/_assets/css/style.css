@@ -418,9 +418,6 @@ h2 {
 	display: none;
 }
 
-.nav .boite-menu.showed {
-	display: block;
-}
 
 .nav .boite-menu img {
 	position: absolute;
@@ -599,10 +596,38 @@ p.connexion-error {
 #footer p {
 	text-align: center;
 	font-size: 1em;
-	padding: 42px 0px 10px;
+	padding: 10px 0px 10px;
 	margin: 0;
+	padding-top: 30px;
 	font-family: "Antonio";
 }
+
+#articles footer {
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	width:1000px;
+	margin: 0 auto;
+}
+
+#profile footer {
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	max-width:1000px;
+	margin: 0 auto;
+}
+
+#moderation footer {
+	background: #fff;
+	border-left: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	width:1000px;
+	margin: 0 auto;
+}		
 
 .articles footer {
 	backgound-color: #212830;

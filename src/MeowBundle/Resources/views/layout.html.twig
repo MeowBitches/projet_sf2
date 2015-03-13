@@ -5,7 +5,7 @@
 	{% set currentUrl = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{% include 'MeowBundle::Includes/head.html.twig' %}
 </head>
-<body {% if currentUrl == urlBase %} class="home" {% endif %}>
+<body {% block bodyClass %}{% endblock %}>
 	{% include 'MeowBundle::Includes/header.html.twig' %}
 	{% block content %}{% block fos_user_content %}{% endblock %}{% endblock %}
 	{% include 'MeowBundle::Includes/footer.html.twig' %}

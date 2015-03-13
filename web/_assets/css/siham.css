@@ -69,7 +69,7 @@ width: 100%;
 
 .home .boutons-avis li p { 
 	background: #304257;
-	float: left;
+	display: inline-block;
     border-radius: 4px 0 0 4px;
     width: 103px;
     color: #fff;
@@ -80,7 +80,7 @@ width: 100%;
     
 }
 .home .boutons-avis li span {
-	float: left;
+	display: inline-block;
 	background:#e65354;
 	border-radius: 0px 4px 4px 0; 
 	color: #fff;
@@ -159,6 +159,8 @@ width: 100%;
 		margin: 13px auto;
 		width: 200px;
 	}
+
+
 	.home p {
 		font-size: 1em;
 		margin-top: 28px;
