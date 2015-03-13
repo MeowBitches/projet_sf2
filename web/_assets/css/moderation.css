@@ -14,22 +14,34 @@
 .moderation img{
 	width: 310px;
 	height: 175px;
+	vertical-align: middle;
 }
 
 .col-1{
 	width: 310px;
 	height: 175px;
+	background-color: #000;
 }
 
 .col-2{
 	width: 360px;
 	height: 175px;
-	padding: 15px;
+	padding: 0px 0px 45px 15px;
+}
+
+.col-2 p{
+	font-family: 'OpenSans-Regular';
+	font-size: 13px;
 }
 
 .col-3{
 	width: 130px;
 	height: 175px;
+	font-size: 14px;
+}
+
+.col-3 p{
+	font-family: 'OpenSans-Semibold'
 }
 
 .pagination{
@@ -56,15 +68,51 @@
 	background-color: #304257;
 }
 
-.pagination .page a{
+.pagination a{
 	color: #fff;
 }
 
-.pagination .next, .previous{
-	display: none;
+.pagination .next, .previous {
+	background-color: #304257;
+
 }
 
 .pagination .last, .first{
-	display: none;
+	background-color: #304257;
 }
 
+.btn-active{
+	background: #fff;
+	border-radius: 50%;
+	border: 3px solid #0eac4d;
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	vertical-align: bottom;
+	line-height: 20px;
+}
+
+.btn-active .active{
+	background: #0eac4d;
+}
+
+.btn-inactive{
+	background: #fff;
+	border-radius: 50%;
+	border: 3px solid #e65354;
+	width: 15px;
+	height: 15px;
+	margin-left: 10px;
+	color: #000;
+	display: inline-block;
+	text-align: center;
+	vertical-align: bottom;
+	line-height: 20px;
+}
+
+.btn-inactive .active{
+	background: #e65354;
+}

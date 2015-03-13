@@ -90,7 +90,7 @@ class DefaultController extends Controller
         $pagination = $paginator->paginate(
             $query,
             $request->query->get('page', 1),
-            10
+            12
         );
 
         return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination));
@@ -110,7 +110,7 @@ class DefaultController extends Controller
         $pagination = $paginator->paginate(
             $query,
             $request->query->get('page', 1),
-            10
+            5
         );
 
         return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination));
