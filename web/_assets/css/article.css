@@ -45,6 +45,7 @@
 	max-width: 600px;
 	color: #5b5b5b;
 	margin: 8px auto;
+	font-size: 1.3rem;
 }
 
 .articles p:before {
@@ -60,7 +61,7 @@
 }
 
 .articles .infos-spoiler p span {
-	font-size: 1.3rem;
+	font-size: 1.2rem;
 	color: #acacac;
 }
 
@@ -181,6 +182,8 @@
 	margin-left: 80px;
 	padding: 7px;
 	resize: none;
+	font-size: 1.3rem;
+	border: 1px solid #c0c0c0;
 }
 
 
@@ -316,6 +319,7 @@
 	color: #5b5b5b;
 	font-size: 1.3rem;
 	margin: 0;
+	margin-left: 8px;
 }
 
 .show-respond {

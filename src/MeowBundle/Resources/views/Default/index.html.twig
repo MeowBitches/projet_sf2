@@ -23,9 +23,10 @@
      </a>
      <div class="boutons-avis">
      	<ul>
-     		<li class="vote reload spoilAction" data-spoil-id="{{ spoil.id }}">Spoil <span>{{ spoil.nbSpoil }}</span></li>
-            <li class="vote reload failAction" data-spoil-id="{{ spoil.id }}">Fail <span>{{ spoil.nbFail }}</span></li>
-            <li class="vote reload fakeAction" data-spoil-id="{{ spoil.id }}">Fake <span>{{ spoil.nbFake }}</span></li>
+     		<li class="vote reload spoilAction" data-spoil-id="{{ spoil.id }}"><p>Spoil</p><span>{{ spoil.nbSpoil }}</span></li>
+            <li class="vote reload failAction" data-spoil-id="{{ spoil.id }}"><p>Fail</p><span>{{ spoil.nbFail }}</span></li>
+            <li class="vote reload fakeAction" data-spoil-id="{{ spoil.id }}"><p>Fake</p><span>{{ spoil.nbFake }}</span></li>
+            
         </ul>    
      </div>	
      <button id="refresh">Me spoiler un manga</button>

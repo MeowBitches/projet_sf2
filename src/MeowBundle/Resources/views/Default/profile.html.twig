@@ -4,97 +4,92 @@
 
 
 
-	<section class="profile">
+<section class="profile">
 
-	
-         <div class="detail-profil">
 
-           <figure>
-           	  <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
-           	 <!--  <input type="file" name="img" value="Modifier"> -->
-           </figure>
-           
-           <ul>
-           	  <li data-icon="1">{{ user.username }}</li>
-         	  <li>{{ user.email }}</li>
-         	  <li>Score : {% set score = 0 %}
+    <div class="detail-profil">
+
+        <figure>
+       	  	<img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt="">
+       	 	<!--  <input type="file" name="img" value="Modifier"> -->
+        </figure>
+       
+       <ul>
+       	  	<li data-icon="1">{{ user.username }}</li>
+     	  	<li>{{ user.email }}</li>
+     	  	<li>Score : {% set score = 0 %}
 				{% for spoil in pagination %}
-					{% set score = score + spoil.nbSpoil %}
+				{% set score = score + spoil.nbSpoil %}
 				{% endfor %}
 				{{ score }}
-			  </li>
-			  <li>Changer de mot de passe     
-				
+		  	</li>
+		  	
+		  	<li>Changer de mot de passe     
+			
 				<div>
-				<label for="username">
-				  <input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
-				</label>
-			    <label for="password">
-				   <input type="password" placeholder="Confirmation" required="required" name="" id="">
-				</label>
-			    <input type="submit" name="_submit" id="_submit" value="Valider">
+					<label for="username">
+					  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
+					</label>
+				    <label for="password">
+					   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
+					</label>
+				    <input type="submit" name="_submit" id="_submit" value="Valider">
 			     </div>
-			  </li>
-		    </ul>
+			</li>
+	    </ul>
 
-         </div>	
+    </div>	<!-- END DETAIL PROFIL -->
 
 		
 			
 			
-			
-			
-		
+    <ul id="Container">	 
 
-
-
-    <!-- <div class="cd-gallery">
-     <ul id="Container">	 -->
     {% if pagination is not empty %}
     <div class="cd-gallery">
     	<h2>Spoils postés</h2>
-    <ul id="Container">
+    	<ul id="Container">
  
     {% for spoil in pagination %}
-    
-        
          
-           <li class="">
-			  <a href="{{ urlBase }}spoil/{{ spoil.slug }}">
-			  <figure>
-				<div class="bloc-image">
-				   <img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
-				</div>
-				   <figcaption>
-				     <p class="titre-manga">{{ spoil.manga.name|title }}</p>
-						<div class="infos-spoils">
-						  <p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
-						  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
+            <li class="">
+			  	<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
+				  	<figure>
+						<div class="bloc-image">
+						   <img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
 						</div>
-						<div style="clear:both;"></div>
-						  <p class="spoil">{{ spoil.title }}</p>
-						  <p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
-					</figcaption>
-			   </figure>
-			   </a>
+					   <figcaption>
+					     <p class="titre-manga">{{ spoil.manga.name|title }}</p>
+							<div class="infos-spoils">
+							  <p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
+							  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
+							</div>
+							<div style="clear:both;"></div>
+							  <p class="spoil">{{ spoil.title }}</p>
+							  <p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
+						</figcaption>
+				   </figure>
+			    </a>
 			</li>
-
-		
 
       
      {% endfor %}
 
-</ul>
-</div>
-</section>
+		</ul>
+	</div> {# END CD-GALLERY #}
+
 
 {% else %}
 
 <p>Aucun spoil posté.</p>
-    
+
+
+
 {% endif %}
 
 {{ knp_pagination_render(pagination) }}
+
+</section>
 
 {% endblock %}
 
