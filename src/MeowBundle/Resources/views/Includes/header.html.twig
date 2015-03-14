@@ -94,16 +94,16 @@
 <div class="modal" id="modal-one" aria-hidden="true">
   <div class="modal-dialog" style="top:10%;">
     <div class="modal-header">
-      <h2>Ajouter un spoil</h2>
+      <h2 style="background:url('{{ asset('_assets/imgs/ajout-spoil.svg') }}') no-repeat left 1px">Ajouter un spoil</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
     </div>
     <div class="modal-body2">
 
     	<ul class="rules">
-    		<li>Rappel du concept : Choisissez d'envoyer un vrai spoil ou un faux spoil.</li>
-    		<li>Le spoil doit contenir une phrase et une image.</li>
-    		<li>Si le manga choisi n'existe pas, vous pouvez l'ajouter en cliquant sur le +.</li>
-    		<li>Tout envoi en langage SMS ou comportant trop de fautes d'orthographes sera refusé.</li>
+    		<li>- Rappel du concept : Choisissez d'envoyer un vrai spoil ou un faux spoil.</li>
+    		<li>- Le spoil doit contenir une phrase et une image.</li>
+    		<li>- Si le manga choisi n'existe pas, vous pouvez l'ajouter en cliquant sur le +.</li>
+    		<li>- Tout envoi en langage SMS ou comportant trop de fautes d'orthographes sera refusé.</li>
     	</ul>
 
 		<section class="ajout">
@@ -206,12 +206,12 @@
 <div class="modal" id="modal-one" aria-hidden="true">
   <div class="modal-dialog" style="top:20%;">
     <div class="modal-header">
-      <h2>Se connecter</h2>
+      <h2 style="background:url('{{ asset('_assets/imgs/login.svg') }}') no-repeat left 1px">Se connecter</h2>
       <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
     </div>
     <div class="modal-body">
 
-    	<p class="imp">Connectez-vous pour poster un spoil ou un commentaire</p>
+    	<p class="imp">Connectez-vous pour poster un spoil ou un commentaire.</p>
 
 		<section class="connexion connexion2" >
 		<form action="{{ path("fos_user_security_check") }}" method="post">
