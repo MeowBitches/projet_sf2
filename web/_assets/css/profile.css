@@ -56,8 +56,14 @@
 .profile .detail-profil ul { 
 width: 98%;
 }
+
 .profile .detail-profil input{
-	   width: 186px;
+	width: 186px;
+    font-size: 1.3rem;
+}
+
+.profile .detail-profil input[type="password"] {
+    padding: 2px;
 }
 
 .profile #Container {
@@ -122,6 +128,7 @@ margin: 1%;
 }   
    .profile .detail-profil input {
     width: 100%;
+
  
 }   
 
