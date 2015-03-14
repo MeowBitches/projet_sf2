@@ -12,7 +12,6 @@
     <div class="detail-profil">
 
         <figure>
-       	  	<!-- <img src="{{ asset('_assets/imgs/users/' ~ user.cover) }}" alt=""> -->
             <img src="	{% if app.user.cover is not empty %}
 												{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
 											{% else %}								
@@ -21,7 +20,7 @@
 							
 
 
-       	 	<!--  <input type="file" name="img" value="Modifier"> -->
+       	 	<input type="file" name="img" value="Modifier">
         </figure>
        
        <ul>
