@@ -10,7 +10,9 @@ class SpoilType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('text')
+            ->add('manga', 'text')
+            ->add('title')
+            ->add('cover', 'file')
         ;
     }
 
@@ -25,5 +27,10 @@ class SpoilType extends AbstractType
         $resolver->setDefaults(array(
             'data_class' => 'MeowBundle\Entity\Spoil',
         ));
+    }
+
+    public function getName()
+    {
+        return 'spoil_form';
     }
 }

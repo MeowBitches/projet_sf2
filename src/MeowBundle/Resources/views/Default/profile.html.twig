@@ -37,16 +37,17 @@
 		  	
 		  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 		  	<li>Changer de mot de passe     
-			
-				<div>
-					<label for="username">
-					  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
-					</label>
-				    <label for="password">
-					   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
-					</label>
-				    <input type="submit" name="_submit" id="_submit" value="Valider">
-			     </div>
+				<form action="">
+					<div>
+						<label for="username">
+						  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
+						</label>
+					    <label for="password">
+						   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
+						</label>
+					    <input type="submit" name="_submit" id="_submit" value="Valider">
+				     </div>
+			     </form>
 			</li>
 			{% endif %}
 	    </ul>

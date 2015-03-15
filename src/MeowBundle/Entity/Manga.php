@@ -89,4 +89,10 @@ class Manga
     {
         return $this->category;
     }
+
+    
+    public function __toString()
+    {
+        return $this->name;
+    }
 }

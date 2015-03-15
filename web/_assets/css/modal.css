@@ -201,12 +201,11 @@ box-shadow: none;
   display:none;
 }
 
-#file{
-  opacity: 0.01;
+#spoil_form_cover{
   position: absolute;
   left: 0;
   cursor: pointer;
-  padding: 10px 10px;
+  padding: 10px 15px;
 }
 
 .file label{
@@ -216,7 +215,8 @@ box-shadow: none;
   border-radius: 4px;
   padding: 8px 42px;
   cursor: pointer;
-  
+  display: inline-block;
+  position: relative;
 }
 
 .modal .ajout ul li:nth-child(4) {
