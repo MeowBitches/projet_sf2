@@ -1,3 +1,9 @@
+services:
+    twig.extension.intl:
+       class: Twig_Extensions_Extension_Intl
+       tags:
+           - { name: twig.extension }
+
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
@@ -81,3 +87,4 @@ fos_user:
     db_driver: orm
     firewall_name: main
     user_class: MeowBundle\Entity\User
+

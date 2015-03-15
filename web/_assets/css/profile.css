@@ -63,7 +63,7 @@ width: 98%;
 }
 
 .profile .detail-profil input[type="password"] {
-    padding: 2px;
+    padding: 2px 4px;
 }
 
 .profile #Container {

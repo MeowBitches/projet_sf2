@@ -10,18 +10,14 @@
 
 <section class="moderation">
 
-	<h1>Modération</h1>
+	<h2>Modération</h2>
 
 		{% for spoil in pagination %}
 
 		<div>
-
 			<table>
-
-				<thead>
-				
-					<tr>
-						
+				<thead>			
+					<tr>						
 						<td class="col-1" >
 							<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
 						</td>
@@ -29,7 +25,7 @@
 						<td class="col-2">
 							<h2>{{ spoil.manga.name }}</h2>
 							<p>{{ spoil.title }}</p>
-							<p>Par {{ spoil.author.username }}, le {{ spoil.date|date("d F Y")|trans }}</p>
+							<p>Par {{ spoil.author.username }}, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
 						</td>
 
 						<td class="col-3">

@@ -9,13 +9,13 @@
 }
 
 .moderation table, td, tr{
-	border: 1px solid #000;
+	border: 1px solid #ccc;
 	margin-top: 20px;
 }
 
 .moderation img{
 	width: 310px;
-	height: 175px;
+	/*height: 175px;*/
 	vertical-align: middle;
 }
 

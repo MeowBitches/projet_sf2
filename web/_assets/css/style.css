@@ -174,12 +174,13 @@ h2 {
 }
 
 .navbar-brand img {
-	max-width: 66px;
+	width: 66px;
+	height: auto;
 }
 
 @media only screen and (min-width: 768px) {
 	.navbar-brand img {
-		max-width: 100px;
+		width: 100px;
 	}
 }
 
