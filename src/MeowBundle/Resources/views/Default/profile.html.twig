@@ -12,15 +12,17 @@
     <div class="detail-profil">
 
         <figure>
-            <img src="	{% if app.user.cover is not empty %}
-												{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+            <img src="	{% if user.cover is not empty %}
+												{{ asset('_assets/imgs/users/' ~ user.cover) }}
 											{% else %}								
 												{{ asset('_assets/imgs/users/profil-default.jpg') }}
-											{% endif %}" alt="Profil de {{ app.user.username }}"/>
+											{% endif %}" alt="Profil de {{ user.username }}"/>
 							
 
 
+       	 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
        	 	<input type="file" name="img" value="Modifier">
+       	 	{% endif %}
         </figure>
        
        <ul>
@@ -33,6 +35,7 @@
 				{{ score }}
 		  	</li>
 		  	
+		  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 		  	<li>Changer de mot de passe     
 			
 				<div>
@@ -45,6 +48,7 @@
 				    <input type="submit" name="_submit" id="_submit" value="Valider">
 			     </div>
 			</li>
+			{% endif %}
 	    </ul>
 
     </div>	<!-- END DETAIL PROFIL -->
