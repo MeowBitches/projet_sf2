@@ -2,38 +2,40 @@
 {% block bodyClass %} id="moderation" {% endblock %}
 {% block content %}
 
+<script>
+	
+
+
+</script>
+
 <section class="moderation">
 
-	<h1>Modération</h1>
+	<h2>Modération</h2>
 
 		{% for spoil in pagination %}
 
 		<div>
-
 			<table>
-				
-				<tr>
-					
-					<td class="col-1">
-						<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
-					</td>
+				<thead>			
+					<tr>						
+						<td class="col-1" >
+							<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
+						</td>
 
-					<td class="col-2">
-						<h2>{{ spoil.manga.name }}</h2>
-						<p>{{ spoil.title }}</p>
-						<p>Par {{ spoil.author.username }}, le {{ spoil.date|date("d F Y")|trans }}</p>
-					</td>
+						<td class="col-2">
+							<h2>{{ spoil.manga.name }}</h2>
+							<p>{{ spoil.title }}</p>
+							<p>Par {{ spoil.author.username }}, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
+						</td>
 
-					<td class="col-3">
-						<p><a href="" class="btn-active {% if spoil.isPublished == true %} active {% endif %}">Activé</a></p>
-						<p><a href="" class="btn-inactive {% if spoil.isPublished == false %} active {% endif %}">Desactivé</a></p>
-						<!-- <form>
-						<label><input type="radio" name="activation" value="active"> Activé</label>
-						<label><input type="radio" name="activation" value="inactive"> Désactivé</label>
-						</form> -->
-					</td>
+						<td class="col-3">
+							<a href="#" class="activate{% if spoil.isPublished == true %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-active">&nbsp;</span>Activé</p></a>
+							<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Desactivé</p></a>
+						</td>
 
-				</tr>
+					</tr>
+
+				</thead>
 
 			</table>
 
@@ -44,5 +46,37 @@
 	{{ knp_pagination_render(pagination) }}
 
 </section>
+
+<script>
+	$(function(){
+		$('.activate').click(function(){
+	        var that = $(this);
+	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+		        $.post('{{ path("activate-spoil") }}',{
+		                id: that.attr('data-spoil-id')
+		            },
+		            function(data){
+		                that.addClass('active');
+		                that.siblings().removeClass('active');
+		            }
+		        );
+		    }
+	    });
+
+		$('.inactivate').click(function(){
+	        var that = $(this);
+	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+		        $.post('{{ path("inactivate-spoil") }}',{
+		                id: that.attr('data-spoil-id')
+		            },
+		            function(data){
+		                that.addClass('active');
+		                that.siblings().removeClass('active');
+		            }
+		        );
+		    }
+	    });
+	});
+</script>
 
 {% endblock %}

@@ -8,6 +8,10 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
            - { name: twig.extension }
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+           - { name: twig.extension }
 
 framework:
     #esi:             ~
@@ -72,14 +76,13 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: "%mailer_transport%"
-    host:      "%mailer_host%"
-    username:  "%mailer_user%"
-    password:  "%mailer_password%"
-    spool:     { type: memory }
+    transport: gmail
+    username:  nyanspoil@gmail.com
+    password:  meowmeowmeoww
 
 # FOSUserBundle Configuration
 fos_user:
     db_driver: orm
     firewall_name: main
     user_class: MeowBundle\Entity\User
+

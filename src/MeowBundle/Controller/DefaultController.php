@@ -21,7 +21,13 @@ class DefaultController extends Controller
         $randSpoil = rand(0, sizeof($spoils) - 1);
         $spoil = $spoils[$randSpoil];
 
-        return array('spoil' => $spoil);
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();        
+
+        return array('spoil' => $spoil, 'categories' => $categories, 'mangas' => $mangas);
     }
 
     /**
@@ -66,7 +72,13 @@ class DefaultController extends Controller
             $tab[] = $form2->createView();
         }
 
-        return array('spoil' => $spoil, 'comments' => $comments, 'form' => $form->createView(), 'forms' => $tab);
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();
+
+        return array('spoil' => $spoil, 'comments' => $comments, 'form' => $form->createView(), 'forms' => $tab, 'categories' => $categories, 'mangas' => $mangas);
     }
 
     /**
@@ -93,7 +105,13 @@ class DefaultController extends Controller
             12
         );
 
-        return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination));
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();
+
+        return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'categories' => $categories, 'mangas' => $mangas));
     }
 
     /**
@@ -113,6 +131,12 @@ class DefaultController extends Controller
             5
         );
 
-        return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination));
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();
+
+        return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination, 'categories' => $categories, 'mangas' => $mangas));
     }
 }

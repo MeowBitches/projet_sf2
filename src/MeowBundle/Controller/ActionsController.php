@@ -7,8 +7,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use MeowBundle\Form\CommentType;
 use MeowBundle\Entity\Comment;
+use MeowBundle\Entity\Manga;
+use MeowBundle\Form\SpoilType;
+use MeowBundle\Entity\Spoil;
 
 class ActionsController extends Controller
 {
@@ -111,6 +115,9 @@ class ActionsController extends Controller
         $comment->setDate(new \DateTime());
         $comment->setNbLike(0);
 
+        $nbComments = $spoil->getNbComments();
+        $spoil->setNbComments($nbComments + 1);
+
         $form = $this->createForm(new CommentType(), $comment);
         $form->handleRequest($request);
         if ($form->isValid()) {
@@ -140,10 +147,14 @@ class ActionsController extends Controller
         $comment->setParent($parent);
         $comment->setDate(new \DateTime());
         $comment->setNbLike(0);
+        
+        $nbComments = $spoil->getNbComments();
+        $spoil->setNbComments($nbComments + 1);
 
         $form = $this->createForm(new CommentType(), $comment);
         $form->handleRequest($request);
-        if ($form->isValid()) {
+        if($form->isValid())
+        {
             $comment = $form->getData();
             $em = $this->getDoctrine()->getManager();
             $em->persist($comment);
@@ -151,5 +162,95 @@ class ActionsController extends Controller
         }
 
         return $this->redirect($this->generateUrl('view_spoil', array('slug' => $spoil->getSlug())));
+    }
+
+    /**
+     * @Route("/add-manga/", name="add-manga")
+     */
+    public function addMangaAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $name = $request->get('name', null);
+
+        $repoCategory = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $category = $repoCategory->findOneById($id);
+
+        $manga = new Manga();
+        $manga->setName($name);
+        $manga->setCategory($category);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->persist($manga);
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        $repoManga = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoManga->findAll();
+        $mangasResult = array();
+    
+        foreach ($mangas as $manga) {
+            $mangasResult[] = array(
+                'id' => $manga->getId(),
+                'name' => $manga->getName()
+            );
+        }
+
+        return new JsonResponse(array('mangas' => $mangasResult));
+    }
+
+    /**
+     * @Route("/add-spoil/", name="add-spoil")
+     */
+    public function addSpoilAction(Request $request)
+    {
+        $spoil = new Spoil();
+        $spoil->setAuthor($this->getUser());
+        $spoil->setDate(new \DateTime());
+        $spoil->setNbComments(0);
+        $spoil->setNbSpoil(0);
+        $spoil->setNbFail(0);
+        $spoil->setNbFake(0);
+        $spoil->setIsPublished(0);
+
+        $form = $this->createForm(new SpoilType(), $spoil);
+        $form->handleRequest($request);
+        if($form->isValid())
+        {
+            $spoil = $form->getData();
+            $spoil->setSlug($form->getData('title'));
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($spoil);
+            $em->flush();
+        }
+    }
+
+    /**
+     * @Route("/activate-spoil", name="activate-spoil")
+     */
+    public function activateSpoilAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoil = $repoSpoil->findOneById($id);
+
+        $spoil->setIsPublished(1);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        return new Response(null);
+    }
+
+    /**
+     * @Route("/inactivate-spoil", name="inactivate-spoil")
+     */
+    public function inactivateSpoilAction(Request $request)
+    {
+        $id = $request->get('id', null);
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoil = $repoSpoil->findOneById($id);
+
+        $spoil->setIsPublished(0);
+
+        $this->container->get('doctrine.orm.default_entity_manager')->flush();
+
+        return new Response(null);
     }
 }

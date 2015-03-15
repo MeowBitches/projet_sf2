@@ -10,12 +10,13 @@
 			    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
 				<li>
 				    <label for="username"><i data-icon="7"></i></label>
-				    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="Pseudo" size="30" />
+				    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required"  placeholder="Pseudo ou email" size="30" />
 			    </li>
 				<li>
 				    <label for="password"><i data-icon="r"></i></label>
 				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
 			    </li>
+			    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
 			    </li>

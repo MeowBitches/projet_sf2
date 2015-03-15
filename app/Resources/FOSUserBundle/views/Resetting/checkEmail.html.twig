@@ -3,7 +3,8 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
-<p>
-{{ 'resetting.check_email'|trans({'%email%': email}) }}
-</p>
+<section class="connexion">
+	<h1>Mot de passe oublié</h1>
+	<p>{{ 'resetting.check_email'|trans({'%email%': email}) }}</p>
+</section>
 {% endblock %}

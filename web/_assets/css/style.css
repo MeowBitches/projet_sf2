@@ -117,14 +117,14 @@ button.btn2 {
 }
 
 body {
-	font-size: 1.3rem;
+	font-size: 1.5rem;
 	background-color: #f0f0ed;
 	font-family: "Open Sans", sans-serif;
 	color: #303030
 }
 
 a {
-  color: #e65354;
+  color: #e10000;
   text-decoration: none;
   transition: all .15s ease-in-out;
 }
@@ -174,12 +174,13 @@ h2 {
 }
 
 .navbar-brand img {
-	max-width: 66px;
+	width: 66px;
+	height: auto;
 }
 
 @media only screen and (min-width: 768px) {
 	.navbar-brand img {
-		max-width: 100px;
+		width: 100px;
 	}
 }
 
@@ -515,7 +516,7 @@ h1, p, table{
 
 .connexion input[type=text], .connexion input[type=password], .connexion input[type=email] {
 	height: 35px;
-	padding: 0 40px;
+	padding: 0 0 0 40px;
 	width: 100%;
 	background: #e6e6e6;
 	border: 0;
@@ -565,11 +566,12 @@ h1, p, table{
 }
 
 p.connexion-error {
-	bottom: 17px;
 	position: absolute;
+	bottom: 12px;
 	color: #e10000;
-	font-size: 1.3rem;
-	margin: 3px 0 0 0;
+	font-size: 1.1rem;
+	margin: 0;
+	width: 250px;
 }
 
 .connexion p:before {
@@ -607,7 +609,7 @@ p.connexion-error {
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	width:1000px;
+	max-width:1000px;
 	margin: 0 auto;
 }
 
@@ -625,7 +627,7 @@ p.connexion-error {
 	border-left: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
-	width:1000px;
+	max-width:1000px;
 	margin: 0 auto;
 }		
 

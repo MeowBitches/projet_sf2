@@ -54,10 +54,16 @@
 }
 
 .profile .detail-profil ul { 
-width: 800px;
+width: 98%;
 }
+
 .profile .detail-profil input{
-	   width: 186px;
+	width: 186px;
+    font-size: 1.3rem;
+}
+
+.profile .detail-profil input[type="password"] {
+    padding: 2px 4px;
 }
 
 
@@ -93,6 +99,7 @@ width: 800px;
 .profile .cd-gallery {
 	float: none;
 	width: 95%;
+    padding: 0;
 }
 .profile .cd-gallery li {
 /*    width: 30%;*/
@@ -132,6 +139,7 @@ margin: 1%;
 }   
    .profile .detail-profil input {
     width: 100%;
+
  
 }   
 
