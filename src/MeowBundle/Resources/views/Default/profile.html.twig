@@ -21,13 +21,19 @@
 
 
        	 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-       	 	<input type="file" name="img" value="Modifier">
+       	 	<i data-icon="t"></i>
+       	 	<label for="changer-photo" class="changer-photo">Changer de photo</label>
+       	 	<input type="file" name="img" value="Modifier" id="changer-photo" style="display: none">
        	 	{% endif %}
         </figure>
        
        <ul>
        	  	<li data-icon="1">{{ user.username }}</li>
-     	  	<li>{{ user.email }} <i class="changer-mail" data-icon="T"></i></li> 
+
+       	  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+     	  	<li><i class="icon-mail" data-icon="s"></i>{{ user.email }} <i class="changer-mail" data-icon="T"></i></li>{% else %}
+			<li>{{ user.email }}</li>
+			{% endif %}
      	  	<li>Score : {% set score = 0 %}
 				{% for spoil in pagination %}
 				{% set score = score + spoil.nbSpoil %}
@@ -35,20 +41,13 @@
 				{{ score }}
 		  	</li>
 		  	
-<<<<<<< HEAD
-		  	<li>Changer de mot de passe  <i class="changer-pass" data-icon="T"></i>     
-=======
+ 
 		  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-		  	<li>Changer de mot de passe     
->>>>>>> 8edc4ea67db29902ce4120d9bc4a1b74dd5c227e
+		  	<li>Changer de mot de passe  <i class="changer-pass" data-icon="T"></i>    
 			
 				<div class="boite-pass">
-					<label for="username">
-					  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
-					</label>
-				    <label for="password">
-					   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
-					</label>
+				  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
+				   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
 				    <input type="submit" name="_submit" id="_submit" value="Valider">
 			     </div>
 			</li>

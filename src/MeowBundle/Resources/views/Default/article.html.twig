@@ -14,7 +14,7 @@
         <figcaption><h3>{{ spoil.title }}</h3></figcaption>
      </figure>
      <div class="infos-spoiler">
-    	<p data-icon="8">Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|date("d F Y")|trans }}</span></p>
+    	<p data-icon="8">Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|localizeddate('long', 'none') }}</span></p>
      </div>
      <div class="boutons-avis">
      	<ul>

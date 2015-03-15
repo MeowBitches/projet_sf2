@@ -35,12 +35,15 @@
     width: 100%;
 
 }
-.profile .detail-profil figure, .profile div .detail-profil ul{
-	display: table-cell;
-	vertical-align: middle;
+.profile .detail-profil figure, .profile .detail-profil ul{
+	display: inline-block;
+	vertical-align: top;
 }
 .profile .detail-profil figure {
+    position: relative;
 	width: 200px;
+    line-height: 0;
+    margin: 0;
 }
 
 .profile .detail-profil figure img {
@@ -49,12 +52,57 @@
 
 }
 
+/*.profile .detail-profil figure .layout-change-photo {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+}*/
+
+.profile .detail-profil i[data-icon]:before{
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.profile .detail-profil figure [data-icon="t"] {
+    position: absolute;
+    bottom: 7px;
+    left: 12px;
+    font-style: normal;
+    line-height: 100%;
+    z-index: 2;
+} 
+
+.profile .detail-profil figure [data-icon="t"]::before {
+    font-size: 3rem;
+    color: #fff;
+}
+
+.profile .detail-profil figure .changer-photo {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0,0,0,.5);
+    width: 100%;
+    padding: 15px 0 15px 55px;
+    margin: 0;
+    color: #fff;
+    line-height: 100%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.profile .detail-profil figure .changer-photo:hover {
+    background: rgba(0,0,0,.8);
+}
+
 .profile .detail-profil label{
 	 margin: 0px;
 }
 
 .profile .detail-profil ul { 
-width: 98%;
+    width: 78%;
 }
 
 .profile .detail-profil input{
@@ -66,10 +114,23 @@ width: 98%;
     padding: 2px 4px;
 }
 
+.profile .detail-profil i.icon-mail {
+    margin-right: 5px;
+    vertical-align: middle;
+}
 
-.profile .detail-profil i[data-icon]:before{
-    font-size: 16px;
-    cursor: pointer;
+.profile .detail-profil i.icon-mail:before {
+    font-style: normal;
+    font-size: 2rem;
+}
+
+.profile .detail-profil i.changer-mail, .profile .detail-profil i.changer-pass {
+    opacity: 0.1;
+    margin-left: 5px;
+}
+
+.profile .detail-profil i.changer-mail:hover, .profile .detail-profil i.changer-pass:hover {
+    opacity: 1;
 }
 
 .profile .boite-pass{
@@ -110,20 +171,29 @@ margin: 1%;
 
 
 
-@media only screen and (max-width:1200px){
+@media only screen and (max-width:975px){
 	
     .profile .detail-profil ul {
-    width: 99%;
-}
-    .profile .detail-profil label {
-    /*display: block;*/
-    /*margin: 11px 0;*/
-}
-    .profile input[type="submit"] {
-    /*margin-left: 68px;*/
-    
-}   
+    width: 71%;
+    }
 
+    .profile .detail-profil input {
+    display: block;
+    margin: 11px 0;
+    }
+}
+
+
+@media only screen and (max-width:768px) {
+    .profile .detail-profil ul {
+    width: 66%;
+    }
+}
+
+@media only screen and (max-width:650px) {
+    .profile .detail-profil ul {
+    width: 100%;
+    }
 }
 
 
