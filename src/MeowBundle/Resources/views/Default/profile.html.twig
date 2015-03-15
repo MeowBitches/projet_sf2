@@ -26,7 +26,7 @@
        
        <ul>
        	  	<li data-icon="1">{{ user.username }}</li>
-     	  	<li>{{ user.email }}</li>
+     	  	<li>{{ user.email }} <i class="changer-mail" data-icon="T"></i></li> 
      	  	<li>Score : {% set score = 0 %}
 				{% for spoil in pagination %}
 				{% set score = score + spoil.nbSpoil %}
@@ -34,9 +34,9 @@
 				{{ score }}
 		  	</li>
 		  	
-		  	<li>Changer de mot de passe     
+		  	<li>Changer de mot de passe  <i class="changer-pass" data-icon="T"></i>     
 			
-				<div>
+				<div class="boite-pass">
 					<label for="username">
 					  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
 					</label>
@@ -98,6 +98,20 @@
 {% endif %}
 
 {{ knp_pagination_render(pagination) }}
+
+<script>
+	
+	
+
+
+	$(function() {
+	$('.changer-pass').click(function() {
+	$('.boite-pass').fadeToggle(100);
+	
+	});
+});
+
+</script>
 
 </section>
 

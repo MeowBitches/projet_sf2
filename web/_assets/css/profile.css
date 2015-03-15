@@ -60,6 +60,16 @@ width: 800px;
 	   width: 186px;
 }
 
+
+.profile .detail-profil i[data-icon]:before{
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.profile .boite-pass{
+    display: none;
+}
+
 .profile #Container {
     padding-left: 0;
 }
@@ -89,6 +99,7 @@ width: 800px;
 margin: 1%;
     width: 30%;
 }
+
 
 
 
