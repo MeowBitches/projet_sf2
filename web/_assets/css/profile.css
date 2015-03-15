@@ -66,6 +66,16 @@ width: 98%;
     padding: 2px 4px;
 }
 
+
+.profile .detail-profil i[data-icon]:before{
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.profile .boite-pass{
+    display: none;
+}
+
 .profile #Container {
     padding-left: 0;
 }
@@ -96,6 +106,7 @@ width: 98%;
 margin: 1%;
     width: 30%;
 }
+
 
 
 

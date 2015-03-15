@@ -27,16 +27,16 @@
        
        <ul>
        	  	<li data-icon="1">{{ user.username }}</li>
-     	  	<li>{{ user.email }}</li>
+     	  	<li>{{ user.email }} <i class="changer-mail" data-icon="T"></i></li> 
      	  	<li>Score : {% set score = 0 %}
 				{% for spoil in pagination %}
 				{% set score = score + spoil.nbSpoil %}
 				{% endfor %}
 				{{ score }}
 		  	</li>
-		  	
+
 		  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
-		  	<li>Changer de mot de passe     
+		  	<li>Changer de mot de passe
 				<form action="">
 					<div>
 						<label for="username">
@@ -102,6 +102,20 @@
 {% endif %}
 
 {{ knp_pagination_render(pagination) }}
+
+<script>
+	
+	
+
+
+	$(function() {
+	$('.changer-pass').click(function() {
+	$('.boite-pass').fadeToggle(100);
+	
+	});
+});
+
+</script>
 
 </section>
 
