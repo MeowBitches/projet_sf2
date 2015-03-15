@@ -110,7 +110,7 @@
 		<form action="{{ path("add-spoil") }}" method="post">
 			<ul>
 				<li>
-				    <input type="text" id="search" name="manga" placeholder="Nom du manga" /><a id="plus" href="#">+</a>
+    				{{ form_widget(formSpoil.manga, { 'attr': {'type': 'text', 'placeholder': 'Nom du manga'}}) }}<a id="plus" href="#">+</a>
 			    </li>
 			    <div id="toggle">
 					<li>
@@ -126,12 +126,13 @@
 			    </div>
 			    <li class="file">
 			    	<input type="hidden" name="MAX_FILE_SIZE" value="" />
-    				<input id="file" type="file" name="mon_fichier" id="mon_fichier" />
+    				{{ form_widget(formSpoil.cover, { 'attr': {'type': 'file'}}) }}
     				<label>Ajoutez une photo</label>
     			</li>
     			<li>
-			    	<textarea name="spoil" id="spoil" placeholder="Ecrivez votre spoil"></textarea>
+    				{{ form_widget(formSpoil.title, { 'attr': {'placeholder': 'Ecrivez votre spoil'}}) }}
 			    </li>
+			    {{ form_rest(formSpoil) }}
 				<li>
 			    	<input type="submit" id="_submit" name="_submit" value="Ajouter" />
 			    </li>
@@ -155,11 +156,11 @@
 				'{{ manga.name|title }}',
 			{% endfor %}
 		];
-		$('#search').autocomplete({
+		$('#spoil_form_manga').autocomplete({
 			source: list
 		});
-		$('#search').keyup(function(){
-			if($.inArray($('#search').val(),list) !== -1){
+		$('#spoil_form_manga').keyup(function(){
+			if($.inArray($('#spoil_form_manga').val(),list) !== -1){
 				$('#plus').hide();
 				$('#toggle').hide(400);
 	      		return false;
@@ -176,7 +177,7 @@
 			e.preventDefault();
 	        if($('#search').val() != '' && $('#type option:selected').val() != 0){
 		        $.post('{{ path("add-manga") }}',{
-		                name: 	$('#search').val(),
+		                name: 	$('#spoil_form_manga').val(),
 		                id: 	$('#type option:selected').val()
 		            },
 		            function(data){
@@ -184,10 +185,10 @@
 		            	for (var i in data.mangas) {
 		            		list[i] = data.mangas[i].name;
 		            	}
-		            	$('#search').autocomplete({
+		            	$('#spoil_form_manga').autocomplete({
 							source: list
 						});
-		                $('#search').attr('disabled', 'disabled');
+		                $('#spoil_form_manga').attr('disabled', 'disabled');
 		                $('#plus').hide();
 						$('#toggle').hide(400);
 			      		return false;
