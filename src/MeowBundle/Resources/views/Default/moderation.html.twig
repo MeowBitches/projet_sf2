@@ -29,8 +29,8 @@
 						</td>
 
 						<td class="col-3">
-							<a href="#"><p><span class="btn-active {% if spoil.isPublished == true %} active {% endif %}">&nbsp;</span>Activé</p></a>
-							<a href="#"><p><span class="btn-inactive {% if spoil.isPublished == false %} active {% endif %}">&nbsp;</span>Desactivé</p></a>
+							<a href="#" class="activate{% if spoil.isPublished == true %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-active">&nbsp;</span>Activé</p></a>
+							<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Desactivé</p></a>
 						</td>
 
 					</tr>
@@ -46,5 +46,37 @@
 	{{ knp_pagination_render(pagination) }}
 
 </section>
+
+<script>
+	$(function(){
+		$('.activate').click(function(){
+	        var that = $(this);
+	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+		        $.post('{{ path("activate-spoil") }}',{
+		                id: that.attr('data-spoil-id')
+		            },
+		            function(data){
+		                that.addClass('active');
+		                that.siblings().removeClass('active');
+		            }
+		        );
+		    }
+	    });
+
+		$('.inactivate').click(function(){
+	        var that = $(this);
+	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+		        $.post('{{ path("inactivate-spoil") }}',{
+		                id: that.attr('data-spoil-id')
+		            },
+		            function(data){
+		                that.addClass('active');
+		                that.siblings().removeClass('active');
+		            }
+		        );
+		    }
+	    });
+	});
+</script>
 
 {% endblock %}
