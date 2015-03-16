@@ -215,7 +215,6 @@ class ActionsController extends Controller
         if($form->isValid())
         {
             $spoil = $form->getData();
-            $spoil->setSlug($form->getData('title'));
             $em = $this->getDoctrine()->getManager();
             $em->persist($spoil);
             $em->flush();

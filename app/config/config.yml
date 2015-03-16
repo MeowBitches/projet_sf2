@@ -86,3 +86,12 @@ fos_user:
     firewall_name: main
     user_class: MeowBundle\Entity\User
 
+# Stof Doctrine Configuration
+stof_doctrine_extensions:
+    default_locale: fr
+    translation_fallback: true
+    orm:
+        default:
+            tree: true
+            timestampable: true
+            sluggable: true
