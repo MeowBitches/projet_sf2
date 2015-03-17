@@ -107,11 +107,11 @@
 	      $('[data-modale]').click(function(){
 	        var modale = "#"+$(this).attr('data-modale');
 	        $('.modale-shadow').fadeIn();
-	        $(modale).stop().animate({'top':'1%','opacity':1},500).attr('data-open',true);
+	        $(modale).stop().animate({'top':'1%','opacity':1},200).attr('data-open',true);
 	      });
 	      $('.modal-photo [data-close="modale"],.modale-shadow').click(function(){
 	        $('.modale-shadow').fadeOut();
-	        $('.modal-photo[data-open="true"').stop().animate({'top':'-100%','opacity':1},500).attr('data-open',false);
+	        $('.modal-photo[data-open="true"').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
 	      });
 	    }
 	</script>

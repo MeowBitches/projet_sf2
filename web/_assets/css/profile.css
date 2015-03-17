@@ -100,7 +100,7 @@
 
 }
 
-.profile .detail-profil label .changer-photo{
+.profile .detail-profil label{
 	 margin: 0px;
 }
 
@@ -109,7 +109,6 @@
 }
 
 .profile .detail-profil input{
-	width: 186px;
     font-size: 1.3rem;
 }
 
@@ -139,6 +138,7 @@
 .profile .boite-pass{
     display: none;
 }
+
 
 .profile #Container {
     padding-left: 0;
@@ -203,7 +203,7 @@ margin: 1%;
 @media only screen and (max-width:970px){
 	
 
-    .profile .detail-profil label {
+    .profile .detail-profil label .changer-photo {
     display: block;
     margin: 11px 0;
 }
