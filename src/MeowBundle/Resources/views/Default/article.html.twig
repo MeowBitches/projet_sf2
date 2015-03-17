@@ -185,8 +185,16 @@
 
 </section>
 
-<script src="{{ asset('_assets/js/respond-com.js') }}"></script>
+
+
 <script>
+	$(function(){
+		$(".show-respond").click(function(){
+			$(this).parents('.comment1').next('ul').next('.respond-comm').fadeToggle(100);
+		});
+
+	});
+
 	$(function(){
 		$('.like').click(function(event){
 			event.preventDefault();
