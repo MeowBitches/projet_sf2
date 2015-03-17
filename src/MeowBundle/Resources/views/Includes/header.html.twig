@@ -50,8 +50,13 @@
 				<div class="arrow-boite"></div>
 			</div>
 
-			
-				
+			<script>
+				$(function() {
+					$('.image-profil').click(function() {
+						$('.boite-menu').fadeToggle(100);
+					});
+				});
+			</script>		
 			
 				
 			{% else %}
@@ -65,8 +70,6 @@
 		</ul>
 	</div>
 </nav>
-
-<script src="{{ asset('_assets/js/menu-profil.js') }}"></script>
 
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
@@ -87,6 +90,8 @@
 	});
 
 </script>
+
+
 
 
 

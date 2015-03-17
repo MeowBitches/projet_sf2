@@ -65,7 +65,16 @@
 	       	  	<li data-icon="1">{{ user.username }}</li>
 
 	       	  	
-	     	  	<li><i class="icon-mail" data-icon="s"></i>{{ user.email }} {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}<i class="changer-mail" data-icon="T"></i>{% endif %}</li>
+	     	  	<li><i class="icon-mail" data-icon="s"></i>{{ user.email }} {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}<i class="changer-mail" data-icon="T"></i>{% endif %}
+					<form action="">
+						<div class="boite-mail">
+						  	<input type="email" placeholder="Nouveau mail" required="required" name="">
+						   	<input type="email" placeholder="Confirmation mail" required="required" name="">
+							<input type="submit" name="_submit" id="_submit" value="Valider">
+					    </div>
+				    </form>
+
+	     	  	</li>
 				
 	     	  	<li>Score : {% set score = 0 %}
 					{% for spoil in pagination %}
@@ -79,8 +88,8 @@
 			  	<li>Changer de mot de passe <i class="changer-pass" data-icon="T"></i>
 					<form action="">
 						<div class="boite-pass">
-						  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
-						   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
+						  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="">
+						   	<input type="password" placeholder="Confirmation mot de passe" required="required" name="">
 							<input type="submit" name="_submit" id="_submit" value="Valider">
 					    </div>
 				    </form>
@@ -95,7 +104,7 @@
 	      init();
 	    });
 	    function init(){
-	      center('.modale');
+	      center('.modal-photo');
 	      modale();
 	    }
 	    function center(el){
@@ -107,11 +116,11 @@
 	      $('[data-modale]').click(function(){
 	        var modale = "#"+$(this).attr('data-modale');
 	        $('.modale-shadow').fadeIn();
-	        $(modale).stop().animate({'top':'1%','opacity':1},200).attr('data-open',true);
+	        $(modale).stop().animate({'top':'47%','opacity':1},200).attr('data-open',true);
 	      });
 	      $('.modal-photo [data-close="modale"],.modale-shadow').click(function(){
 	        $('.modale-shadow').fadeOut();
-	        $('.modal-photo[data-open="true"').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
+	        $('.modal-photo[data-open="true"]').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
 	      });
 	    }
 	</script>
@@ -169,11 +178,18 @@
 <script>
 
 	$(function() {
-	$('.changer-pass').click(function() {
-	$('.boite-pass').fadeToggle(100);
-	
+		$('.changer-pass').click(function() {
+		$('.boite-pass').fadeToggle(100);
+		
+		});
 	});
-});
+
+	$(function() {
+		$('.changer-mail').click(function() {
+		$('.boite-mail').fadeToggle(100);
+		
+		});
+	});
 
 </script>
 

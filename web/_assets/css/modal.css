@@ -204,6 +204,7 @@ box-shadow: none;
   left: 0;
   cursor: pointer;
   padding: 10px 15px 10px 75px;
+  -moz-box-padding: 10px 15px 10px 114px;
   font-size: 1.3rem;
 }
 
@@ -247,37 +248,15 @@ box-shadow: none;
   opacity:0;
   position:fixed;
   top:-100%;
-  left:32%;
+  left:50%;
   background:white;
   padding:0px;
-  border-radius:5px;
+  border-radius:4px;
   box-shadow:1px 1px 1px rgba(0,0,0,.1);
   width: 430px;
   z-index: 2000;
 }
 
-@media only screen and (max-width: 768px) {
-  .modal-photo {
-    left:20%;
-  }
-}
-
-@media only screen and (max-width: 600px) {
-  .modal-photo {
-    left:11%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .modal-photo {
-    left:7%;
-    width: 350px;
-  }
-
-  .avatar-wrapper {
-    height: 275px;
-  }
-}
 
 .modal-photo .btn-close {
   position: absolute;
@@ -296,6 +275,7 @@ box-shadow: none;
   background: #212830;
   border-bottom:1px solid #ddd;
   padding:10px;
+  border-radius: 4px 4px 0 0;
 }
 
 .modal-photo header h2 {

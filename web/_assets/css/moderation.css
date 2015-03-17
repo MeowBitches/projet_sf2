@@ -3,7 +3,7 @@
 	height: auto;
 	background-color: #fff;
 	margin: 0 auto;
-	padding: 30px 70px;
+	padding: 30px 4%;
 	border-right: 1px solid #ccc;
 	border-left: 1px solid #ccc; 
 }
@@ -14,8 +14,7 @@
 }
 
 .moderation img{
-	width: 310px;
-	/*height: 175px;*/
+	width: 100%;
 	vertical-align: middle;
 }
 
@@ -31,13 +30,13 @@
 }
 
 .col-1{
-	width: 310px;
+	width: 370px;
 	height: 175px;
 	background-color: #000;
 }
 
 .col-2{
-	width: 360px;
+	width: 410px;
 	height: 175px;
 	padding: 0px 0px 45px 15px;
 }
@@ -163,7 +162,7 @@ tr:nth-child(even){ background-color: #eee; }
 @media (max-width: 768px) {
 
 	table{
-		width: 80%;
+		width: 100%;
 		margin: 0 auto;
 	}
 
@@ -182,6 +181,7 @@ tr:nth-child(even){ background-color: #eee; }
    tr {
       display: table;
       width: 100%;
+      margin: 0;
    }
    th {
       font-size: 0;

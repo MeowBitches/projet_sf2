@@ -5,7 +5,7 @@
     margin: 0 auto;
     max-width: 1000px;
     min-height: 560px;
-    padding: 30px;
+    padding: 30px 3%;
 }
 
 .profile .detail-profil ul {
@@ -110,6 +110,11 @@
 
 .profile .detail-profil input{
     font-size: 1.3rem;
+    width: 200px;
+}
+
+.profile .detail-profil input:focus {
+    border: 1px solid #e65354;;
 }
 
 .profile .detail-profil input[type="password"] {
@@ -135,7 +140,7 @@
     opacity: 1;
 }
 
-.profile .boite-pass{
+.profile .boite-pass, .profile .boite-mail{
     display: none;
 }
 
