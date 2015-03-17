@@ -444,6 +444,7 @@ h2 {
 	color: #212830;
 	font-size: 1.3rem;
   	padding: 5px;
+  	font-family: "Open Sans", sans-serif;
 }
 
 .arrow-boite {
@@ -563,6 +564,10 @@ h1, p, table{
 .connexion input[type="submit"]{
 	float: right;
 
+}
+
+.connexion a {
+	font-size: 1.3rem;
 }
 
 p.connexion-error {

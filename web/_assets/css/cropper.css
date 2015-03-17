@@ -54,9 +54,14 @@ body {
   margin: 0;
 }
 
+.avater-alert .close {
+  display: none;
+}
+
 .avater-alert {
   margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1.3rem;
 }
 
 .avatar-wrapper {

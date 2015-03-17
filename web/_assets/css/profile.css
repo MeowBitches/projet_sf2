@@ -129,6 +129,8 @@
 .profile .detail-profil i.icon-mail:before {
     font-style: normal;
     font-size: 2rem;
+    color: #ccc;
+    cursor: initial;
 }
 
 .profile .detail-profil i.changer-mail, .profile .detail-profil i.changer-pass {
