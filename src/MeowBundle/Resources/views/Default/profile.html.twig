@@ -1,0 +1,185 @@
+{% extends 'MeowBundle::layout.html.twig' %}
+
+{% block bodyClass %}id="profile"{% endblock %}
+
+{% block content %}
+
+
+
+<section class="profile">
+
+
+    <div class="detail-profil">
+		<div class="container" id="crop-avatar">
+
+			<div class="modale-shadow"></div>
+	        <figure class="avatar-view">
+	            <img src="	{% if user.cover is not empty %}
+													{{ asset('_assets/imgs/users/' ~ user.cover) }}
+												{% else %}								
+													{{ asset('_assets/imgs/users/profil-default.jpg') }}
+												{% endif %}" alt="Profil de {{ user.username }}"/>
+								
+
+
+	       	 	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+	       	 	<i data-icon="t"></i>
+	       	 	<label type="button" data-modale="avatar-modal" class="btn changer-photo">Changer de photo</label>
+	       	 	{#<input type="file" name="img" value="Modifier" id="changer-photo" style="display: none">#}
+	       	 	{% endif %}
+	        </figure>
+
+	        <!-- Cropping modal -->
+		    <div class="modal-photo" id="avatar-modal" data-open="false">
+		        <form class="avatar-form" action="{{ asset('_assets/crop.php') }}" enctype="multipart/form-data" method="post">
+		          <header>
+		            <button class="btn-close" data-close="modale" type="button">&times;</button>
+		            <h2>Modifier sa photo profil</h2>
+		          </header>
+		          <main>
+		            <div class="avatar-corp">
+
+		              <!-- Upload image and data -->
+		              <div class="avatar-upload">
+		                <input class="avatar-src" name="avatar_src" type="hidden">
+		                <input class="avatar-data" name="avatar_data" type="hidden">
+		                <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
+		                <label for="avatarInput">Choisissez un fichier</label>
+		              </div>
+
+			            <!-- Crop and preview -->
+			             
+			            <div class="avatar-wrapper"></div>
+			              
+			            <button class="avatar-save button" type="submit">Valider</button>
+						
+						<div style="clear:both"></div>
+		            </div> <!-- END avatar-body -->
+		          </main> <!-- END modal-body -->
+		          
+		        </form>
+		    </div><!-- /.modal -->
+
+       
+	       <ul>
+	       	  	<li data-icon="1">{{ user.username }}</li>
+
+	       	  	
+	     	  	<li><i class="icon-mail" data-icon="s"></i>{{ user.email }} {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}<i class="changer-mail" data-icon="T"></i>{% endif %}</li>
+				
+	     	  	<li>Score : {% set score = 0 %}
+					{% for spoil in pagination %}
+					{% set score = score + spoil.nbSpoil %}
+					{% endfor %}
+					{{ score }}
+			  	</li>
+			  	 
+
+			  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
+			  	<li>Changer de mot de passe <i class="changer-pass" data-icon="T"></i>
+					<form action="">
+						<div class="boite-pass">
+						  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="" id="">
+						   	<input type="password" placeholder="Confirmation" required="required" name="" id="">
+							<input type="submit" name="_submit" id="_submit" value="Valider">
+					    </div>
+				    </form>
+				</li>
+				{% endif %}
+		    </ul>
+		</div>
+    </div>	<!-- END DETAIL PROFIL -->
+    
+	<script type="text/javascript">
+	    $(function(){
+	      init();
+	    });
+	    function init(){
+	      center('.modale');
+	      modale();
+	    }
+	    function center(el){
+	      var mH  = $(el).height(),
+	        mW  = $(el).width();
+	      $(el).css({'margin-left':-mW/2,'margin-top':-mH/2});
+	    }
+	    function modale(){
+	      $('[data-modale]').click(function(){
+	        var modale = "#"+$(this).attr('data-modale');
+	        $('.modale-shadow').fadeIn();
+	        $(modale).stop().animate({'top':'1%','opacity':1},500).attr('data-open',true);
+	      });
+	      $('.modal-photo [data-close="modale"],.modale-shadow').click(function(){
+	        $('.modale-shadow').fadeOut();
+	        $('.modal-photo[data-open="true"').stop().animate({'top':'-100%','opacity':1},500).attr('data-open',false);
+	      });
+	    }
+	</script>
+	<script src="{{ asset('_assets/js/bootstrap.min.js') }}"></script>
+	<script src="{{ asset('_assets/js/cropper.js') }}"></script>
+	<script src="{{ asset('_assets/js/main.js') }}"></script>
+			
+			
+    <ul id="Container">	 
+
+    {% if pagination is not empty %}
+    <div class="cd-gallery">
+    	<h2>Spoils postés</h2>
+    	<ul id="Container">
+ 
+    {% for spoil in pagination %}
+         
+            <li class="">
+			  	<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
+				  	<figure>
+						<div class="bloc-image">
+						   <img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
+						</div>
+					   <figcaption>
+					     <p class="titre-manga">{{ spoil.manga.name|title }}</p>
+							<div class="infos-spoils">
+							  <p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
+							  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
+							</div>
+							<div style="clear:both;"></div>
+							  <p class="spoil">{{ spoil.title }}</p>
+							  <p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
+						</figcaption>
+				   </figure>
+			    </a>
+			</li>
+
+      
+     {% endfor %}
+
+		</ul>
+	</div> {# END CD-GALLERY #}
+
+
+{% else %}
+
+<p>Aucun spoil posté.</p>
+
+
+
+{% endif %}
+
+{{ knp_pagination_render(pagination) }}
+
+<script>
+
+	$(function() {
+	$('.changer-pass').click(function() {
+	$('.boite-pass').fadeToggle(100);
+	
+	});
+});
+
+</script>
+
+</section>
+
+{% endblock %}
+
+
+

@@ -19,6 +19,17 @@
 	vertical-align: middle;
 }
 
+.moderation a.auteur {
+	color: #e65354;
+}
+.moderation .activate p{
+	color: #0eac4d;
+}
+
+.moderation .inactivate p{
+	color: #e65354;
+}
+
 .col-1{
 	width: 310px;
 	height: 175px;
@@ -34,6 +45,7 @@
 .col-2 p{
 	font-family: 'OpenSans-Regular';
 	font-size: 13px;
+	color: #304257;
 }
 
 .col-3{

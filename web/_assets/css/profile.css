@@ -48,7 +48,7 @@
 
 .profile .detail-profil figure img {
 	border: 3px solid  #304257;
-	width: 200px;
+	width: 100%;
 
 }
 
@@ -91,18 +91,21 @@
     cursor: pointer;
     font-size: 1.3rem;
     font-weight: bold;
+    opacity: 0;
+    transition: all .2s ease-in-out;
 }
 
 .profile .detail-profil figure .changer-photo:hover {
-    background: rgba(0,0,0,.8);
+    opacity: 1;
+
 }
 
-.profile .detail-profil label{
+.profile .detail-profil label .changer-photo{
 	 margin: 0px;
 }
 
 .profile .detail-profil ul { 
-    width: 78%;
+    width: 77%;
 }
 
 .profile .detail-profil input{
@@ -234,10 +237,11 @@ margin: 1%;
     	vertical-align: inherit;
     }
     .profile .detail-profil figure{
+        width: 240px;
     	margin: 0 auto;
     }
     .profile .detail-profil figure img {
-    	width: 240px;
+    	width: 100%;
     }
     .profile .detail-profil ul {
     padding-left: 0;

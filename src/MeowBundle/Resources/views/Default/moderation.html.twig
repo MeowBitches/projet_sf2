@@ -25,12 +25,12 @@
 						<td class="col-2">
 							<h2>{{ spoil.manga.name }}</h2>
 							<p>{{ spoil.title }}</p>
-							<p>Par {{ spoil.author.username }}, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
+							<p>Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="auteur">{{ spoil.author.username }}</a>, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
 						</td>
 
 						<td class="col-3">
 							<a href="#" class="activate{% if spoil.isPublished == true %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-active">&nbsp;</span>Activé</p></a>
-							<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Desactivé</p></a>
+							<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Désactivé</p></a>
 						</td>
 
 					</tr>
