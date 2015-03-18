@@ -194,7 +194,7 @@
 	padding: 7px;
 	resize: none;
 	font-size: 1.3rem;
-	border: 1px solid #c0c0c0;
+	border: 1px solid #d0d0d0;
 }
 
 
@@ -232,10 +232,13 @@
 
 .articles .commentaires {
 	position: relative;
+	margin-top: 20px;
 }
 
 .articles .commentaires .comment1 {
-	margin-bottom: 20px;
+	margin-bottom: 10px;
+	border-top: 1px solid #F2F2F2;
+	padding-top: 10px;
 }
 
 .articles .commentaires a.avatar, .articles .commentaires .comm-right {
@@ -287,6 +290,8 @@
 .commentaires .comment2 {
 	margin-left: 53px;
 	margin-bottom: 0;
+	border-top: 1px solid #F2F2F2;
+	padding-top: 10px;
 }
 
 .commentaires .comment2 .comm-right {
