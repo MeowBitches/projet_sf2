@@ -23,7 +23,7 @@
 						</td>
 
 						<td class="col-2">
-							<h2>{{ spoil.manga.name }}</h2>
+							<h2>{{ spoil.manga }}</h2>
 							<p>{{ spoil.title }}</p>
 							<p>Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="auteur">{{ spoil.author.username }}</a>, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
 						</td>
@@ -49,7 +49,8 @@
 
 <script>
 	$(function(){
-		$('.activate').click(function(){
+		$('.activate').click(function(event){
+			event.preventDefault();
 	        var that = $(this);
 	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
 		        $.post('{{ path("activate-spoil") }}',{
@@ -63,7 +64,8 @@
 		    }
 	    });
 
-		$('.inactivate').click(function(){
+		$('.inactivate').click(function(event){
+			event.preventDefault();
 	        var that = $(this);
 	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
 		        $.post('{{ path("inactivate-spoil") }}',{

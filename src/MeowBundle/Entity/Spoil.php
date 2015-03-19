@@ -4,6 +4,7 @@ namespace MeowBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Spoil
@@ -97,6 +98,11 @@ class Spoil
      * @ORM\Column(name="is_published", type="boolean")
      */
     private $isPublished;
+
+    /**
+     * @Assert\Image(maxSize = "600000")
+     */
+    public $file;
 
 
     /**
@@ -199,6 +205,41 @@ class Spoil
     public function getCover()
     {
         return $this->cover;
+    }
+
+
+    public function getAbsoluteCover()
+    {
+        return null === $this->cover ? null : $this->getUploadRootDir().'/'.$this->cover;
+    }
+
+    public function getWebCover()
+    {
+        return null === $this->cover ? null : $this->getUploadDir().'/'.$this->cover;
+    }
+
+    protected function getUploadRootDir()
+    {
+        // le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+        return __DIR__.'/../../../web/'.$this->getUploadDir();
+    }
+
+    protected function getUploadDir()
+    {
+        // on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche
+        // le document/image dans la vue.
+        return '_assets/imgs/spoils/';
+    }
+
+    public function upload()
+    {
+        if(null === $this->file){
+            return;
+        }
+
+        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+        $this->cover = $this->file->getClientOriginalName();
+        $this->file = null;
     }
 
     /**

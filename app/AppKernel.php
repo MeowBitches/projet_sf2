@@ -19,7 +19,8 @@ class AppKernel extends Kernel
 			new AppBundle\AppBundle(),
             new MeowBundle\MeowBundle(),
             new Knp\Bundle\PaginatorBundle\KnpPaginatorBundle(),
-            new FOS\UserBundle\FOSUserBundle()
+            new FOS\UserBundle\FOSUserBundle(),
+            new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
 		);
 
 		if (in_array($this->getEnvironment(), array('dev', 'test'))) {

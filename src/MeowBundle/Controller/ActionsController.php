@@ -211,14 +211,44 @@ class ActionsController extends Controller
         $spoil->setIsPublished(0);
 
         $form = $this->createForm(new SpoilType(), $spoil);
-        $form->handleRequest($request);
-        if($form->isValid())
-        {
-            $spoil = $form->getData();
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($spoil);
-            $em->flush();
+
+        if($this->getRequest()->isMethod('POST')){
+            $repoManga = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+            $formVars = $request->get($form->getName());
+            $formVars['manga'] = $repoManga->findOneBy(array('name' => $formVars['manga']));
+            $request->request->set($form->getName(), $formVars);
+            
+            $form->handleRequest($request);
+
+            if($form->isValid())
+            {
+                $spoil = $form->getData();
+                $spoil->upload();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($spoil);
+                $em->flush();
+            }
         }
+
+        return $this->redirect($this->generateUrl('home'));
+    }
+
+    /**
+     * @Route("/create-spoil/", name="create-spoil")
+     * @Template("MeowBundle:Includes:create_spoil.html.twig")
+     */
+    public function createSpoilAction(Request $request)
+    {
+        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
+        $categories = $repoCategories->findAll();
+
+        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
+        $mangas = $repoMangas->findAll();
+
+        $form3 = $this->createForm(new SpoilType());
+
+        return array('categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView());
     }
 
     /**

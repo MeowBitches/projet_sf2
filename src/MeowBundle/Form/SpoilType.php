@@ -12,7 +12,7 @@ class SpoilType extends AbstractType
         $builder
             ->add('manga', 'text')
             ->add('title')
-            ->add('cover', 'file')
+            ->add('file', 'file')
         ;
     }
 

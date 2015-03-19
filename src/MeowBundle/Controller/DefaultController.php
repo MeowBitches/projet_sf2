@@ -22,15 +22,7 @@ class DefaultController extends Controller
         $randSpoil = rand(0, sizeof($spoils) - 1);
         $spoil = $spoils[$randSpoil];
 
-        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
-        $categories = $repoCategories->findAll();
-
-        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
-        $mangas = $repoMangas->findAll();
-
-        $form3 = $this->createForm(new SpoilType());
-
-        return array('spoil' => $spoil, 'categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView());
+        return array('spoil' => $spoil);
     }
 
     /**
@@ -48,9 +40,7 @@ class DefaultController extends Controller
         $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
         $mangas = $repoMangas->findAll();
 
-        $form3 = $this->createForm(new SpoilType());
-
-        return array('spoils' => $spoils, 'categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView());
+        return array('spoils' => $spoils, 'categories' => $categories, 'mangas' => $mangas);
     }
 
     /**
@@ -77,19 +67,11 @@ class DefaultController extends Controller
             $tab[] = $form2->createView();
         }
 
-        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
-        $categories = $repoCategories->findAll();
-
-        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
-        $mangas = $repoMangas->findAll();
-
-        $form3 = $this->createForm(new SpoilType());
-
-        return array('spoil' => $spoil, 'comments' => $comments, 'form' => $form->createView(), 'forms' => $tab, 'categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView());
+        return array('spoil' => $spoil, 'comments' => $comments, 'form' => $form->createView(), 'forms' => $tab);
     }
 
     /**
-     * @Route("/profile/{username}")
+     * @Route("/profile/{username}", name="view_profile")
      * @Template()
      */
     public function profileAction($username, Request $request)
@@ -112,15 +94,7 @@ class DefaultController extends Controller
             12
         );
 
-        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
-        $categories = $repoCategories->findAll();
-
-        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
-        $mangas = $repoMangas->findAll();
-
-        $form3 = $this->createForm(new SpoilType());
-
-        return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView()));
+        return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination));
     }
 
     /**
@@ -140,14 +114,6 @@ class DefaultController extends Controller
             5
         );
 
-        $repoCategories = $this->container->get('doctrine')->getRepository('MeowBundle:Category');
-        $categories = $repoCategories->findAll();
-
-        $repoMangas = $this->container->get('doctrine')->getRepository('MeowBundle:Manga');
-        $mangas = $repoMangas->findAll();
-
-        $form3 = $this->createForm(new SpoilType());
-
-        return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination, 'categories' => $categories, 'mangas' => $mangas, 'formSpoil' => $form3->createView()));
+        return $this->render('MeowBundle:Default:moderation.html.twig', array('pagination' => $pagination));
     }
 }
