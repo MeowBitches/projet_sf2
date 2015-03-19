@@ -31,7 +31,7 @@
 
 	        <!-- Cropping modal -->
 		    <div class="modal-photo" id="avatar-modal" data-open="false">
-		        <form class="avatar-form" action="{{ asset('_assets/crop.php') }}" enctype="multipart/form-data" method="post">
+		        <form class="avatar-form" action="{{ path('change-cover-user') }}" enctype="multipart/form-data" method="POST">
 		          <header>
 		            <button class="btn-close" data-close="modale" type="button">&times;</button>
 		            <h2>Modifier sa photo profil</h2>
@@ -41,15 +41,21 @@
 
 		              <!-- Upload image and data -->
 		              <div class="avatar-upload">
-		                <input class="avatar-src" name="avatar_src" type="hidden">
-		                <input class="avatar-data" name="avatar_data" type="hidden">
-		                <input class="avatar-input" id="avatarInput" name="avatar_file" type="file">
-		                <label for="avatarInput">Choisissez un fichier</label>
+		              	{{ form_widget(formCover.file, { 'attr': {'type': 'file', 'class': 'avatar-input'}}) }}
+		                <label for="user_form_file">Choisissez un fichier</label>
 		              </div>
 
 			            <!-- Crop and preview -->
 			             
-			            <div class="avatar-wrapper"></div>
+			            <div class="avatar-wrapper">
+			            	<img src="	{%- if user.cover is not empty -%}
+											{{- asset('_assets/imgs/users/' ~ user.cover) -}}
+										{%- else -%}								
+											{{- asset('_assets/imgs/users/profil-default.jpg') -}}
+										{%- endif -%}
+							" id="apercu">
+			            </div>
+			            <p class="cover-error"></p>
 			              
 			            <button class="avatar-save button" type="submit">Valider</button>
 						
@@ -65,18 +71,12 @@
 	       	  	<li data-icon="1">{{ user.username }}</li>
 
 	       	  	
-	     	  	<li><i class="icon-mail" data-icon="s"></i>{{ user.email }} {% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}<i class="changer-mail" data-icon="T"></i>{% endif %}
-					<form action="">
-						<div class="boite-mail">
-						  	<input type="email" placeholder="Nouveau mail" required="required" name="">
-						   	<input type="email" placeholder="Confirmation mail" required="required" name="">
-							<input type="submit" name="_submit" id="_submit" value="Valider">
-					    </div>
-				    </form>
+	     	  	<li>
+	     	  		<i class="icon-mail" data-icon="s"></i>{{ user.email }}
 
 	     	  	</li>
 				
-	     	  	<li><i class="icon-trophee" data-icon="M"></i>Score : {% set score = 0 %}
+	     	  	<li>Score : {% set score = 0 %}
 					{% for spoil in pagination %}
 					{% set score = score + spoil.nbSpoil %}
 					{% endfor %}
@@ -86,10 +86,12 @@
 
 			  	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") and app.user.id == user.id %}
 			  	<li>Changer de mot de passe <i class="changer-pass" data-icon="T"></i>
-					<form action="">
+					<form action="{{ path('fos_user_change_password') }}" method="post" class="fos_user_change_password">
 						<div class="boite-pass">
-						  	<input type="password" placeholder="Nouveau mot de passe" required="required" name="">
-						   	<input type="password" placeholder="Confirmation mot de passe" required="required" name="">
+							{{ form_widget(form.current_password, { 'attr': {'placeholder': 'Ancien mot de passe', 'size': '30'} }) }}
+							{{ form_widget(form.plainPassword.first, { 'attr': {'placeholder': 'Nouveau mot de passe', 'size': '30'} }) }}
+							{{ form_widget(form.plainPassword.second, { 'attr': {'placeholder': 'Confirmation mot de passe', 'size': '30'} }) }}
+							{{ form_rest(form) }}
 							<input type="submit" name="_submit" id="_submit" value="Valider">
 					    </div>
 				    </form>
@@ -122,6 +124,49 @@
 	        $('.modale-shadow').fadeOut();
 	        $('.modal-photo[data-open="true"]').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
 	      });
+
+	      function readImage(file) {
+
+			    var reader = new FileReader();
+			    var image  = new Image();
+
+			    reader.readAsDataURL(file);  
+			    reader.onload = function(_file) {
+			        image.src    = _file.target.result;              // url.createObjectURL(file);
+			        image.onload = function() {
+			            var w = this.width,
+			                h = this.height,
+			                t = file.type,                           // ext only: // file.type.split('/')[1],
+			                n = file.name,
+			                s = ~~(file.size/1024) +'KB';
+			            $('#apercu').attr('src', this.src);
+			        };   
+			    };
+
+			}
+
+
+			    $('.avatar-input').submit(function(){
+					if($('.cover-error').text() != ''){
+						return false;
+					}
+			    });
+
+		      $('.avatar-input').change(function(){
+			    var F = this.files;
+			    if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+
+		    	var fileSize = this.files[0].size,
+		    		ext = $('.avatar-input').val().split('.').pop().toLowerCase();
+
+				if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+				    $('.cover-error').text('L\'extension du fichier n\'est pas bonne.');
+		    	}else if(fileSize >= 600000){
+		    		$('.cover-error').text('L\'image est trop lourde.');
+		    	}else{
+		    		$('.cover-error').text('');
+		    	}
+		    });
 	    }
 	</script>
 	<script src="{{ asset('_assets/js/bootstrap.min.js') }}"></script>
