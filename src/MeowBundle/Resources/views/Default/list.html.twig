@@ -18,7 +18,7 @@
 									<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
 								</div>
 								<figcaption>
-									<p class="titre-manga">{{ spoil.manga.name|title }}</p>
+									<p class="titre-manga">{{ spoil.manga.name|title|truncate(14, true, '...') }}</p>
 									<div class="infos-spoils">
 										<p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
 										<p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
