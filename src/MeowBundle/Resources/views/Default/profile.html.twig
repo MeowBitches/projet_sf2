@@ -15,10 +15,10 @@
 			<div class="modale-shadow"></div>
 	        <figure class="avatar-view">
 	            <img src="	{% if user.cover is not empty %}
-													{{ asset('_assets/imgs/users/' ~ user.cover) }}
+													{{- asset('_assets/imgs/users/' ~ user.cover) -}}
 												{% else %}								
-													{{ asset('_assets/imgs/users/profil-default.jpg') }}
-												{% endif %}" alt="Profil de {{ user.username }}"/>
+													{{- asset('_assets/imgs/users/profil-default.jpg') -}}
+												{% endif %}" alt="Profil de {{- user.username -}}"/>
 								
 
 
@@ -76,7 +76,7 @@
 
 	     	  	</li>
 				
-	     	  	<li>Score : {% set score = 0 %}
+	     	  	<li><i class="icon-trophee" data-icon="M"></i>Score : {% set score = 0 %}
 					{% for spoil in pagination %}
 					{% set score = score + spoil.nbSpoil %}
 					{% endfor %}
@@ -145,7 +145,7 @@
 						   <img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="{{ spoil.title }}">
 						</div>
 					   <figcaption>
-					     <p class="titre-manga">{{ spoil.manga.name|title }}</p>
+					     <p class="titre-manga">{{ spoil.manga.name|title|truncate(14, true, '...') }}</p>
 							<div class="infos-spoils">
 							  <p class="nb-spoil" data-icon="8">{{ spoil.nbSpoil }}</p>
 							  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>

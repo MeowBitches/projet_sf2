@@ -49,7 +49,8 @@
 .profile .detail-profil figure img {
 	border: 3px solid  #304257;
 	width: 100%;
-
+    cursor: default;
+}
 }
 
 /*.profile .detail-profil figure .layout-change-photo {
@@ -131,6 +132,14 @@
     font-size: 2rem;
     color: #ccc;
     cursor: initial;
+}
+
+.profile .detail-profil i.icon-trophee:before {
+    font-style: normal;
+    font-size: 2rem;
+    color: #f8ca13;
+    cursor: initial;
+    padding-right: 5px;
 }
 
 .profile .detail-profil i.changer-mail, .profile .detail-profil i.changer-pass {
