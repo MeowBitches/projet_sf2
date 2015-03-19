@@ -81,7 +81,7 @@ width: 100%;
     
 }
 
-.home .boutons-avis li p:hover {
+.home .boutons-avis li p:hover, .articles .boutons-avis li p:hover{
   background: #e65354;
 }
 

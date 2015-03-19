@@ -151,7 +151,7 @@
 							  <p class="nb-commentaire" data-icon="x">{{ spoil.nbComments }}</p>
 							</div>
 							<div style="clear:both;"></div>
-							  <p class="spoil">{{ spoil.title }}</p>
+							  <p class="spoil">{{ spoil.title|truncate(30, true, '...') }}</p>
 							  <p class="auteur">Par <span class="auteur-important">{{ spoil.author.username }}</span></p>
 						</figcaption>
 				   </figure>
@@ -167,10 +167,20 @@
 
 {% else %}
 
-<g>Vous n'avez posté aucun spoil. Afin d'agrandir notre bibliothèque de spoil n'hésitez pas a en ajouter.</p>
-<a href="#modal-one" class="btn-profile">Poster votre spoil</a>
 
+	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
+		<div class="spoil-none">
+			<p>Vous n'avez posté aucun spoil. Afin d'agrandir notre bibliothèque de spoil n'hésitez pas a en ajouter.</p>
+			<a href="#modal-one" class="btn-profile">Poster votre spoil</a>
+		</div>
+
+	{% else %}
+
+		<div class="spoil-none">
+			<p>Cet utilisateur n'a posté aucun spoil.</p>
+		</div>
+	{% endif %}
 
 {% endif %}
 

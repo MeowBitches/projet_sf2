@@ -151,6 +151,11 @@
     padding-left: 0;
 }
 
+.profile .spoil-none {
+  padding: 100px 0px;
+  text-align: center;
+}
+
 .profile input[type="submit"]{
 	 line-height: 0.6;
 	 width: 120px;
@@ -270,5 +275,3 @@ margin: 1%;
   font-size: 1.4rem;
   font-family: "Antonio-Regular";
 }
-
-
