@@ -324,3 +324,31 @@ box-shadow: none;
   background:rgba(0,0,0,.7);
   z-index: 1999;
 }
+
+
+
+/************************ Modal Responsive ***************************/
+
+
+@media only screen and (max-width:490px) {
+
+.modal-connexion .modal-dialog {
+  background: #fefefe;
+  border: #333333 solid 1px;
+  border-radius: 4px;
+  margin-left: -200px;
+  position: fixed;
+  left: 55%;
+  top: -100%;
+  z-index: 11;
+  width: 365px;
+  -webkit-transform: translate(0, -500%);
+  -ms-transform: translate(0, -500%);
+  transform: translate(0, -500%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -moz-transition: -moz-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+}
+ 
+}

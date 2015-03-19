@@ -481,9 +481,6 @@ h2 {
 
 
 
-
-/*********** Test pour Audrey ************/
-
 .home h1, .home p, .home table{
 	color: #fff;
 }
@@ -491,8 +488,6 @@ h2 {
 h1, p, table{
 	color: #000;
 }
-
-/***********************/
 
 
 /*********** Se connecter ************/
