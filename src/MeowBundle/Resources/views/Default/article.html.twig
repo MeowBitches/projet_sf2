@@ -103,10 +103,13 @@
 						<div class="react-users">
 							<a class="respond-btn {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}show-respond{% endif %}" {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}href="#modal-one"{% endif %}>Répondre</a>
 							
+							{% if comment_lvl1.nbLike > -10 %}
 							<div class="users-like">
 								<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
 								<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
 							</div>
+							{% endif %}
+
 							<p class="nb-like">{{ comment_lvl1.nbLike }} like{% if comment_lvl1.nbLike > 1 %}s{% endif %}</p>
 						</div>
 					</div>
@@ -142,10 +145,14 @@
 								</p>
 
 									<div class="react-users">
+										
+										{% if comment_lvl1.nbLike > -10 %}
 										<div class="users-like">
 											<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl2.id }}"></a>
 											<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl2.id }}"></a>
 										</div>
+										{% endif %}
+
 										<p class="nb-like">{{ comment_lvl2.nbLike }} like{% if comment_lvl2.nbLike > 1 %}s{% endif %}</p>
 									</div>
 							</div> <!-- End comm-right -->

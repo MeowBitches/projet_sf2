@@ -80,6 +80,11 @@ width: 100%;
     font-size: 16px;
     
 }
+
+.home .boutons-avis li p:hover {
+  background: #e65354;
+}
+
 .home .boutons-avis li span {
 	display: inline-block;
 	background:#e65354;
