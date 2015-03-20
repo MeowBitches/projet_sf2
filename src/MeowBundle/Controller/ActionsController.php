@@ -13,6 +13,8 @@ use MeowBundle\Entity\Comment;
 use MeowBundle\Entity\Manga;
 use MeowBundle\Form\SpoilType;
 use MeowBundle\Entity\Spoil;
+use MeowBundle\Form\UserType;
+use MeowBundle\Entity\User;
 
 class ActionsController extends Controller
 {
@@ -281,5 +283,34 @@ class ActionsController extends Controller
         $this->container->get('doctrine.orm.default_entity_manager')->flush();
 
         return new Response(null);
+    }
+
+    /**
+     * @Route("/change-cover-user)", name="change-cover-user")
+     */
+    public function changeCoverUserAction(Request $request)
+    {
+        $id = $this->getUser()->getId();
+
+        $repoUser = $this->container->get('doctrine')->getRepository('MeowBundle:User');
+        $user = $repoUser->findOneById($id);
+
+        $form = $this->createForm(new UserType(), $user);
+
+        if($this->getRequest()->isMethod('POST')){
+            $form->handleRequest($request);
+
+            if($form->isValid())
+            {
+                $cover = $form->getData();
+                $cover->upload();
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($cover);
+                $em->flush();
+            }
+        }
+
+        return $this->redirect($this->generateUrl('home'));
     }
 }
