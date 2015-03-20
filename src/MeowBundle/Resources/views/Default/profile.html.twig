@@ -27,7 +27,7 @@
 					<form class="avatar-form" action="{{ path('change-cover-user') }}" enctype="multipart/form-data" method="POST">
 						<header>
 							<button class="btn-close" data-close="modale" type="button">&times;</button>
-							<h2>Modifier sa photo profil</h2>
+							<h2>Modifier sa photo de profil</h2>
 						</header>
 						<main>
 							<div class="avatar-corp">
@@ -43,7 +43,7 @@
 												{%- else -%}								
 													{{ asset('_assets/imgs/users/profil-default.jpg') }}
 												{%- endif -%}" 
-									id="apercu" />
+									id="apercu" width="390" />
 								</div>
 								<p class="cover-error"></p>
 								<button class="avatar-save button" type="submit">Valider</button>
@@ -54,7 +54,7 @@
 				</div>
 
 		   
-			   <ul>
+				<ul>
 					<li data-icon="1">{{ user.username }}</li>
 					<li>
 						<i class="icon-mail" data-icon="s"></i>{{ user.email }}
