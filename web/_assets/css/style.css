@@ -282,7 +282,7 @@ h2 {
 		display: block!important;
 		width: auto;
 		margin: 0;
-		padding: 8px 0 0 0;
+		padding: 10px 0 0 0;
 		border-bottom: 0;
 
 	}
@@ -400,6 +400,7 @@ h2 {
 	overflow: hidden;
 	margin: 0;
 	padding: 0;
+	border: 1px solid #fff;
 }
 
 .nav .image-profil figure img {
@@ -689,7 +690,7 @@ width: 100%;
 	border-radius: 4px; 
     color: #fff;
     font-size: 20px;
-    padding: 10px 140px;
+    padding: 12px 140px 8px;
 }
 .home button:hover {
 	background: #d73f40;
@@ -924,6 +925,10 @@ width: 100%;
 
 }
 
+.fos_user_change_password {
+	margin-top: 10px;
+}
+
 .profile .detail-profil label{
 	 margin: 0px;
 }
@@ -935,6 +940,7 @@ width: 100%;
 .profile .detail-profil input{
     font-size: 1.3rem;
     width: 200px;
+    width: 165px;
 }
 
 .profile .detail-profil input:focus {
@@ -1514,7 +1520,16 @@ box-shadow: none;
   display:none;
 }
 
-.modal-connexion #spoil_form_cover{
+/*.modal-connexion #spoil_form_cover{
+  position: absolute;
+  left: 0;
+  cursor: pointer;
+  padding: 10px 15px 10px 75px;
+  -moz-box-padding: 10px 15px 10px 114px;
+  font-size: 1.3rem;
+}*/
+
+#newSpoil .file input {
   position: absolute;
   left: 0;
   cursor: pointer;
@@ -1528,7 +1543,7 @@ box-shadow: none;
   font-family: "Antonio-Regular", sans-serif;
   color: #fff;
   border-radius: 4px;
-  padding: 8px 42px;
+   padding: 11px 42px 7px;
   cursor: pointer;
   display: inline-block;
   position: relative;
