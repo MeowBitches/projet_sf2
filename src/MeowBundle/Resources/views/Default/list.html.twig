@@ -1,15 +1,19 @@
 {% extends 'MeowBundle::layout.html.twig' %}
 
+{% block moreAssets %}
+	<script src="{{ asset('_assets/js/content-filter/jquery.mixitup.min.js') }}"></script>
+	<script src="{{ asset('_assets/js/content-filter/main.js') }}"></script>
+	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% endblock %}
+
 {% block content %}
-
-
 	<main class="cd-main-content" id="all-spoils">
 		
 		<h2>Tous les spoils</h2>
-
 		<section class="cd-gallery">
-			
 			<ul id="Container">
+
 				{% for spoil in spoils %}
 					<li class="mix {{ spoil.manga.category.name|lower }} {{ spoil.manga.name|lower }}">
 						<a href="{{ urlBase }}spoil/{{ spoil.slug }}">
@@ -31,11 +35,11 @@
 						</a>
 					</li>
 				{% endfor %}
+
 				<li class="gap"></li>
 				<li class="gap"></li>
 				<li class="gap"></li>
 			</ul>
-
 			<div class="cd-fail-message">Aucun résultat</div>
 		</section>
 	 
@@ -50,6 +54,7 @@
 
 				<div class="cd-filter-block">
 					<h4 style="background:url('{{ asset('_assets/imgs/cd-icon-arrow.svg') }}') no-repeat left center">Type de manga</h4>
+
 					<ul class="cd-filter-content cd-filters list">
 						{% for category in categories %}
 							<li>
@@ -60,21 +65,18 @@
 							</li>
 						{% endfor %}
 					</ul>
-				</div>
 
+				</div>
 			</form>
-	 
 			<a href="#0" class="cd-close" data-icon="v"></a>
 		</div>
 	 
 		<a href="#0" class="cd-filter-trigger" style="background:url('{{ asset('_assets/imgs/cd-icon-filter.png') }}') no-repeat 10px center #e65354">Filtrer</a>
 	</main>
+{% endblock %}
 
-	<script src="{{ asset('_assets/js/content-filter/jquery.mixitup.min.js') }}"></script>
-	<script src="{{ asset('_assets/js/content-filter/main.js') }}"></script>
-
-	<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+{% block scripts %}
+	{{ parent() }}
 	<script>
 		$(function(){
 			var list = [
@@ -87,5 +89,4 @@
 			});
 		});
 	</script>
-
 {% endblock %}

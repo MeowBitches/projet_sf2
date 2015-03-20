@@ -1,245 +1,244 @@
 {% extends 'MeowBundle::layout.html.twig' %}
-{% block bodyClass %}id="articles"{% endblock %}
+
+{% block bodyId %}articles{% endblock %}
 
 {% block content %}
+	<section class="articles">
 
-<section class="articles">
+		<h2>{{ spoil.manga.name }}</h2>
 
-	<h2>{{ spoil.manga.name }}</h2>
+		<figure>
+			<div class="bloc-image">
+				<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
+			</div>
+			<figcaption>
+				<h3>{{ spoil.title }}</h3>
+			</figcaption>
+		</figure>
 
-	 <figure>
-	 	<div class="bloc-image">
-	     	<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
-	     </div>
-        <figcaption><h3>{{ spoil.title }}</h3></figcaption>
-     </figure>
-     <div class="infos-spoiler">
-    	<p data-icon="8">Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|localizeddate('long', 'none') }}</span></p>
-     </div>
-     <div class="boutons-avis">
-     	<ul>
-     		<li class="vote spoilAction" data-spoil-id="{{ spoil.id }}"><p>Spoil</p><span>{{ spoil.nbSpoil }}</span></li>
-            <li class="vote failAction" data-spoil-id="{{ spoil.id }}"><p>Fail</p><span>{{ spoil.nbFail }}</span></li>
-            <li class="vote fakeAction" data-spoil-id="{{ spoil.id }}"><p>Fake</p><span>{{ spoil.nbFake }}</span></li>
-        </ul>    
-     </div>	
+		<div class="infos-spoiler">
+			<p data-icon="8">
+				Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}">{{ spoil.author.username }}</a> <span>- le {{ spoil.date|localizeddate('long', 'none') }}</span>
+			</p>
+		</div>
 
-
-	<p data-icon="x" class="nb-commentaire">{{ spoil.nbComments }} commentaires</p>
-
-	{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-		{#        AJOUTER UN COMMENTAIRE        #}
-
-		<form action="{{ path("add-comment-lvl1", { id: spoil.id }) }}" method="post" class="ajout-commentaire">
-			<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
-				<img src="	{% if app.user.cover is not empty %}
-								{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
-							{% else %}								
-								{{ asset('_assets/imgs/users/profil-default.jpg') }}
-							{% endif %}" alt="Profil de {{ app.user.username }}"/>
-			</a>
-
-			{{ form_widget(form.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
-
-			{{ form_rest(form) }}
-
-			<input type="submit" value="Envoyer">
-		</form>
-
-		<div style="clear: both;"></div>
-
-	{% else %} {#        CONNEXION        #}
-
-		<p>Connectez-vous pour pouvoir poster un commentaire.</p>
-
-		<form action="{{ path("fos_user_security_check") }}" method="post" class="connexion-comm">
+		<div class="boutons-avis">
 			<ul>
-				<li>
-				    <label for="username"><i data-icon="7"></i></label>
-				    <input type="text" id="username" name="_username" required="required"  placeholder="Pseudo" size="30" />
-			    </li>
-				<li>
-				    <label for="password"><i data-icon="r"></i></label>
-				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
-			    </li>
-				<li>
-			    	<input type="submit" id="_submit" name="_submit" value="Connexion" />
-			    </li>
-				
-		    </ul>
-		</form>
-
-	{% endif %}
-
-	<div class="commentaires">
-
-		<ul> {#        COMMENTAIRE 1        #}
-
-			{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
-				{% set form2 = forms[loop.index0] %}
-				<li class="comment1"> 
-					<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
-						<img src="	{% if comment_lvl1.author.cover is not empty %}
-										{{ asset('_assets/imgs/users/' ~ comment_lvl1.author.cover) }}
-									{% else %}
-										{{ asset('_assets/imgs/users/profil-default.jpg') }}
-									{% endif %}" alt="Profil de {{ comment_lvl1.author.username }} "/>
-					</a>
-					
-					<div class="comm-right">
-						<div class="infos-comm">
-							<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
-							<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i") }}</p>
-						</div>
-
-						<p class="text-comm">
-							{% if comment_lvl1.nbLike > -10 %}
-								{{ comment_lvl1.text|nl2br }}
-							{% else %}
-								Commentaire modéré
-							{% endif %}</p>
-
-						<div class="react-users">
-							<a class="respond-btn {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}show-respond{% endif %}" {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}href="#modal-one"{% endif %}>Répondre</a>
-							
-							{% if comment_lvl1.nbLike > -10 %}
-							<div class="users-like">
-								<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
-								<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
-							</div>
-							{% endif %}
-
-							<p class="nb-like">{{ comment_lvl1.nbLike }} like{% if comment_lvl1.nbLike > 1 %}s{% endif %}</p>
-						</div>
-					</div>
-
-					<div style="clear: both;"></div>
-
+				<li class="vote spoilAction" data-spoil-id="{{ spoil.id }}">
+					<p>Spoil</p><span>{{ spoil.nbSpoil }}</span>
 				</li>
+				<li class="vote failAction" data-spoil-id="{{ spoil.id }}">
+					<p>Fail</p><span>{{ spoil.nbFail }}</span>
+				</li>
+				<li class="vote fakeAction" data-spoil-id="{{ spoil.id }}">
+					<p>Fake</p><span>{{ spoil.nbFake }}</span>
+				</li>
+			</ul>
+		</div>
 
-				<ul> {#        COMMENTAIRE 2        #}
+		<p data-icon="x" class="nb-commentaire">{{ spoil.nbComments }} commentaire{% if spoil.nbComments > 1 %}s{% endif %}</p>
 
-					{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
-						<li class="comment2">
-							<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}" class="avatar avatar2">
-								<img src="	{% if comment_lvl2.author.cover is not empty %}
-												{{ asset('_assets/imgs/users/' ~ comment_lvl2.author.cover) }}
-											{% else %}
-												{{ asset('_assets/imgs/users/profil-default.jpg') }}
-											{% endif %}" alt="Profil de {{ comment_lvl2.author.username }} "/>
-							</a>
+		{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
 
-							<div class="comm-right">
-								<div class="infos-comm">
-									<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}">{{ comment_lvl2.author.username }}</a>
-									<p class="date-comm">{{ comment_lvl2.date|date("d/m/Y H:i:s") }}</p>
-								</div>
+			<form action="{{ path("add-comment-lvl1", { id: spoil.id }) }}" method="post" class="ajout-commentaire">
+				<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
+					<img src="	{%- if app.user.cover is not empty -%}
+									{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+								{%- else -%}								
+									{{ asset('_assets/imgs/users/profil-default.jpg') }}
+								{%- endif -%}"
+					alt="Profil de {{ app.user.username }}"/>
+				</a>
 
-								<p class="text-comm">
-									{% if comment_lvl2.nbLike > -10 %}
-										{{ comment_lvl2.text|nl2br }}
-									{% else %}
-										<span class="comm-modere">Commentaire modéré</span>
-									{% endif %}
-								</p>
+				{{ form_widget(form.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
+				{{ form_rest(form) }}
+				<input type="submit" value="Envoyer">
+			</form>
 
-									<div class="react-users">
-										
-										{% if comment_lvl1.nbLike > -10 %}
-										<div class="users-like">
-											<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl2.id }}"></a>
-											<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl2.id }}"></a>
-										</div>
-										{% endif %}
+			<div style="clear: both;"></div>
 
-										<p class="nb-like">{{ comment_lvl2.nbLike }} like{% if comment_lvl2.nbLike > 1 %}s{% endif %}</p>
-									</div>
-							</div> <!-- End comm-right -->
+		{% else %}
 
-							
-						</li>
-						<div style="clear: both;"></div>
-					{% endfor %}
+			<p>Connectez-vous pour poster un commentaire.</p>
 
+			<form action="{{ path("fos_user_security_check") }}" method="post" class="connexion-comm">
+				<ul>
+					<li>
+						<label for="username"><i data-icon="7"></i></label>
+						<input type="text" id="username" name="_username" required="required"  placeholder="Pseudo" size="30" />
+					</li>
+					<li>
+						<label for="password"><i data-icon="r"></i></label>
+						<input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
+					</li>
+					<li>
+						<input type="submit" id="_submit" name="_submit" value="Connexion" />
+					</li>
 				</ul>
+			</form>
 
-				{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-					<li class="respond-comm">
-						<form action="{{ path("add-comment-lvl2", { id: spoil.id, id_parent: comment_lvl1.id }) }}" method="post" class="ajout-commentaire">
-							<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
-								<img src="	{% if app.user.cover is not empty %}
-												{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
-											{% else %}								
-												{{ asset('_assets/imgs/users/profil-default.jpg') }}
-											{% endif %}" alt="Profil de {{ app.user.username }}"/>
-							</a>
+		{% endif %}
 
-							{{ form_widget(form2.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
+		<div class="commentaires">
+			<ul>
+				{% for comment_lvl1 in comments if comment_lvl1.parent is null %}
 
-							{{ form_rest(form2) }}
+					{% set form2 = forms[loop.index0] %}
+					<li class="comment1"> 
+						<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}" class="avatar">
+							<img src="	{%- if comment_lvl1.author.cover is not empty -%}
+											{{ asset('_assets/imgs/users/' ~ comment_lvl1.author.cover) }}
+										{%- else -%}
+											{{ asset('_assets/imgs/users/profil-default.jpg') }}
+										{%- endif -%}"
+							alt="Profil de {{ comment_lvl1.author.username }}" />
+						</a>
+						
+						<div class="comm-right">
+							<div class="infos-comm">
+								<a href="{{ urlBase }}profile/{{ comment_lvl1.author.username }}">{{ comment_lvl1.author.username }}</a>
+								<p class="date-comm">{{ comment_lvl1.date|date("d/m/Y H:i") }}</p>
+							</div>
 
-							<input type="submit" value="Envoyer">
-						</form>
+							<p class="text-comm">
+								{%- if comment_lvl1.nbLike > -10 -%}
+									{{ comment_lvl1.text|nl2br }}
+								{%- else -%}
+									Commentaire modéré
+								{%- endif -%}
+							</p>
 
+							<div class="react-users">
+								<a class="respond-btn {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}show-respond{% endif %}" {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}href="#modal-one"{% endif %}>Répondre</a>
+								
+								{% if comment_lvl1.nbLike > -10 %}
+									<div class="users-like">
+										<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl1.id }}"></a>
+										<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl1.id }}"></a>
+									</div>
+								{% endif %}
+
+								<p class="nb-like">{{ comment_lvl1.nbLike }} like{% if comment_lvl1.nbLike > 1 %}s{% endif %}</p>
+							</div>
+						</div>
 						<div style="clear: both;"></div>
 					</li>
-				{% endif %}
-			{% endfor %}
-		</ul>
-	</div>
 
+					<ul>
+						{% for comment_lvl2 in comments if comment_lvl2.parent is not null and comment_lvl2.parent.id == comment_lvl1.id %}
 
-</section>
+							<li class="comment2">
+								<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}" class="avatar avatar2">
+									<img src="	{%- if comment_lvl2.author.cover is not empty -%}
+													{{ asset('_assets/imgs/users/' ~ comment_lvl2.author.cover) }}
+												{%- else -%}
+													{{ asset('_assets/imgs/users/profil-default.jpg') }}
+												{%- endif -%}"
+									alt="Profil de {{ comment_lvl2.author.username }}" />
+								</a>
 
+								<div class="comm-right">
+									<div class="infos-comm">
+										<a href="{{ urlBase }}profile/{{ comment_lvl2.author.username }}">{{ comment_lvl2.author.username }}</a>
+										<p class="date-comm">{{ comment_lvl2.date|date("d/m/Y H:i:s") }}</p>
+									</div>
 
+									<p class="text-comm">
+										{%- if comment_lvl2.nbLike > -10 -%}
+											{{ comment_lvl2.text|nl2br }}
+										{%- else -%}
+											<span class="comm-modere">Commentaire modéré</span>
+										{%- endif -%}
+									</p>
 
-<script>
-	$(function(){
-		$(".show-respond").click(function(){
-			$(this).parents('.comment1').next('ul').next('.respond-comm').fadeToggle(100);
+										<div class="react-users">
+											
+											{% if comment_lvl1.nbLike > -10 %}
+												<div class="users-like">
+													<a href="#" class="like" data-icon="z" data-comment-id="{{ comment_lvl2.id }}"></a>
+													<a href="#" class="dislike" data-icon="u" data-comment-id="{{ comment_lvl2.id }}"></a>
+												</div>
+											{% endif %}
+
+											<p class="nb-like">{{ comment_lvl2.nbLike }} like{% if comment_lvl2.nbLike > 1 %}s{% endif %}</p>
+										</div>
+								</div>
+							</li>
+							<div style="clear: both;"></div>
+
+						{% endfor %}
+					</ul>
+
+					{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+						<li class="respond-comm">
+							<form action="{{ path("add-comment-lvl2", { id: spoil.id, id_parent: comment_lvl1.id }) }}" method="post" class="ajout-commentaire">
+								<a href="{{ urlBase }}profile/{{ app.user.username }}" class="avatar">
+									<img src="	{%- if app.user.cover is not empty -%}
+													{{ asset('_assets/imgs/users/' ~ app.user.cover) }}
+												{%- else -%}								
+													{{ asset('_assets/imgs/users/profil-default.jpg') }}
+												{%- endif -%}"
+									alt="Profil de {{ app.user.username }}" />
+								</a>
+
+								{{ form_widget(form2.text, { 'attr': {'placeholder': 'Ecrire un commentaire'}}) }}
+								{{ form_rest(form2) }}
+								<input type="submit" value="Envoyer">
+							</form>
+							<div style="clear: both;"></div>
+						</li>
+					{% endif %}
+
+				{% endfor %}
+			</ul>
+		</div>
+	</section>
+{% endblock %}
+
+{% block scripts %}
+	{{ parent() }}
+	<script type="text/javascript">
+		$(function(){
+			$(".show-respond").click(function(){
+				$(this).parents('.comment1').next('ul').next('.respond-comm').fadeToggle(100);
+			});
+
+			$('.like').click(function(event){
+				event.preventDefault();
+				var that = $(this);
+				$.post('{{ path("like-comment") }}',{
+						id: that.attr('data-comment-id')
+					},
+					function(data){
+						var plural;
+						if(data > 1){
+							plural = 's';
+						}else{
+							plural = '';
+						}
+						that.parent().siblings('.nb-like').text(data + ' like' + plural);
+						that.parent().html('');
+					}
+				);
+			});
+			$('.dislike').click(function(event){
+				event.preventDefault();
+				var that = $(this);
+				$.post('{{ path("dislike-comment") }}',{
+						id: that.attr('data-comment-id')
+					},
+					function(data){
+						var plural;
+						if(data > 1){
+							plural = 's';
+						}else{
+							plural = '';
+						}
+						that.parent().siblings('.nb-like').text(data + ' like' + plural);
+						that.parent().html('');
+					}
+				);
+			});
 		});
-
-	});
-
-	$(function(){
-		$('.like').click(function(event){
-			event.preventDefault();
-	        var that = $(this);
-	        $.post('{{ path("like-comment") }}',{
-	                id: that.attr('data-comment-id')
-	            },
-	            function(data){
-	            	var plural;
-	            	if(data > 1){
-	            		plural = 's';
-	            	}else{
-	            		plural = '';
-	            	}
-	                that.parent().siblings('.nb-like').text(data + ' like' + plural);
-	                that.parent().html('');
-	            }
-	        );
-	    });
-	    $('.dislike').click(function(event){
-			event.preventDefault();
-	        var that = $(this);
-	        $.post('{{ path("dislike-comment") }}',{
-	                id: that.attr('data-comment-id')
-	            },
-	            function(data){
-	            	var plural;
-	            	if(data > 1){
-	            		plural = 's';
-	            	}else{
-	            		plural = '';
-	            	}
-	                that.parent().siblings('.nb-like').text(data + ' like' + plural);
-	                that.parent().html('');
-	            }
-	        );
-	    });
-	});
-</script>
-
+	</script>
 {% endblock %}

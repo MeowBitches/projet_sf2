@@ -1,78 +1,72 @@
 {% extends 'MeowBundle::layout.html.twig' %}
-{% block bodyClass %} id="moderation" {% endblock %}
+
+{% block bodyId %}moderation{% endblock %}
+
 {% block content %}
+	<section class="moderation">
+		<h2>Modération</h2>
 
-<section class="moderation">
+			{% for spoil in pagination %}
+				<div>
+					<table>		
+						<tr>
+							<td class="col-1" >
+								<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
+							</td>
 
-	<h2>Modération</h2>
+							<td class="col-2">
+								<h2>{{ spoil.manga }}</h2>
+								<p>{{ spoil.title }}</p>
+								<p>Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="auteur">{{ spoil.author.username }}</a>, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
+							</td>
 
-		{% for spoil in pagination %}
+							<td class="col-3">
+								<a href="#" class="activate{% if spoil.isPublished == true %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-active">&nbsp;</span>Activé</p></a>
+								<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Désactivé</p></a>
+							</td>
+						</tr>
+					</table>
+				</div>
+			{% endfor %}
 
-		<div>
-			<table>
-				<thead>			
-					<tr>						
-						<td class="col-1" >
-							<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}"> 
-						</td>
+		{{ knp_pagination_render(pagination) }}
 
-						<td class="col-2">
-							<h2>{{ spoil.manga }}</h2>
-							<p>{{ spoil.title }}</p>
-							<p>Par <a href="{{ urlBase }}profile/{{ spoil.author.username }}" class="auteur">{{ spoil.author.username }}</a>, le {{ spoil.date|localizeddate('medium', 'none')|trans }}</p>
-						</td>
+	</section>
+{% endblock %}
 
-						<td class="col-3">
-							<a href="#" class="activate{% if spoil.isPublished == true %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-active">&nbsp;</span>Activé</p></a>
-							<a href="#" class="inactivate{% if spoil.isPublished == false %} active{% endif %}" data-spoil-id="{{ spoil.id }}"><p><span class="btn-inactive">&nbsp;</span>Désactivé</p></a>
-						</td>
+{% block scripts %}
+	{{ parent() }}
+	<script>
+		$(function(){
+			$('.activate').click(function(event){
+				event.preventDefault();
+				var that = $(this);
+				if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+					$.post('{{ path("activate-spoil") }}',{
+							id: that.attr('data-spoil-id')
+						},
+						function(data){
+							that.addClass('active');
+							that.siblings().removeClass('active');
+						}
+					);
+				}
+			});
 
-					</tr>
-
-				</thead>
-
-			</table>
-
-		</div>
-
-		{% endfor %}
-
-	{{ knp_pagination_render(pagination) }}
-
-</section>
-
-<script>
-	$(function(){
-		$('.activate').click(function(event){
-			event.preventDefault();
-	        var that = $(this);
-	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
-		        $.post('{{ path("activate-spoil") }}',{
-		                id: that.attr('data-spoil-id')
-		            },
-		            function(data){
-		                that.addClass('active');
-		                that.siblings().removeClass('active');
-		            }
-		        );
-		    }
-	    });
-
-		$('.inactivate').click(function(event){
-			event.preventDefault();
-	        var that = $(this);
-	        if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
-		        $.post('{{ path("inactivate-spoil") }}',{
-		                id: that.attr('data-spoil-id')
-		            },
-		            function(data){
-		                that.addClass('active');
-		                that.siblings().removeClass('active');
-		            }
-		        );
-		    }
-	    });
-	});
-</script>
-
+			$('.inactivate').click(function(event){
+				event.preventDefault();
+				var that = $(this);
+				if(that.attr('data-spoil-id') != '' && !that.hasClass('active')){
+					$.post('{{ path("inactivate-spoil") }}',{
+							id: that.attr('data-spoil-id')
+						},
+						function(data){
+							that.addClass('active');
+							that.siblings().removeClass('active');
+						}
+					);
+				}
+			});
+		});
+	</script>
 {% endblock %}

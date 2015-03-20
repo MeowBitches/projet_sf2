@@ -3,7 +3,7 @@
 		<div>
 			<h1><a class="navbar-brand" href="{{ urlBase }}"><img src="{{ asset('_assets/imgs/logo.svg') }}" alt="Logo Nyan Cat"></a></h1>
 			<!--[if IE]>
-			  <h1><a class="navbar-brand" href="{{ urlBase }}"><img src="{{ asset('_assets/imgs/logo.png') }}" alt="Logo Nyan Cat"></a></h1>
+				<h1><a class="navbar-brand" href="{{ urlBase }}"><img src="{{ asset('_assets/imgs/logo.png') }}" alt="Logo Nyan Cat"></a></h1>
 			<![endif]-->
 		</div>
 
@@ -11,8 +11,6 @@
 			<a href="javascript:void(0);" id="burger"><img src="{{ asset('_assets/imgs/menu-burger.png') }}" alt="Burger menu"/></a>
 			<a href="javascript:void(0);" id="croix" data-icon="v"></a>
         </div>
-
-       
 
 		<ul class="nav">
 			<li role="presentation" class="nav-meow {% if currentUrl == urlBase %}active{% endif %}">
@@ -25,45 +23,36 @@
 				<a href="#modal-one" class="btn btn-big">Ajouter un spoil</a>
 			</li>
 			{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-				
-			<li class="user"><p>{{ app.user.username }}</p></li>
-			<li class="image-profil">
-				<figure>
-					{% if app.user.cover is not empty %}
-						{% set coverUser = app.user.cover %}
-					{% else %}
-						{% set coverUser = 'profil-default.jpg' %}
-					{% endif %}
-					<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
-				</figure>
-			</li>
-				
-			<div class="boite-menu hidden">	
-				<img src="{% if is_granted("ROLE_ADMIN") %}{{ asset('_assets/imgs/chat-admin.svg') }}{% else %}{{ asset('_assets/imgs/chat-user.svg') }}{% endif %}">
-				<ul class="boite-sous-menu">
-					<li class="item-menu">
-						<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
-					{% if is_granted("ROLE_ADMIN") %}
-						<li class="item-menu" >
-							<a href="{{ urlBase }}admin/moderation/">Modérer</a>
-						</li>
-					{% endif %}
-					<li class="item-menu">
-						<a href="{{ urlBase }}logout">Se déconnecter</a>
-					</li>
-				</ul>
-				<div class="arrow-boite"></div>
-			</div>
 
-			<script>
-				$(function() {
-					$('.image-profil').click(function() {
-						$('.boite-menu').fadeToggle(100);
-					});
-				});
-			</script>		
-			
-				
+				<li class="user"><p>{{ app.user.username }}</p></li>
+				<li class="image-profil">
+					<figure>
+						{% if app.user.cover is not empty %}
+							{% set coverUser = app.user.cover %}
+						{% else %}
+							{% set coverUser = 'profil-default.jpg' %}
+						{% endif %}
+						<img src="{{ asset('_assets/imgs/users/' ~ coverUser) }}">
+					</figure>
+				</li>
+
+				<div class="boite-menu hidden">	
+					<img src="{% if is_granted("ROLE_ADMIN") %}{{ asset('_assets/imgs/chat-admin.svg') }}{% else %}{{ asset('_assets/imgs/chat-user.svg') }}{% endif %}">
+					<ul class="boite-sous-menu">
+						<li class="item-menu">
+							<a href="{{ urlBase }}profile/{{ app.user.username|lower }}">Voir mon profil</a>
+						{% if is_granted("ROLE_ADMIN") %}
+							<li class="item-menu" >
+								<a href="{{ urlBase }}admin/moderation/">Modérer</a>
+							</li>
+						{% endif %}
+						<li class="item-menu">
+							<a href="{{ urlBase }}logout">Se déconnecter</a>
+						</li>
+					</ul>
+					<div class="arrow-boite"></div>
+				</div>
+
 			{% else %}
 				<li role="presentation" class="btn-meow1 {% if currentUrl == urlBase ~ "connexion/" %}active{% endif %}">
 					<a href="{{ urlBase }}login" data-icon="y">Se connecter</a>
@@ -78,64 +67,41 @@
 
 
 {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-
-<script>
-	
-		// On attend que la page soit chargée 
-	jQuery(document).ready(function()
-	{
-	   // On cache la zone de texte
-	   jQuery('#toggle').hide();
-	   // toggle() lorsque le lien avec l'ID #toggler est cliqué
-	   jQuery('a#plus').click(function()
-	  {
-	      jQuery('#toggle').toggle(400);
-	      return false;
-	   });
-	});
-
-</script>
-
-
-		{{ render(controller('MeowBundle:Actions:createSpoil')) }}
-
-
+	{{ render(controller('MeowBundle:Actions:createSpoil')) }}
 {% else %}
-<!-- Modal -->
-<div class="modal-connexion" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog" style="top:20%;">
-    <div class="modal-header">
-      <h2 style="background:url('{{ asset('_assets/imgs/login.svg') }}') no-repeat left 1px">Se connecter</h2>
-      <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
-    </div>
-    <div class="modal-body">
 
-    	<p class="imp">Connectez-vous pour poster un spoil ou un commentaire.</p>
+	<div class="modal-connexion" id="modal-one" aria-hidden="true">
+		<div class="modal-dialog" style="top:20%;">
+			<div class="modal-header">
+				<h2 style="background:url('{{ asset('_assets/imgs/login.svg') }}') no-repeat left 1px">Se connecter</h2>
+				<a href="#close" class="btn-close" aria-hidden="true">×</a>
+			</div>
+			<div class="modal-body">
+				<p class="imp">Connectez-vous pour poster un spoil ou un commentaire.</p>
 
-		<section class="connexion connexion2" >
-		<form action="{{ path("fos_user_security_check") }}" method="post">
-			<ul>
-				<li>
-				    <label for="username"><i data-icon="7"></i></label>
-				    <input type="text" id="username" name="_username" required="required"  placeholder="Pseudo ou email" size="30" />
-			    </li>
-				<li>
-				    <label for="password"><i data-icon="r"></i></label>
-				    <input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
-			    </li>
-			    <li>
-				    <a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
-				</li>
-				<li>
-			    	<input type="submit" id="_submit" name="_submit" value="Connexion" />
-			    </li>
-		    </ul>
-		</form>
-		</section>
-		<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}register" class="register">Inscrivez-vous !</a></p>
-    </div>
-    </div>
-  </div>
-</div>
+				<section class="connexion connexion2">
+					<form action="{{ path("fos_user_security_check") }}" method="post">
+						<ul>
+							<li>
+								<label for="username"><i data-icon="7"></i></label>
+								<input type="text" id="username" name="_username" required="required"  placeholder="Pseudo ou email" size="30" />
+							</li>
+							<li>
+								<label for="password"><i data-icon="r"></i></label>
+								<input type="password" id="password" name="_password" required="required" placeholder="Mot de passe" size="30" />
+							</li>
+							<li>
+								<a href="{{ path('fos_user_resetting_request') }}">Mot de passe oublié</a>
+							</li>
+							<li>
+								<input type="submit" id="_submit" name="_submit" value="Connexion" />
+							</li>
+						</ul>
+					</form>
+				</section>
+				<p>Nouveau sur Nyan Spoil ? <a href="{{ urlBase }}register" class="register">Inscrivez-vous !</a></p>
+			</div>
+		</div>
+	</div>
+
 {% endif %}
-<!-- /Modal -->

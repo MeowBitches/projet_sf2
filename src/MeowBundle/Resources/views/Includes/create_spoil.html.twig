@@ -1,62 +1,57 @@
 <div class="modal-connexion" id="modal-one" aria-hidden="true">
-  <div class="modal-dialog" style="top:10%;">
-    <div class="modal-header">
-      <h2 style="background:url('{{ asset('_assets/imgs/ajout-spoil.svg') }}') no-repeat left 1px">Ajouter un spoil</h2>
-      <a href="#close" class="btn-close" aria-hidden="true">×</a> <!--CHANGED TO "#close"-->
-    </div>
-    <div class="modal-body2">
+	<div class="modal-dialog" style="top:10%;">
+		<div class="modal-header">
+			<h2 style="background:url('{{ asset('_assets/imgs/ajout-spoil.svg') }}') no-repeat left 1px">Ajouter un spoil</h2>
+			<a href="#close" class="btn-close" aria-hidden="true">×</a>
+		</div>
+		<div class="modal-body2">
 
-    	<ul class="rules">
-    		<li>- Rappel du concept : Choisissez d'envoyer un vrai spoil ou un faux spoil.</li>
-    		<li>- Le spoil doit contenir une phrase et une image.</li>
-    		<li>- Si le manga choisi n'existe pas, vous pouvez l'ajouter en cliquant sur le +.</li>
-    		<li>- Tout envoi en langage SMS ou comportant trop de fautes d'orthographes sera refusé.</li>
-    	</ul>
+			<ul class="rules">
+				<li>- Rappel du concept : Choisissez d'envoyer un vrai spoil ou un faux spoil.</li>
+				<li>- Le spoil doit contenir une phrase et une image.</li>
+				<li>- Si le manga choisi n'existe pas, vous pouvez l'ajouter en cliquant sur le +.</li>
+				<li>- Tout envoi en langage SMS ou comportant trop de fautes d'orthographes sera refusé.</li>
+			</ul>
 
-		<section class="ajout">
-		<form action="{{ path("add-spoil") }}" method="post" enctype="multipart/form-data" id="newSpoil">
-			<ul>
-				<li>
-					{{ form_widget(formSpoil.manga, { 'attr': {'type': 'text', 'placeholder': 'Nom du manga'}}) }}<a id="plus" href="#">+</a>
-			    </li>
-			    <div id="toggle">
-					<li>
-					    <select name="type" id="type" placeholder="Type de manga">
-					       <option value="0" disabled selected>Type de manga</option>
-					       {% for category in categories %}
-					           <option value="{{ category.id }}">{{ category.name|title }}</option>
-				           {% endfor %}
-		   				</select>
-		   				<button class="amanga">Ajouter le manga</button>
-		   				<p id="error_addManga"></p>
-				    </li>
-			    </div>
-			    <li class="file">
-					{{ form_widget(formSpoil.file, { 'attr': {'type': 'file'}}) }}
-					<img src="" width="" id="file_image" style="display:none;">
-					<label>Ajoutez une photo</label>
-				</li>
-				<li>
-					{{ form_widget(formSpoil.title, { 'attr': {'placeholder': 'Ecrivez votre spoil'}}) }}
-			    </li>
-			    {{ form_rest(formSpoil) }}
-			    <p class="connexion-error spoil-error"></p>
-				<li>
-			    	<input type="submit" id="_submit" name="_submit" value="Ajouter" />
-			    </li>
-
-			    <div style="clear:both;"></div>
-		    </ul>
-		</form>
-		</section>
-    </div>
-    </div>
-  </div>
+			<section class="ajout">
+				<form action="{{ path("add-spoil") }}" method="post" enctype="multipart/form-data" id="newSpoil">
+					<ul>
+						<li>
+							{{ form_widget(formSpoil.manga, { 'attr': {'type': 'text', 'placeholder': 'Nom du manga'}}) }}<a id="plus" href="#">+</a>
+						</li>
+						<div id="toggle">
+							<li>
+								<select name="type" id="type" placeholder="Type de manga">
+									<option value="0" disabled selected>Type de manga</option>
+									{% for category in categories %}
+										<option value="{{ category.id }}">{{ category.name|title }}</option>
+									{% endfor %}
+								</select>
+								<button class="amanga">Ajouter le manga</button>
+								<p id="error_addManga"></p>
+							</li>
+						</div>
+						<li class="file">
+							{{ form_widget(formSpoil.file, { 'attr': {'type': 'file'}}) }}
+							<img src="" width="" id="file_image" style="display:none;">
+							<label>Ajoutez une photo</label>
+						</li>
+						<li>
+							{{ form_widget(formSpoil.title, { 'attr': {'placeholder': 'Ecrivez votre spoil'}}) }}
+						</li>
+						{{ form_rest(formSpoil) }}
+						<p class="connexion-error spoil-error"></p>
+						<li>
+							<input type="submit" id="_submit" name="_submit" value="Ajouter" />
+						</li>
+						<div style="clear:both;"></div>
+					</ul>
+				</form>
+			</section>
+		</div>
+	</div>
 </div>
 
-
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script>
 	$(function(){
 		var list = [
@@ -71,7 +66,7 @@
 			if($.inArray($('#spoil_form_manga').val(),list) !== -1){
 				$('#plus').hide();
 				$('#toggle').hide(400);
-	      		return false;
+				return false;
 			}else{
 				$('#plus').show();
 			}
@@ -79,50 +74,50 @@
 		$('.ui-autocomplete').click(function(){
 			$('#plus').hide();
 			$('#toggle').hide(400);
-      		return false;
+			return false;
 		});
 		$('.amanga').click(function(e){
 			e.preventDefault();
-	        if($('#search').val() != '' && $('#type option:selected').val() != 0){
-		        $.post('{{ path("add-manga") }}',{
-		                name: 	$('#spoil_form_manga').val(),
-		                id: 	$('#type option:selected').val()
-		            },
-		            function(data){
-		            	list = [];
-		            	for (var i in data.mangas) {
-		            		list[i] = data.mangas[i].name;
-		            	}
-		            	$('#spoil_form_manga').autocomplete({
+			if($('#search').val() != '' && $('#type option:selected').val() != 0){
+				$.post('{{ path("add-manga") }}',{
+						name: 	$('#spoil_form_manga').val(),
+						id: 	$('#type option:selected').val()
+					},
+					function(data){
+						list = [];
+						for (var i in data.mangas) {
+							list[i] = data.mangas[i].name;
+						}
+						$('#spoil_form_manga').autocomplete({
 							source: list
 						});
-		                $('#spoil_form_manga').attr('disabled', 'disabled');
-		                $('#plus').hide();
+						$('#spoil_form_manga').attr('disabled', 'disabled');
+						$('#plus').hide();
 						$('#toggle').hide(400);
-			      		return false;
-		            }
-		        );
-		    }else{
-		    	$('#error_addManga').text('Veuillez renseigner le nom et la catégorie de votre manga.');
-		    	return false;
-		    }
-	    });
-	    $('#newSpoil').submit(function(){
+						return false;
+					}
+				);
+			}else{
+				$('#error_addManga').text('Veuillez renseigner le nom et la catégorie de votre manga.');
+				return false;
+			}
+		});
+		$('#newSpoil').submit(function(){
 			if($('.spoil-error').text() != ''){
 				return false;
 			}
-	    });
-	    $('#spoil_form_file').change(function(){
-	    	var fileSize = this.files[0].size,
-	    		ext = $('#spoil_form_file').val().split('.').pop().toLowerCase();
+		});
+		$('#spoil_form_file').change(function(){
+			var fileSize = this.files[0].size,
+				ext = $('#spoil_form_file').val().split('.').pop().toLowerCase();
 
 			if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-			    $('.spoil-error').text('L\'extension du fichier n\'est pas bonne.');
-	    	}else if(fileSize >= 600000){
-	    		$('.spoil-error').text('L\'image est trop lourde.');
-	    	}else{
-	    		$('.spoil-error').text('');
-	    	}
-	    });
+				$('.spoil-error').text('L\'extension du fichier n\'est pas bonne.');
+			}else if(fileSize >= 600000){
+				$('.spoil-error').text('L\'image est trop lourde.');
+			}else{
+				$('.spoil-error').text('');
+			}
+		});
 	});
 </script>

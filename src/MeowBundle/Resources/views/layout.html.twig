@@ -1,70 +1,83 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+	<title>Nyan Spoil - {% block titleName %}Venez vous venger de tous les spoils que vous avez subi !{% endblock %}</title>
+	<meta name="description" content="{% block descriptionText %}Pleins de spoils, sur toutes sortes de manga. Augmentez votre score en spoilant vos amis !{% endblock %}">
 	{% set urlBase = path("home") %}
 	{% set currentUrl = path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')) %}
 	{% include 'MeowBundle::Includes/head.html.twig' %}
+	{% block moreAssets %}{% endblock %}
 </head>
-<body {% block bodyClass %}{% endblock %}>
+<body class="{% block bodyClass %}{% endblock %}" id="{% block bodyId %}{% endblock %}">
 	{% include 'MeowBundle::Includes/header.html.twig' %}
 	{% block content %}{% block fos_user_content %}{% endblock %}{% endblock %}
 	{% include 'MeowBundle::Includes/footer.html.twig' %}
-	<script>
-		$(function(){
-
-			// VOTES
-			$('.vote.spoilAction').click(function(){
-		        var that = $(this);
-		        if(that.attr('data-spoil-id') != ''){
-			        $.post('{{ path("add-one-spoiled") }}',{
-			                id: that.attr('data-spoil-id')
-			            },
-			            function(data){
-			                that.children('span').text(data);
-			                that.attr('data-spoil-id', '');
-			                that.siblings().attr('data-spoil-id', '');
-			                if(that.hasClass('reload')){
-			                	location.reload();
-			                }
-			            }
-			        );
-			    }
-		    });
-		    $('.failAction').click(function(){
-		        var that = $(this);
-		        if(that.attr('data-spoil-id') != ''){
-			        $.post('{{ path("add-one-fail") }}',{
-			                id: that.attr('data-spoil-id')
-			            },
-			            function(data){
-			                that.children('span').text(data);
-			                that.attr('data-spoil-id', '');
-			                that.siblings().attr('data-spoil-id', '');
-			                if(that.hasClass('reload')){
-			                	location.reload();
-			                }
-			            }
-			        );
-			    }
-		    });
-		    $('.fakeAction').click(function(){
-		        var that = $(this);
-		        if(that.attr('data-spoil-id') != ''){
-			        $.post('{{ path("add-one-fake") }}',{
-			                id: that.attr('data-spoil-id')
-			            },
-			            function(data){
-			                that.children('span').text(data);
-			                that.attr('data-spoil-id', '');
-			                that.siblings().attr('data-spoil-id', '');
-			                if(that.hasClass('reload')){
-			                	location.reload();
-			                }
-			            }
-			        );
-			    }
-		    });
-		});
-	</script>
+	{% block scripts %}
+		<script>
+			$(function(){
+				$('.image-profil').click(function() {
+					$('.boite-menu').fadeToggle(100);
+				});
+				$('.vote.spoilAction').click(function(){
+			        var that = $(this);
+			        if(that.attr('data-spoil-id') != ''){
+				        $.post('{{ path("add-one-spoiled") }}',{
+				                id: that.attr('data-spoil-id')
+				            },
+				            function(data){
+				                that.children('span').text(data);
+				                that.attr('data-spoil-id', '');
+				                that.siblings().attr('data-spoil-id', '');
+				                if(that.hasClass('reload')){
+				                	location.reload();
+				                }
+				            }
+				        );
+				    }
+			    });
+			    $('.failAction').click(function(){
+			        var that = $(this);
+			        if(that.attr('data-spoil-id') != ''){
+				        $.post('{{ path("add-one-fail") }}',{
+				                id: that.attr('data-spoil-id')
+				            },
+				            function(data){
+				                that.children('span').text(data);
+				                that.attr('data-spoil-id', '');
+				                that.siblings().attr('data-spoil-id', '');
+				                if(that.hasClass('reload')){
+				                	location.reload();
+				                }
+				            }
+				        );
+				    }
+			    });
+			    $('.fakeAction').click(function(){
+			        var that = $(this);
+			        if(that.attr('data-spoil-id') != ''){
+				        $.post('{{ path("add-one-fake") }}',{
+				                id: that.attr('data-spoil-id')
+				            },
+				            function(data){
+				                that.children('span').text(data);
+				                that.attr('data-spoil-id', '');
+				                that.siblings().attr('data-spoil-id', '');
+				                if(that.hasClass('reload')){
+				                	location.reload();
+				                }
+				            }
+				        );
+				    }
+			    });
+			});
+			$(document).ready(function(){
+				$('#toggle').hide();
+				$('a#plus').click(function(){
+					$('#toggle').toggle(400);
+					return false;
+				});
+			});
+		</script>
+	{% endblock %}
 </body>
 </html>

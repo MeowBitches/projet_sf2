@@ -1,43 +1,53 @@
 {% extends 'MeowBundle::layout.html.twig' %}
-{% block bodyClass %}class="home"{% endblock %}
+
+{% block bodyClass %}home{% endblock %}
 
 {% block content %}
-
-	<!--[if IE]>
-      Ici votre code HTML réservé à IE.
-    <![endif]-->
-    
 	<section class="home-section">
-     
-     {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-     
-   	    <p><span><a href="{{ urlBase }}login">Connectez-vous</a></span> ou <span><a href="{{ urlBase }}register">inscrivez-vous</a></span> pour poster un spoil !</p>
-    {% endif %}
-     <a href="{{ urlBase }}spoil/{{ spoil.slug }}" class="acc-spoil">
-     <figure>
-     	<div><img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto"></div>
-        <figcaption><h2>{{ spoil.title }}</h2><h4 style="padding-left: 10px"> -  {{ spoil.manga.name }}</h4></figcaption>
-     </figure>
-     <div class="infos-spoiler">
-        <ul>
-        	<li data-icon="8">{{ spoil.author.username }} - <span>{{ spoil.date|date("d/m/Y") }} </span></li>
-        	<li data-icon="x">{{ spoil.nbComments }}</li>
-        </ul>
-     </div>
-     </a>
-     <div class="boutons-avis">
-     	<ul>
-     		<li class="vote reload spoilAction" data-spoil-id="{{ spoil.id }}"><p>Spoil</p><span>{{ spoil.nbSpoil }}</span></li>
-            <li class="vote reload failAction" data-spoil-id="{{ spoil.id }}"><p>Fail</p><span>{{ spoil.nbFail }}</span></li>
-            <li class="vote reload fakeAction" data-spoil-id="{{ spoil.id }}"><p>Fake</p><span>{{ spoil.nbFake }}</span></li>
-            
-        </ul>    
-     </div>	
-     <button id="refresh">Me spoiler un manga</button>
-    
-   </section>
+	 
+		{% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+			<p>
+				<span><a href="{{ urlBase }}login">Connectez-vous</a></span> ou <span><a href="{{ urlBase }}register">inscrivez-vous</a></span> pour poster un spoil !
+			</p>
+		{% endif %}
 
-    
+		<a href="{{ urlBase }}spoil/{{ spoil.slug }}" class="acc-spoil">
+			<figure>
+				<div>
+					<img src="{{ asset('_assets/imgs/spoils/' ~ spoil.cover) }}" alt="Naruto">
+				</div>
+				<figcaption>
+					<h2>{{ spoil.title }}</h2><h4 style="padding-left: 10px"> -  {{ spoil.manga.name }}</h4>
+				</figcaption>
+			</figure>
+
+			<div class="infos-spoiler">
+				<ul>
+					<li data-icon="8">{{ spoil.author.username }} - <span>{{ spoil.date|date("d/m/Y") }} </span></li>
+					<li data-icon="x">{{ spoil.nbComments }}</li>
+				</ul>
+			</div>
+		</a>
+		<div class="boutons-avis">
+			<ul>
+				<li class="vote reload spoilAction" data-spoil-id="{{ spoil.id }}">
+					<p>Spoil</p><span>{{ spoil.nbSpoil }}</span>
+				</li>
+				<li class="vote reload failAction" data-spoil-id="{{ spoil.id }}">
+					<p>Fail</p><span>{{ spoil.nbFail }}</span>
+				</li>
+				<li class="vote reload fakeAction" data-spoil-id="{{ spoil.id }}">
+					<p>Fake</p><span>{{ spoil.nbFake }}</span>
+				</li>
+			</ul>
+		</div>
+		<button id="refresh">Me spoiler un manga</button>
+	
+   </section>
+{% endblock %}
+
+{% block scripts %}
+	{{ parent() }}
 	<script type="text/javascript">
 		$(function(){
 			$('#refresh').click(function(){
@@ -45,5 +55,4 @@
 			});
 		});
 	</script>
-
 {% endblock %}
