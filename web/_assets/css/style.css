@@ -173,6 +173,10 @@ h2 {
 	line-height: 0;
 }
 
+.navbar-brand:focus {
+	outline: 0;
+}
+
 .navbar-brand img {
 	width: 66px;
 	height: auto;
