@@ -89,6 +89,7 @@
 	-webkit-font-smoothing:antialiased;
 	font-size:20px;
 	-moz-osx-font-smoothing:grayscale;
+	vertical-align: middle;
 }
 
 button, input[type="submit"]{
@@ -2809,4 +2810,45 @@ xcustom form elements
   .cd-filter-block .cd-select::after {
     display: none;
   }
+}
+
+/*Rangs*/
+.rang{
+	display: inline-block;
+	margin-left: 30px;
+}
+.rang .icon-rang{
+	font-style: normal;
+	padding: 5px;
+	color: white;
+}
+.rang.bronze .icon-rang{
+	background: brown;
+}
+.rang.bronze{
+	color: brown;
+}
+.rang.argent .icon-rang{
+	background: silver;
+}
+.rang.argent{
+	color: silver;
+}
+.rang.or .icon-rang{
+	background: goldenrod;
+}
+.rang.or{
+	color: goldenrod;
+}
+.rang.platine .icon-rang{
+	background: cadetblue;
+}
+.rang.platine{
+	color: cadetblue;
+}
+.rang.diamant .icon-rang{
+	background: lightcoral;
+}
+.rang.diamant{
+	color: lightcoral;
 }
