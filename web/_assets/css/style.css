@@ -89,7 +89,6 @@
 	-webkit-font-smoothing:antialiased;
 	font-size:20px;
 	-moz-osx-font-smoothing:grayscale;
-	vertical-align: middle;
 }
 
 button, input[type="submit"]{
@@ -2821,6 +2820,9 @@ xcustom form elements
 	font-style: normal;
 	padding: 5px;
 	color: white;
+}
+.rang .icon-rang:before{
+	vertical-align: middle;
 }
 .rang.bronze .icon-rang{
 	background: brown;

@@ -147,12 +147,15 @@ class DefaultController extends Controller
             12
         );
 
+        $repoSpoil = $this->container->get('doctrine')->getRepository('MeowBundle:Spoil');
+        $spoils = $repoSpoil->findBy(array('isPublished' => true, 'author' => $user));
+
         $form4 = $this->createForm(new UserType());
 
         if ($this->getUser()->getId() == $user->getId()){
-            return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'form' => $form->createView(), 'formCover' => $form4->createView()));
+            return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'form' => $form->createView(), 'formCover' => $form4->createView(), 'spoils' => $spoils));
         }else{
-            return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'formCover' => $form4->createView()));
+            return $this->render('MeowBundle:Default:profile.html.twig', array('user' => $user, 'pagination' => $pagination, 'formCover' => $form4->createView(), 'spoils' => $spoils));
         }
     }
 

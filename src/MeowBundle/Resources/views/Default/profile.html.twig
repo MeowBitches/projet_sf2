@@ -61,7 +61,7 @@
 					</li>
 					
 					<li>Score : {% set score = 0 %}
-						{% for spoil in pagination %}
+						{% for spoil in spoils %}
 							{% set score = score + spoil.nbSpoil %}
 						{% endfor %}
 						{{ score }} pts
