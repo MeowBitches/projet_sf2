@@ -141,64 +141,68 @@
 {% block scripts %}
 	{{ parent() }}
 	<script type="text/javascript">
-		$(function(){
-			$('.changer-pass').click(function(){
+		$(function() {
+			$('.changer-pass').click(function() {
 				$('.boite-pass').fadeToggle(100);
 			});
-			$('.changer-mail').click(function(){
+			$('.changer-mail').click(function() {
 				$('.boite-mail').fadeToggle(100);
 			});
+		});
+
+
+		$(function(){
 			init();
-			function init(){
-				center('.modal-photo');
-				modale();
-			}
-			function center(el){
-				var mH  = $(el).height(),
-					mW  = $(el).width();
-				$(el).css({'margin-left':-mW/2,'margin-top':-mH/2});
-			}
-			function modale(){
-				$('[data-modale]').click(function(){
-					var modale = "#"+$(this).attr('data-modale');
-					$('.modale-shadow').fadeIn();
-					$(modale).stop().animate({'top':'47%','opacity':1},200).attr('data-open',true);
-				});
-				$('.modal-photo [data-close="modale"],.modale-shadow').click(function(){
-					$('.modale-shadow').fadeOut();
-					$('.modal-photo[data-open="true"]').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
-				});
-			}
-			function readImage(file) {
-				var reader = new FileReader(),
-					image  = new Image();
-				reader.readAsDataURL(file);  
-				reader.onload = function(_file) {
-					image.src    = _file.target.result;
-					image.onload = function() {
-						$('#apercu').attr('src', this.src);
-					};   
-				};
-			}
-			$('.avatar-input').submit(function(){
-				if($('.cover-error').text() != ''){
-					return false;
-				}
+		});
+		function init(){
+			center('.modal-photo');
+			modale();
+		}
+		function center(el){
+			var mH  = $(el).height(),
+				mW  = $(el).width();
+			$(el).css({'margin-left':-mW/2,'margin-top':-mH/2});
+		}
+		function modale(){
+			$('[data-modale]').click(function(){
+				var modale = "#"+$(this).attr('data-modale');
+				$('.modale-shadow').fadeIn();
+				$(modale).stop().animate({'top':'47%','opacity':1},200).attr('data-open',true);
 			});
-			$('.avatar-input').change(function(){
-				var F = this.files;
-				if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
+			$('.modal-photo [data-close="modale"],.modale-shadow').click(function(){
+				$('.modale-shadow').fadeOut();
+				$('.modal-photo[data-open="true"]').stop().animate({'top':'-100%','opacity':1},200).attr('data-open',false);
+			});
+		}
+		function readImage(file) {
+			var reader = new FileReader(),
+				image  = new Image();
+			reader.readAsDataURL(file);  
+			reader.onload = function(_file){
+				image.src    = _file.target.result;
+				image.onload = function(){
+					$('#apercu').attr('src', this.src);
+				};   
+			};
+		}
+		$('.avatar-input').submit(function(){
+			if($('.cover-error').text() != ''){
+				return false;
+			}
+		});
+		$('.avatar-input').change(function(){
+			var F = this.files;
+			if(F && F[0]) for(var i=0; i<F.length; i++) readImage( F[i] );
 
-				var fileSize = this.files[0].size,
-					ext = $('.avatar-input').val().split('.').pop().toLowerCase();
+			var fileSize = this.files[0].size,
+				ext = $('.avatar-input').val().split('.').pop().toLowerCase();
 
-				if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
-					$('.cover-error').text('L\'extension du fichier n\'est pas bonne.');
-				}else if(fileSize >= 600000){
-					$('.cover-error').text('L\'image est trop lourde.');
-				}else{
-					$('.cover-error').text('');
-				}
+			if($.inArray(ext, ['gif','png','jpg','jpeg']) == -1) {
+				$('.cover-error').text('L\'extension du fichier n\'est pas bonne.');
+			}else if(fileSize >= 600000){
+				$('.cover-error').text('L\'image est trop lourde.');
+			}else{
+				$('.cover-error').text('');
 			}
 		});
 	</script>
