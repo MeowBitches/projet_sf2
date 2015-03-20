@@ -77,6 +77,19 @@
 					return false;
 				});
 			});
+			var easter_egg = new Konami();
+			easter_egg.code = function() {
+				$('body').addClass('konami');
+				$('body').html('<iframe width="640" height="390" src="http://www.youtube.com/embed/aHrc_F8xMXE?enablejsapi=1&autoplay=1&controls=0&vq=hd720" frameborder="0"></iframe>');
+				$('iframe').width($(window).innerWidth());
+				$('iframe').height($(window).innerHeight());
+				$(window).resize(function(){
+					$('iframe').width($(window).innerWidth());
+					$('iframe').height($(window).innerHeight());
+				});
+			}
+			easter_egg.load();
+</script>
 		</script>
 	{% endblock %}
 </body>
