@@ -2,12 +2,17 @@
 	<div>
 		<div>
 			<h1><a class="navbar-brand" href="{{ urlBase }}"><img src="{{ asset('_assets/imgs/logo.svg') }}" alt="Logo Nyan Cat"></a></h1>
+			<!--[if IE]>
+			  <h1><a class="navbar-brand" href="{{ urlBase }}"><img src="{{ asset('_assets/imgs/logo.png') }}" alt="Logo Nyan Cat"></a></h1>
+			<![endif]-->
 		</div>
 
 		<div class="btn-burger">
 			<a href="javascript:void(0);" id="burger"><img src="{{ asset('_assets/imgs/menu-burger.png') }}" alt="Burger menu"/></a>
 			<a href="javascript:void(0);" id="croix" data-icon="v"></a>
         </div>
+
+       
 
 		<ul class="nav">
 			<li role="presentation" class="nav-meow {% if currentUrl == urlBase %}active{% endif %}">

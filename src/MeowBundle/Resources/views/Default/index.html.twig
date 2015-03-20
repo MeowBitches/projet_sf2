@@ -3,7 +3,10 @@
 
 {% block content %}
 
-	
+	<!--[if IE]>
+      Ici votre code HTML réservé à IE.
+    <![endif]-->
+    
 	<section class="home-section">
      
      {% if not is_granted("IS_AUTHENTICATED_REMEMBERED") %}
