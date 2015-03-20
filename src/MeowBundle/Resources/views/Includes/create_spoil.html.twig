@@ -41,6 +41,7 @@
 						</li>
 						{{ form_rest(formSpoil) }}
 						<p class="connexion-error spoil-error"></p>
+						<p class="connexion-error spoil-error-2"></p>
 						<li>
 							<input type="submit" id="_submit" name="_submit" value="Ajouter" />
 						</li>
@@ -104,6 +105,9 @@
 		});
 		$('#newSpoil').submit(function(){
 			if($('.spoil-error').text() != ''){
+				return false;
+			}else if($.inArray($('#spoil_form_manga').val(),list) === -1){
+				$('.spoil-error-2').text('Veuillez renseigner un manga existant.');
 				return false;
 			}
 		});
