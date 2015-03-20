@@ -7,6 +7,52 @@ application that you can use as the skeleton for your new applications.
 For details on how to download and get started with Symfony, see the
 [Installation][1] chapter of the Symfony Documentation.
 
+How to build your own Nyan Spoil
+--------------------------------
+
+Clone a copy of the main Nyan Spoil git repo by running:
+
+```bash
+git clone https://github.com/MeowBitches/projet_sf2.git
+```
+
+Verify you got composer in your computer
+Get all require vendors by running in the folder "projet_sf2":
+
+```bash
+composer install
+```
+
+```bash
+database_driver (pdo_mysql):
+database_host (127.0.0.1):
+database_port (null): <Your port here (3306 for example)>
+database_name (symfony): meow
+database_user (root):
+database_password (null): root (for MAMP)
+mailer_transport (smtp):
+mailer_host (127.0.0.1):
+mailer_user (null):
+mailer_password (null):
+locale (en): fr
+secret (ThisTokenIsNotSoSecretChangeIt):
+```
+
+Then, create a database:
+
+```bash
+php app/console doctrine:database:create
+```
+
+And import the SQL file /import.sql to the database created (with PHPMyAdmin).
+
+And update the database:
+
+```bash
+php app/console doctrine:schema:update --force
+```
+
+
 What's inside?
 --------------
 
